@@ -1,0 +1,74 @@
+// =============================================================================
+// NOT FOUND PAGE
+// =============================================================================
+
+.not-found-page {
+    min-height: 100vh;
+    background-color: $gray-100;
+
+    .main-content {
+        .error-section {
+            padding: 4rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+
+            .error-card {
+                background-color: $white;
+                border-radius: 1rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 3rem 2rem;
+                text-align: center;
+                max-width: 500px;
+                width: 100%;
+
+                @media (min-width: 768px) {
+                    padding: 4rem 3rem;
+                }
+
+                .error-title {
+                    font-size: 6rem;
+                    font-weight: $font-weight-bold;
+                    color: $primary-color;
+                    margin: 0;
+                    line-height: 1;
+
+                    @media (min-width: 768px) {
+                        font-size: 8rem;
+                    }
+                }
+
+                .error-subtitle {
+                    font-size: 2rem;
+                    font-weight: $font-weight-bold;
+                    color: $gray-700;
+                    margin: 1rem 0;
+
+                    @media (min-width: 768px) {
+                        font-size: 2.5rem;
+                    }
+                }
+
+                .error-description {
+                    color: $gray-600;
+                    font-size: 1.125rem;
+                    margin-bottom: 2rem;
+                    line-height: 1.6;
+                }
+
+                .error-actions {
+                    display: flex;
+                    gap: 1rem;
+                    justify-content: center;
+                    flex-wrap: wrap;
+
+                    .btn {
+                        min-width: 120px;
+                        font-weight: $font-weight-medium;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,82 @@
+// =============================================================================
+// NAVBAR LAYOUT
+// =============================================================================
+
+.navbar {
+    background-color: $white;
+    border-bottom: 1px solid $gray-300;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    .navbar-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        @media (min-width: 768px) {
+            padding: 1.5rem;
+        }
+    }
+
+    .navbar-brand {
+        .navbar-logo {
+            color: $primary-color;
+            font-size: 1.5rem;
+            font-weight: $font-weight-bold;
+            margin: 0;
+            text-decoration: none;
+
+            @media (min-width: 768px) {
+                font-size: 1.75rem;
+            }
+
+            &:hover {
+                color: $primary-dark;
+            }
+        }
+    }
+
+    .navbar-nav {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 1.5rem;
+
+        @media (min-width: 768px) {
+            gap: 2rem;
+        }
+
+        .nav-item {
+            .nav-link {
+                color: $gray-700;
+                text-decoration: none;
+                font-weight: $font-weight-medium;
+                transition: color $transition-base;
+
+                &:hover {
+                    color: $primary-color;
+                }
+
+                &.active {
+                    color: $primary-color;
+                    font-weight: $font-weight-semibold;
+                }
+            }
+        }
+    }
+
+    .navbar-actions {
+        .btn {
+            @media (min-width: 768px) {
+                padding: 0.5rem 1rem;
+            }
+        }
+    }
+}

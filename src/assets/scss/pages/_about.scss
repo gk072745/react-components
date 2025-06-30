@@ -1,0 +1,82 @@
+// =============================================================================
+// ABOUT PAGE
+// =============================================================================
+
+.about-page {
+    min-height: 100vh;
+    background-color: $gray-100;
+
+    .main-content {
+        .hero-section {
+            background: linear-gradient(135deg, $primary-color, $primary-dark);
+            color: $white;
+            padding: 4rem 0;
+            text-align: center;
+
+            .hero-title {
+                font-size: 3rem;
+                font-weight: $font-weight-bold;
+                margin-bottom: 1.5rem;
+
+                @media (min-width: 768px) {
+                    font-size: 4rem;
+                }
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+                opacity: 0.9;
+                margin: 0;
+                max-width: 600px;
+                margin: 0 auto;
+
+                @media (min-width: 768px) {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .content-section {
+            padding: 4rem 0;
+            background-color: $white;
+
+            .content-card {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 0 1rem;
+
+                @media (min-width: 768px) {
+                    padding: 0 2rem;
+                }
+
+                .content-title {
+                    color: $primary-color;
+                    font-size: 2rem;
+                    font-weight: $font-weight-bold;
+                    margin-bottom: 2rem;
+                    text-align: center;
+                }
+
+                .feature-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+
+                    li {
+                        background-color: $gray-100;
+                        padding: 1rem 1.5rem;
+                        margin-bottom: 1rem;
+                        border-radius: 0.5rem;
+                        border-left: 4px solid $primary-color;
+                        font-weight: $font-weight-medium;
+                        color: $gray-700;
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

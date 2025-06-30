@@ -1,0 +1,123 @@
+// =============================================================================
+// MIXINS
+// =============================================================================
+
+// Responsive Breakpoints
+@mixin respond-to($breakpoint) {
+    @if $breakpoint =='xs' {
+        @media (max-width: 575.98px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='sm' {
+        @media (min-width: 576px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='md' {
+        @media (min-width: 768px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='lg' {
+        @media (min-width: 992px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='xl' {
+        @media (min-width: 1200px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='xxl' {
+        @media (min-width: 1400px) {
+            @content;
+        }
+    }
+
+    @else {
+        @warn "Unknown breakpoint: #{$breakpoint}";
+    }
+}
+
+// Flexbox Mixins
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+// grid mixins
+@mixin grid-container ($direction: row, $gap: 0) {
+    display: grid;
+    grid-auto-flow: $direction;
+    gap: $gap;
+}
+
+@mixin grid-center {
+    display: grid;
+    place-items: center;
+}
+
+// text mixins
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin text-multiline-truncate($lines: 2) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+// Animation Mixins
+@mixin fade-in($duration: $transition-base) {
+    animation: fadeIn $duration ease-in-out;
+}
+
+@mixin slide-up($duration: $transition-base) {
+    animation: slideUp $duration ease-out;
+}
+
+@mixin slide-down($duration: $transition-base) {
+    animation: slideDown $duration ease-out;
+}
+
+// Utility Mixins
+// screen reader only
+@mixin sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

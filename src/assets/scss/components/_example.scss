@@ -1,0 +1,53 @@
+// =============================================================================
+// EXAMPLE COMPONENT - Demonstrating Vite SCSS Optimizations
+// =============================================================================
+
+// With the optimized Vite config, we can now use variables, functions, and mixins
+// directly without importing them in each file!
+
+.example-component {
+    // Using variables directly (no @import needed)
+    background-color: $primary-color;
+    color: $white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    // Using mixins directly
+    @include flex-center;
+
+    // Using functions directly
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+
+    // Responsive design with mixins
+    @include respond-to('md') {
+        padding: 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    // Hover effects
+    transition: all $transition-base;
+
+    &:hover {
+        background-color: color('primary', 'dark');
+        transform: translateY(-2px);
+    }
+
+    // Using utility classes
+    &.example-component--large {
+        padding: 1rem 2rem;
+        font-size: 2rem;
+    }
+
+    &.example-component--small {
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+}
+
+// Example of using the alias imports (if needed)
+// You can now import specific files using the @scss alias:
+// @import "@scss/abstracts/variables";
+// @import "@scss/abstracts/mixins";
+
+// This makes the code cleaner and more maintainable!

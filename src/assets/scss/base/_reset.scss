@@ -1,0 +1,150 @@
+// =============================================================================
+// CSS RESET
+// =============================================================================
+
+// Box sizing rules
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+// Remove default margin and padding
+* {
+    margin: 0;
+    padding: 0;
+}
+
+// Remove list styles on ul, ol elements with a list role
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+// Set core root defaults
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+html {
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// Set core body defaults
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    font-family: $font-family-base;
+    color: $gray-900;
+    background-color: $white;
+}
+
+// A elements that don't have a class get default styles
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+// Make images easier to work with
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+// Inherit fonts for inputs and buttons
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+// Accessibility: Respect user's motion preferences
+// This media query detects if the user has enabled "Reduce Motion" in their OS settings
+// and disables animations, transitions, and smooth scrolling for better accessibility
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+// Remove default button styles
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+// Remove default fieldset styles
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+// Remove default legend styles
+legend {
+    padding: 0;
+}
+
+// Remove default table styles
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+// Remove default textarea styles
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+// Remove default select styles
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1em;
+    padding-right: 2rem;
+}
+
+// Remove default details styles
+details {
+    display: block;
+}
+
+// Remove default summary styles
+summary {
+    display: list-item;
+    cursor: pointer;
+}
+
+// Remove default template styles
+template {
+    display: none;
+}
+
+// Remove default hidden styles
+[hidden] {
+    display: none !important;
+}

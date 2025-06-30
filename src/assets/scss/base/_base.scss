@@ -1,0 +1,289 @@
+// =============================================================================
+// BASE STYLES
+// =============================================================================
+
+// Root element
+:root {
+    // CSS Custom Properties for easy theming
+    --primary-color: #{$primary-color};
+
+    --font-family-base: #{$font-family-base};
+    --font-family-heading: #{$font-family-heading};
+    --font-family-mono: #{$font-family-mono};
+
+    --transition-base: #{$transition-base};
+}
+
+
+// Visually hidden
+.sr-only {
+    @include sr-only;
+}
+
+// Object fit utilities
+.object-cover {
+    object-fit: cover;
+}
+
+.object-contain {
+    object-fit: contain;
+}
+
+.object-fill {
+    object-fit: fill;
+}
+
+.object-none {
+    object-fit: none;
+}
+
+.object-scale-down {
+    object-fit: scale-down;
+}
+
+// Position utilities
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.sticky {
+    position: sticky;
+}
+
+// Z-index utilities
+.z-0 {
+    z-index: 0;
+}
+
+.z-10 {
+    z-index: 10;
+}
+
+.z-20 {
+    z-index: 20;
+}
+
+.z-30 {
+    z-index: 30;
+}
+
+.z-40 {
+    z-index: 40;
+}
+
+.z-50 {
+    z-index: 50;
+}
+
+.z-auto {
+    z-index: auto;
+}
+
+// Overflow utilities
+.overflow-auto {
+    overflow: auto;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-visible {
+    overflow: visible;
+}
+
+.overflow-scroll {
+    overflow: scroll;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.overflow-y-auto {
+    overflow-y: auto;
+}
+
+// Cursor utilities
+.cursor-auto {
+    cursor: auto;
+}
+
+.cursor-default {
+    cursor: default;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-wait {
+    cursor: wait;
+}
+
+.cursor-text {
+    cursor: text;
+}
+
+.cursor-move {
+    cursor: move;
+}
+
+.cursor-help {
+    cursor: help;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+// User select utilities
+.select-none {
+    user-select: none;
+}
+
+.select-text {
+    user-select: text;
+}
+
+.select-all {
+    user-select: all;
+}
+
+.select-auto {
+    user-select: auto;
+}
+
+// Pointer events utilities
+.pointer-events-none {
+    pointer-events: none;
+}
+
+.pointer-events-auto {
+    pointer-events: auto;
+}
+
+// Resize utilities
+.resize-none {
+    resize: none;
+}
+
+.resize-y {
+    resize: vertical;
+}
+
+.resize-x {
+    resize: horizontal;
+}
+
+.resize {
+    resize: both;
+}
+
+// Scroll behavior utilities
+.scroll-auto {
+    scroll-behavior: auto;
+}
+
+.scroll-smooth {
+    scroll-behavior: smooth;
+}
+
+// Scroll snap utilities
+.snap-none {
+    scroll-snap-type: none;
+}
+
+.snap-x {
+    scroll-snap-type: x mandatory;
+}
+
+.snap-y {
+    scroll-snap-type: y mandatory;
+}
+
+.snap-both {
+    scroll-snap-type: both mandatory;
+}
+
+.snap-start {
+    scroll-snap-align: start;
+}
+
+.snap-end {
+    scroll-snap-align: end;
+}
+
+.snap-center {
+    scroll-snap-align: center;
+}
+
+.snap-align-none {
+    scroll-snap-align: none;
+}
+
+// Touch action utilities
+.touch-auto {
+    touch-action: auto;
+}
+
+.touch-none {
+    touch-action: none;
+}
+
+.touch-pan-x {
+    touch-action: pan-x;
+}
+
+.touch-pan-left {
+    touch-action: pan-left;
+}
+
+.touch-pan-right {
+    touch-action: pan-right;
+}
+
+.touch-pan-y {
+    touch-action: pan-y;
+}
+
+.touch-pan-up {
+    touch-action: pan-up;
+}
+
+.touch-pan-down {
+    touch-action: pan-down;
+}
+
+.touch-pinch-zoom {
+    touch-action: pinch-zoom;
+}
+
+.touch-manipulation {
+    touch-action: manipulation;
+}
+
+// Will change utilities
+.will-change-auto {
+    will-change: auto;
+}
+
+.will-change-scroll {
+    will-change: scroll-position;
+}
+
+.will-change-contents {
+    will-change: contents;
+}
+
+.will-change-transform {
+    will-change: transform;
+}

@@ -1,0 +1,33 @@
+// =============================================================================
+// MAIN SCSS FILE
+// =============================================================================
+
+// 1. Variables and Configuration
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/breakpoints';
+
+// 2. Base Styles
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/base';
+
+// 3. Layout Components
+@import 'layout/header';
+@import 'layout/navbar';
+
+// 4. Components
+@import 'components/example';
+@import 'components/simple-example';
+@import 'components/counter';
+
+// 5. Pages
+@import 'pages/home';
+@import 'pages/about';
+@import 'pages/counter-page';
+@import 'pages/auth';
+@import 'pages/not-found';
+
+// 6. Utilities (should be last for specificity)
+@import 'utilities/spacing';

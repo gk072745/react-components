@@ -1,0 +1,78 @@
+// =============================================================================
+// COUNTER COMPONENT
+// =============================================================================
+
+.counter {
+    background-color: $white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+
+    .counter-header {
+        margin-bottom: 2rem;
+
+        .counter-title {
+            color: $primary-color;
+            font-size: 2rem;
+            font-weight: $font-weight-bold;
+            margin-bottom: 0.5rem;
+
+            @media (min-width: 768px) {
+                font-size: 2.5rem;
+            }
+        }
+
+        .counter-subtitle {
+            color: $gray-600;
+            font-size: 1.125rem;
+            margin: 0;
+        }
+    }
+
+    .counter-display {
+        background-color: $gray-100;
+        border-radius: 0.5rem;
+        padding: 2rem;
+        margin-bottom: 2rem;
+
+        .counter-value {
+            font-size: 4rem;
+            font-weight: $font-weight-bold;
+            color: $primary-color;
+            display: block;
+
+            @media (min-width: 768px) {
+                font-size: 5rem;
+            }
+        }
+    }
+
+    .counter-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+
+        .counter-btn {
+            min-width: 120px;
+            font-weight: $font-weight-medium;
+
+            @media (min-width: 768px) {
+                min-width: 140px;
+            }
+        }
+    }
+
+    .counter-info {
+        .text-muted {
+            font-size: 0.875rem;
+            margin: 0;
+            color: $gray-600;
+        }
+    }
+}

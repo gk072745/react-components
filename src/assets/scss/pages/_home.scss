@@ -1,0 +1,108 @@
+// =============================================================================
+// HOME PAGE
+// =============================================================================
+
+.home-page {
+    min-height: 100vh;
+    background-color: $gray-100;
+
+    .main-content {
+        .hero-section {
+            background: linear-gradient(135deg, $primary-color, $primary-dark);
+            color: $white;
+            padding: 4rem 0;
+            text-align: center;
+
+            .hero-title {
+                font-size: 3rem;
+                font-weight: $font-weight-bold;
+                margin-bottom: 1.5rem;
+
+                @media (min-width: 768px) {
+                    font-size: 4rem;
+                }
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+                opacity: 0.9;
+                margin: 0;
+                max-width: 600px;
+                margin: 0 auto;
+
+                @media (min-width: 768px) {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .counter-section {
+            padding: 4rem 0;
+            background-color: $white;
+        }
+
+        .features-section {
+            padding: 4rem 0;
+            background-color: $gray-100;
+
+            .section-title {
+                text-align: center;
+                font-size: 2.5rem;
+                font-weight: $font-weight-bold;
+                color: $primary-color;
+                margin-bottom: 4rem;
+
+                @media (min-width: 768px) {
+                    font-size: 3rem;
+                }
+            }
+
+            .features-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 1rem;
+
+                @media (min-width: 768px) {
+                    grid-template-columns: repeat(2, 1fr);
+                    padding: 0 2rem;
+                }
+
+                @media (min-width: 1024px) {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+
+                .feature-card {
+                    background-color: $white;
+                    border-radius: 1rem;
+                    padding: 2rem;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    transition: transform $transition-base, box-shadow $transition-base;
+
+                    &:hover {
+                        transform: translateY(-4px);
+                        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .feature-title {
+                        color: $primary-color;
+                        font-size: 1.5rem;
+                        font-weight: $font-weight-bold;
+                        margin-bottom: 1rem;
+                    }
+
+                    .feature-description {
+                        color: $gray-700;
+                        line-height: 1.6;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Home page styles will go here
+// This is a placeholder file to prevent import errors 

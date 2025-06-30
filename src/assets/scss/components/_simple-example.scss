@@ -1,0 +1,46 @@
+// =============================================================================
+// SIMPLE EXAMPLE COMPONENT
+// =============================================================================
+
+// This demonstrates the simplified SCSS approach
+// Variables, functions, and mixins are available globally
+
+.simple-example {
+    // Using variables directly
+    background-color: $primary-color;
+    color: $white;
+
+    // Using direct values (simplified approach)
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+
+    // Using mixins
+    @include flex-center;
+
+    // Responsive design
+    @include respond-to('md') {
+        padding: 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    // Hover effects
+    transition: all $transition-base;
+
+    &:hover {
+        background-color: color('primary', 'dark');
+        transform: translateY(-2px);
+    }
+
+    // Modifier classes
+    &.simple-example--large {
+        padding: 2rem;
+        font-size: 1.5rem;
+    }
+
+    &.simple-example--small {
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+}

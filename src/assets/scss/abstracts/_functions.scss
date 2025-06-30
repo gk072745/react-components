@@ -1,0 +1,43 @@
+// =============================================================================
+// FUNCTIONS
+// =============================================================================
+
+// Color Functions
+@function color($color-name, $variant: 'base') {
+    $color-map: (
+        'primary': ('base': $primary-color,
+            'light': $primary-light,
+            'dark': $primary-dark ),
+    );
+
+@if map-has-key($color-map, $color-name) {
+    $color-variants: map-get($color-map, $color-name);
+
+    @if map-has-key($color-variants, $variant) {
+        @return map-get($color-variants, $variant);
+    }
+}
+
+@warn "Color '#{$color-name}' with variant '#{$variant}' not found.";
+@return null;
+}
+
+// Z-index Function
+@function z($layer) {
+    $z-index-map: (
+        'dropdown': $z-dropdown,
+        'sticky': $z-sticky,
+        'fixed': $z-fixed,
+        'modal-backdrop': $z-modal-backdrop,
+        'modal': $z-modal,
+        'popover': $z-popover,
+        'tooltip': $z-tooltip
+    );
+
+@if map-has-key($z-index-map, $layer) {
+    @return map-get($z-index-map, $layer);
+}
+
+@warn "Z-index layer '#{$layer}' not found.";
+@return null;
+}

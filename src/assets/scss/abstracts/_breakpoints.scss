@@ -1,0 +1,184 @@
+// =============================================================================
+// BREAKPOINTS
+// =============================================================================
+
+// Breakpoint Variables
+$breakpoints: (
+    'xs': 0,
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px,
+    'xl': 1200px,
+    'xxl': 1400px
+);
+
+
+// Responsive Mixins
+@mixin media-up($breakpoint) {
+    $min: map-get($breakpoints, $breakpoint);
+
+    @if $min !=0 {
+        @media (min-width: $min) {
+            @content;
+        }
+    }
+
+    @else {
+        @content;
+    }
+}
+
+@mixin media-down($breakpoint) {
+    $max: map-get($breakpoints, $breakpoint);
+
+    @if $max and $max >0 {
+        @media (max-width: ($max - 1px)) {
+            @content;
+        }
+    }
+}
+
+@mixin media-between($lower, $upper) {
+    $min: map-get($breakpoints, $lower);
+    $max: map-get($breakpoints, $upper);
+
+    @if $min !=0 and $max {
+        @media (min-width: $min) and (max-width: $max - 1px) {
+            @content;
+        }
+    }
+
+    @else if $min !=0 {
+        @media (min-width: $min) {
+            @content;
+        }
+    }
+
+    @else if $max {
+        @media (max-width: $max - 1px) {
+            @content;
+        }
+    }
+}
+
+// =============================================================================
+// RESPONSIVE DISPLAY CLASSES
+// =============================================================================
+//
+// Generates responsive display utility classes for all breakpoints.
+// These classes allow you to control element visibility and display properties
+// across different screen sizes.
+//
+// Usage Examples:
+//   .d-none          - Hidden on all screens
+//   .d-sm-block      - Block display on small screens and up
+//   .d-md-flex       - Flex display on medium screens and up
+//   .d-lg-inline     - Inline display on large screens and up
+//
+// Available display values:
+//   - none:          Completely hides the element
+//   - inline:        Inline display (respects text flow)
+//   - inline-block:  Inline-block display (respects text flow, accepts width/height)
+//   - block:         Block display (full width, creates new line)
+//   - flex:          Flexbox display (flexible layout)
+//   - inline-flex:   Inline flexbox display (flexible layout, respects text flow)
+//
+// Breakpoint prefixes:
+//   - xs:  No prefix (applies to all screen sizes)
+//   - sm:  -sm (576px and up)
+//   - md:  -md (768px and up)
+//   - lg:  -lg (992px and up)
+//   - xl:  -xl (1200px and up)
+//   - xxl: -xxl (1400px and up)
+//
+// Note: Classes use !important to ensure they override other display properties
+// =============================================================================
+
+@each $breakpoint, $value in $breakpoints {
+    $infix: if($breakpoint =='xs', '', '-#{$breakpoint}');
+
+    @include media-up($breakpoint) {
+
+        // Hide element completely
+        .d#{$infix}-none {
+            display: none !important;
+        }
+
+        // Inline display - element flows with text
+        .d#{$infix}-inline {
+            display: inline !important;
+        }
+
+        // Inline-block display - flows with text but accepts width/height
+        .d#{$infix}-inline-block {
+            display: inline-block !important;
+        }
+
+        // Block display - full width, creates new line
+        .d#{$infix}-block {
+            display: block !important;
+        }
+
+
+        // Flexbox display - flexible layout container
+        .d#{$infix}-flex {
+            display: flex !important;
+        }
+
+        // Inline flexbox display - flexible layout, respects text flow
+        .d#{$infix}-inline-flex {
+            display: inline-flex !important;
+        }
+    }
+}
+
+// Responsive Text Alignment
+// Responsive Text Alignment Classes
+// These classes control text alignment across different breakpoints
+// 
+// Available classes:
+//   - text-left:    Aligns text to the left
+//   - text-right:   Aligns text to the right  
+//   - text-center:  Centers text horizontally
+//   - text-justify: Justifies text to fill the container width
+//
+// Breakpoint prefixes:
+//   - xs:  No prefix (applies to all screen sizes)
+//   - sm:  -sm (576px and up)
+//   - md:  -md (768px and up)
+//   - lg:  -lg (992px and up)
+//   - xl:  -xl (1200px and up)
+//   - xxl: -xxl (1400px and up)
+//
+// Examples:
+//   .text-center     - Centers text on all screen sizes
+//   .text-md-left    - Left-aligns text on medium screens and up
+//   .text-lg-center  - Centers text on large screens and up
+//
+// Note: Classes use !important to ensure they override other text-align properties
+@each $breakpoint, $value in $breakpoints {
+    $infix: if($breakpoint =='xs', '', '-#{$breakpoint}');
+
+    @include media-up($breakpoint) {
+
+        // Left alignment - aligns text to the left edge
+        .text#{$infix}-left {
+            text-align: left !important;
+        }
+
+        // Right alignment - aligns text to the right edge
+        .text#{$infix}-right {
+            text-align: right !important;
+        }
+
+        // Center alignment - centers text horizontally within container
+        .text#{$infix}-center {
+            text-align: center !important;
+        }
+
+        // Justify alignment - spreads text to fill container width
+        .text#{$infix}-justify {
+            text-align: justify !important;
+        }
+    }
+}

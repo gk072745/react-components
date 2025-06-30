@@ -1,0 +1,235 @@
+// =============================================================================
+// SPACING UTILITIES
+// =============================================================================
+
+// Margin utilities
+
+
+// Padding utilities
+
+
+// Zero spacing utilities
+.m-0 {
+    margin: 0 !important;
+}
+
+.mt-0 {
+    margin-top: 0 !important;
+}
+
+.mr-0 {
+    margin-right: 0 !important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.ml-0 {
+    margin-left: 0 !important;
+}
+
+.mx-0 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.my-0 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.pt-0 {
+    padding-top: 0 !important;
+}
+
+.pr-0 {
+    padding-right: 0 !important;
+}
+
+.pb-0 {
+    padding-bottom: 0 !important;
+}
+
+.pl-0 {
+    padding-left: 0 !important;
+}
+
+.px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.py-0 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+// Auto margin utilities
+.m-auto {
+    margin: auto !important;
+}
+
+.mt-auto {
+    margin-top: auto !important;
+}
+
+.mr-auto {
+    margin-right: auto !important;
+}
+
+.mb-auto {
+    margin-bottom: auto !important;
+}
+
+.ml-auto {
+    margin-left: auto !important;
+}
+
+.mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.my-auto {
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+}
+
+// Gap utilities
+
+.gap-0 {
+    gap: 0 !important;
+}
+
+.gap-x-0 {
+    column-gap: 0 !important;
+}
+
+.gap-y-0 {
+    row-gap: 0 !important;
+}
+
+// Responsive spacing utilities
+@each $breakpoint, $value in $breakpoints {
+    $infix: if($breakpoint =='xs', '', '-#{$breakpoint}');
+
+    @include media-up($breakpoint) {
+
+        // Zero spacing responsive
+        .m#{$infix}-0 {
+            margin: 0 !important;
+        }
+
+        .mt#{$infix}-0 {
+            margin-top: 0 !important;
+        }
+
+        .mr#{$infix}-0 {
+            margin-right: 0 !important;
+        }
+
+        .mb#{$infix}-0 {
+            margin-bottom: 0 !important;
+        }
+
+        .ml#{$infix}-0 {
+            margin-left: 0 !important;
+        }
+
+        .mx#{$infix}-0 {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+
+        .my#{$infix}-0 {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+
+        .p#{$infix}-0 {
+            padding: 0 !important;
+        }
+
+        .pt#{$infix}-0 {
+            padding-top: 0 !important;
+        }
+
+        .pr#{$infix}-0 {
+            padding-right: 0 !important;
+        }
+
+        .pb#{$infix}-0 {
+            padding-bottom: 0 !important;
+        }
+
+        .pl#{$infix}-0 {
+            padding-left: 0 !important;
+        }
+
+        .px#{$infix}-0 {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        .py#{$infix}-0 {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        .gap#{$infix}-0 {
+            gap: 0 !important;
+        }
+
+        .gap-x#{$infix}-0 {
+            column-gap: 0 !important;
+        }
+
+        .gap-y#{$infix}-0 {
+            row-gap: 0 !important;
+        }
+
+        .space-x#{$infix}-0>*+* {
+            margin-left: 0 !important;
+        }
+
+        .space-y#{$infix}-0>*+* {
+            margin-top: 0 !important;
+        }
+
+        // Auto margin responsive
+        .m#{$infix}-auto {
+            margin: auto !important;
+        }
+
+        .mt#{$infix}-auto {
+            margin-top: auto !important;
+        }
+
+        .mr#{$infix}-auto {
+            margin-right: auto !important;
+        }
+
+        .mb#{$infix}-auto {
+            margin-bottom: auto !important;
+        }
+
+        .ml#{$infix}-auto {
+            margin-left: auto !important;
+        }
+
+        .mx#{$infix}-auto {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .my#{$infix}-auto {
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+        }
+    }
+}
