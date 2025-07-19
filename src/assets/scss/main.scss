@@ -14,18 +14,14 @@
 @import 'base/base';
 
 // 3. Layout Components
-@import 'layout/header';
 @import 'layout/navbar';
 
 // 4. Components
-@import 'components/example';
-@import 'components/simple-example';
-@import 'components/counter';
+@import 'components/circular-progress-bar';
+@import 'components/basic-popup';
 
 // 5. Pages
 @import 'pages/home';
-@import 'pages/about';
-@import 'pages/counter-page';
 @import 'pages/auth';
 @import 'pages/not-found';
 

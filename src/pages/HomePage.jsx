@@ -1,55 +1,48 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+import CircularProgressBar from '../components/sharedComponents/CircularProgressBar';
+import ScrollObserver from '../components/sharedComponents/ScrollObserver';
+import BasicPopup from '../components/sharedComponents/BasicPopup';
 import { useTranslation } from 'react-i18next';
 
 const HomePage = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleScroll = () => {
+    console.log('scrolled to end');
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="home-page">
-      <main className="main-content">
-        <section className="hero-section">
-          <div className="container">
-            <h1 className="hero-title">{t('welcome')}</h1>
-            <p className="hero-subtitle">A comprehensive SCSS setup for modern React applications</p>
+      {isLoading ? (
+        <CircularProgressBar />
+      ) : (
+        <div className="home-page-content">
+          <div className="welcome-container">
+            <h1 className="welcome-title">{t('welcome')}</h1>
+            <button onClick={() => setIsPopupOpen(true)}>Open Popup</button>
           </div>
-        </section>
+          <ScrollObserver onScrolledToEnd={handleScroll} />
+        </div>
+      )}
 
-        <section className="features-section">
-          <div className="container">
-            <h2 className="section-title">Features</h2>
-            <div className="features-grid">
-              <div className="feature-card">
-                <h3 className="feature-title">SCSS Architecture</h3>
-                <p className="feature-description">
-                  7-1 pattern with abstracts, base, components, layout, pages, and utilities.
-                </p>
-              </div>
-              <div className="feature-card">
-                <h3 className="feature-title">React Router</h3>
-                <p className="feature-description">Clean routing with React Router DOM for seamless navigation.</p>
-              </div>
-              <div className="feature-card">
-                <h3 className="feature-title">Modern React</h3>
-                <p className="feature-description">React 19 with hooks, functional components, and modern patterns.</p>
-              </div>
-              <div className="feature-card">
-                <h3 className="feature-title">Vite Build</h3>
-                <p className="feature-description">Lightning-fast development and optimized production builds.</p>
-              </div>
-              <div className="feature-card">
-                <h3 className="feature-title">Responsive Design</h3>
-                <p className="feature-description">Mobile-first approach with SCSS mixins and media queries.</p>
-              </div>
-              <div className="feature-card">
-                <h3 className="feature-title">Code Quality</h3>
-                <p className="feature-description">
-                  ESLint configuration for consistent code style and best practices.
-                </p>
-              </div>
-            </div>
+      {isPopupOpen && (
+        <BasicPopup onPopupOutsideClick={() => setIsPopupOpen(false)}>
+          <div className="popup-content">
+            <h2>Popup Content</h2>
+            <p>This is the content of the popup.</p>
           </div>
-        </section>
-      </main>
+        </BasicPopup>
+      )}
     </div>
   );
 };

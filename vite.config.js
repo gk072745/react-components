@@ -1,6 +1,6 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import { fileURLToPath, URL } from "node:url";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { fileURLToPath, URL } from 'node:url';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,7 +13,7 @@ export default defineConfig({
         // Enable source maps for better debugging
         sourceMap: true,
         // Include paths for easier imports
-        includePaths: ["src/assets/scss", "node_modules"],
+        includePaths: ['src/assets/scss', 'node_modules'],
       },
     },
     // Enable source maps for CSS
@@ -23,12 +23,10 @@ export default defineConfig({
   // Resolve configuration for cleaner imports
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
-      "@scss": fileURLToPath(new URL("./src/assets/scss", import.meta.url)),
-      "@components": fileURLToPath(
-        new URL("./src/components", import.meta.url)
-      ),
-      "@assets": fileURLToPath(new URL("./src/assets", import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@scss': fileURLToPath(new URL('./src/assets/scss', import.meta.url)),
+      '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
+      '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
     },
   },
 
@@ -43,7 +41,7 @@ export default defineConfig({
       output: {
         // Separate vendor chunks for better caching
         manualChunks: {
-          vendor: ["react", "react-dom"],
+          vendor: ['react', 'react-dom'],
         },
       },
     },
@@ -63,6 +61,6 @@ export default defineConfig({
 
   // Optimize dependencies
   optimizeDeps: {
-    include: ["react", "react-dom"],
+    include: ['react', 'react-dom'],
   },
 });

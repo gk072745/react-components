@@ -1,7 +1,5 @@
 import { createBrowserRouter, redirect } from 'react-router-dom';
 import HomePage from '../pages/HomePage.jsx';
-import AboutPage from '../pages/AboutPage.jsx';
-import CounterPage from '../pages/CounterPage.jsx';
 import AuthPage from '../pages/AuthPage.jsx';
 import NotFoundPage from '../pages/NotFoundPage.jsx';
 import App from '@/App.jsx';
@@ -34,16 +32,6 @@ const router = createBrowserRouter([
         path: '/',
         index: true,
         element: <HomePage />,
-      },
-      {
-        path: '/about',
-        loader: authLoader,
-        element: <AboutPage />,
-      },
-      {
-        path: '/counter',
-        loader: authLoader,
-        element: <CounterPage />,
       },
     ],
   },
