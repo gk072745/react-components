@@ -23,6 +23,10 @@ const HomePage = () => {
     goToRoute('/accordion');
   };
 
+  const handleCheckbox = () => {
+    goToRoute('/checkbox');
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -42,6 +46,7 @@ const HomePage = () => {
             <button onClick={() => setIsPopupOpen(true)}>Open Popup</button>
             <button onClick={throwError}>Throw Error</button>
             <button onClick={handleAccordion}>Accordion</button>
+            <button onClick={handleCheckbox}>Checkbox</button>
           </div>
           <ScrollObserver onScrolledToEnd={handleScroll} />
         </div>

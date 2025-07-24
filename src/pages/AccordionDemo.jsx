@@ -66,7 +66,7 @@ const AccordionDemo = () => {
           width: '20px',
           height: '20px',
           borderRadius: '50%',
-          backgroundColor: isOpen ? '#2196F3' : '#ccc',
+          backgroundColor: isOpen ? '#2196F3' : '#cccccc',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -85,7 +85,7 @@ const AccordionDemo = () => {
     return (
       <div
         style={{
-          color: isOpen ? '#2196F3' : '#666',
+          color: isOpen ? '#2196F3' : '#666666',
           fontSize: '12px',
           fontWeight: 'bold',
         }}
@@ -115,7 +115,7 @@ const AccordionDemo = () => {
             padding: '2px 6px',
             fontSize: '10px',
             backgroundColor: '#f0f0f0',
-            border: '1px solid #ccc',
+            border: '1px solid #cccccc',
             borderRadius: '3px',
             cursor: 'pointer',
           }}
@@ -152,7 +152,7 @@ const AccordionDemo = () => {
           width: '16px',
           height: '16px',
           borderRadius: '50%',
-          backgroundColor: disabled ? '#ccc' : isOpen ? '#4CAF50' : '#f44336',
+          backgroundColor: disabled ? '#cccccc' : isOpen ? '#4CAF50' : '#f44336',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -172,7 +172,7 @@ const AccordionDemo = () => {
       <div
         style={{
           padding: '4px 8px',
-          backgroundColor: disabled ? '#ccc' : isOpen ? '#4CAF50' : '#f44336',
+          backgroundColor: disabled ? '#cccccc' : isOpen ? '#4CAF50' : '#f44336',
           color: 'white',
           borderRadius: '12px',
           fontSize: '10px',
@@ -275,7 +275,7 @@ const AccordionDemo = () => {
         >
           {isDisabled ? 'Enable' : 'Disable'} Accordion
         </button>
-        <p style={{ fontSize: '14px', color: '#666' }}>
+        <p style={{ fontSize: '14px', color: '#666666' }}>
           Current state: <strong>{isDisabled ? 'Disabled' : 'Enabled'}</strong>
         </p>
       </div>

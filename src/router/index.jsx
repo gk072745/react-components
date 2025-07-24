@@ -4,6 +4,7 @@ import AuthPage from '../pages/AuthPage.jsx';
 import NotFoundPage from '../pages/NotFoundPage.jsx';
 import App from '@/App.jsx';
 import AccordionDemo from '@/pages/AccordionDemo.jsx';
+import CheckboxDemo from '@/pages/CheckboxDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/accordion',
         element: <AccordionDemo />,
+      },
+      {
+        path: '/checkbox',
+        element: <CheckboxDemo />,
       },
     ],
   },
