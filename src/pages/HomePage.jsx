@@ -3,11 +3,13 @@ import CircularProgressBar from '../components/sharedComponents/CircularProgress
 import ScrollObserver from '../components/sharedComponents/ScrollObserver';
 import BasicPopup from '../components/sharedComponents/BasicPopup';
 import { useTranslation } from 'react-i18next';
+import { useCommonUtilities } from '@/customHooks/useCommonUtilities';
 
 const HomePage = () => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const { goToRoute } = useCommonUtilities();
 
   const throwError = () => {
     throw new Error('This is a test error');
@@ -15,6 +17,10 @@ const HomePage = () => {
 
   const handleScroll = () => {
     console.log('scrolled to end');
+  };
+
+  const handleAccordion = () => {
+    goToRoute('/accordion');
   };
 
   useEffect(() => {
@@ -35,6 +41,7 @@ const HomePage = () => {
             <h1 className="welcome-title">{t('welcome')}</h1>
             <button onClick={() => setIsPopupOpen(true)}>Open Popup</button>
             <button onClick={throwError}>Throw Error</button>
+            <button onClick={handleAccordion}>Accordion</button>
           </div>
           <ScrollObserver onScrolledToEnd={handleScroll} />
         </div>

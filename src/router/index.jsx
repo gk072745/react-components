@@ -3,6 +3,7 @@ import HomePage from '../pages/HomePage.jsx';
 import AuthPage from '../pages/AuthPage.jsx';
 import NotFoundPage from '../pages/NotFoundPage.jsx';
 import App from '@/App.jsx';
+import AccordionDemo from '@/pages/AccordionDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         path: '/',
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: '/accordion',
+        element: <AccordionDemo />,
       },
     ],
   },

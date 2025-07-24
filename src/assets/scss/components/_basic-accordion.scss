@@ -1,0 +1,146 @@
+// =============================================================================
+// BASIC ACCORDION COMPONENT
+// =============================================================================
+// This file contains all styles for the BasicAccordion component.
+// The accordion supports both enabled and disabled states with smooth transitions.
+
+.basic-accordion {
+    // =============================================================================
+    // CONTAINER STYLES
+    // =============================================================================
+    width: 100%; // Full width container
+    border-radius: 0.5rem; // Rounded corners for modern look
+    overflow: hidden; // Hide content that overflows
+    border: .0625rem solid $accordion-border-1; // Subtle border
+    background: $accordion-bg-1; // Background color
+    transition: all $transition-base; // Smooth transitions for all changes
+
+    // =============================================================================
+    // DISABLED STATE STYLES
+    // =============================================================================
+    // When the accordion is disabled, reduce opacity and prevent interactions
+    &.disabled {
+        opacity: 0.6; // Reduce visibility to indicate disabled state
+        pointer-events: none; // Prevent all mouse interactions
+    }
+
+    // =============================================================================
+    // HEADER STYLES
+    // =============================================================================
+    .accordion-header {
+        // =============================================================================
+        // BASIC HEADER PROPERTIES
+        // =============================================================================
+        width: 100%; // Full width header
+        background: transparent; // Transparent background
+        border: none; // No border on header
+        cursor: pointer; // Pointer cursor for clickable area
+        padding: 1rem 1.25rem; // Comfortable padding
+        font-size: 1rem; // Standard font size
+        font-weight: $font-weight-medium; // Medium font weight
+        color: $accordion-color-1; // Primary text color
+        text-align: left; // Left-aligned text
+        transition: all $transition-slow; // Smooth transitions
+        position: relative; // Relative positioning for child elements
+
+        // =============================================================================
+        // FLEXBOX LAYOUT
+        // =============================================================================
+        display: flex; // Flexbox for horizontal layout
+        align-items: center; // Vertically center all elements
+        gap: 0.75rem; // Consistent spacing between elements
+
+        // =============================================================================
+        // HOVER EFFECTS
+        // =============================================================================
+        // Hover effects for interactive state
+        &:hover {
+            background-color: $accordion-bg-2; // Subtle background change
+            color: $primary-color; // Primary color for text
+        }
+
+        // =============================================================================
+        // PREPEND SLOT STYLES
+        // =============================================================================
+        // Area for custom content before the title (icons, badges, etc.)
+        .prepend-slot {
+            display: flex; // Flexbox for alignment
+            align-items: center; // Vertically center content
+            margin-right: 0.75rem; // Space between prepend and title
+        }
+
+        // =============================================================================
+        // TITLE SLOT STYLES
+        // =============================================================================
+        // Area for the main accordion title
+        .title-slot {
+            flex: 1; // Take remaining space
+            font-weight: $font-weight-medium; // Medium font weight
+        }
+
+        // =============================================================================
+        // APPEND SLOT STYLES
+        // =============================================================================
+        // Area for custom content after the title (icons, badges, etc.)
+        .append-slot {
+            display: flex; // Flexbox for alignment
+            align-items: center; // Vertically center content
+            margin-left: auto; // Push to the right side
+
+            // =============================================================================
+            // DEFAULT APPEND ICON STYLES
+            // =============================================================================
+            // Default chevron/arrow icon that rotates when accordion opens
+            .default-append-icon {
+                width: 1.25rem; // Fixed width
+                height: 1.25rem; // Fixed height (square)
+                display: flex; // Flexbox for centering
+                align-items: center; // Vertically center
+                justify-content: center; // Horizontally center
+                color: $accordion-color-3; // Icon color
+                transition: all $transition-base; // Smooth rotation transition
+
+                // =============================================================================
+                // ROTATED STATE (WHEN ACCORDION IS OPEN)
+                // =============================================================================
+                // Rotate the icon 180 degrees when accordion is open
+                &.rotated {
+                    transform: rotate(180deg); // Flip the arrow
+                }
+            }
+        }
+    }
+
+    // =============================================================================
+    // CONTENT SLOT STYLES
+    // =============================================================================
+    // Area that contains the accordion content (children)
+    .accordion-content-slot {
+        // =============================================================================
+        // TRANSITION PROPERTIES
+        // =============================================================================
+        // Smooth transitions for opening/closing animation
+        transition: opacity $transition-base, // Fade in/out
+            visibility $transition-base, // Show/hide
+            height $transition-base; // Height animation
+
+        // =============================================================================
+        // DEFAULT STATE (CLOSED)
+        // =============================================================================
+        background-color: $accordion-bg-1; // Background color
+        visibility: hidden; // Hidden by default
+        opacity: 0; // Transparent by default
+        height: 0; // No height by default
+
+        // =============================================================================
+        // OPEN STATE
+        // =============================================================================
+        // When accordion is open, show content with padding
+        &.open {
+            visibility: visible; // Make visible
+            opacity: 1; // Fully opaque
+            height: auto; // Auto height for content
+            padding: 1rem 1.25rem; // Comfortable padding
+        }
+    }
+}
