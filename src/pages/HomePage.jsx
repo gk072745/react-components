@@ -9,6 +9,10 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  const throwError = () => {
+    throw new Error('This is a test error');
+  };
+
   const handleScroll = () => {
     console.log('scrolled to end');
   };
@@ -30,6 +34,7 @@ const HomePage = () => {
           <div className="welcome-container">
             <h1 className="welcome-title">{t('welcome')}</h1>
             <button onClick={() => setIsPopupOpen(true)}>Open Popup</button>
+            <button onClick={throwError}>Throw Error</button>
           </div>
           <ScrollObserver onScrolledToEnd={handleScroll} />
         </div>

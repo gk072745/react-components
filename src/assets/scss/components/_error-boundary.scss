@@ -1,0 +1,47 @@
+// =============================================================================
+// ERROR BOUNDARY COMPONENT
+// =============================================================================
+
+.error-boundary {
+    padding: 1rem;
+    border: 1px solid $error-border-1;
+    border-radius: 8px;
+    background-color: $error-bg-1;
+    color: $error-color-2;
+    text-align: center;
+    margin: 1rem 0;
+
+    h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.25rem;
+        font-weight: $font-weight-semibold;
+    }
+
+    p {
+        margin: 0 0 1rem 0;
+        font-size: 0.875rem;
+        line-height: 1.4;
+    }
+
+    .retry-button {
+        background-color: $error-button-bg-1;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: $font-weight-medium;
+        transition: background-color $transition-base;
+
+        &:hover {
+            background-color: $error-button-bg-2;
+        }
+
+        &:focus {
+            outline: 2px solid $error-button-bg-1;
+            outline-offset: 2px;
+        }
+    }
+}

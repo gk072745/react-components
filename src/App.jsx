@@ -1,12 +1,14 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import Navbar from "./layouts/Navbar";
+import { Outlet } from 'react-router-dom';
+import Navbar from './layouts/Navbar';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Outlet />
+      <ErrorBoundary>
+        <Outlet />
+      </ErrorBoundary>
     </div>
   );
 }
