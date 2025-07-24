@@ -1,5 +1,5 @@
 .popup-component-wrapper {
-    z-index: 5;
+    z-index: z('modal-backdrop');
     position: fixed;
     top: 0;
     left: 0;
