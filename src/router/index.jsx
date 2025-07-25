@@ -5,6 +5,7 @@ import NotFoundPage from '../pages/NotFoundPage.jsx';
 import App from '@/App.jsx';
 import AccordionDemo from '@/pages/AccordionDemo.jsx';
 import CheckboxDemo from '@/pages/CheckboxDemo.jsx';
+import ChipDemo from '@/pages/ChipDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: '/checkbox',
         element: <CheckboxDemo />,
+      },
+      {
+        path: '/chip',
+        element: <ChipDemo />,
       },
     ],
   },

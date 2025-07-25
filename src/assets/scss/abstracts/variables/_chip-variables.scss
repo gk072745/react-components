@@ -1,0 +1,65 @@
+// =============================================================================
+// CHIP VARIABLES - COMPLETE SYSTEM
+// =============================================================================
+
+// Base chip variables
+$chip-variants: (
+    'default': ('bg': $gray-200,
+        'color': $gray-800,
+        'border': $gray-200,
+        'outlined-color': $gray-700,
+        'filled-bg': $gray-100,
+        'filled-color': $gray-900,
+        'filled-border': $gray-200 ),
+    'primary': ('bg': $primary-color,
+        'color': $white,
+        'border': $primary-color,
+        'outlined-color': $primary-color,
+        'filled-bg': lighten($primary-color, 45%),
+        'filled-color': darken($primary-color, 15%),
+        'filled-border': lighten($primary-color, 35%)),
+    'success': ('bg': $success-color,
+        'color': $white,
+        'border': $success-color,
+        'outlined-color': $success-color,
+        'filled-bg': lighten($success-color, 45%),
+        'filled-color': darken($success-color, 15%),
+        'filled-border': lighten($success-color, 35%)),
+    'warning': ('bg': $warning-color,
+        'color': $gray-800,
+        'border': $warning-color,
+        'outlined-color': $warning-color,
+        'filled-bg': lighten($warning-color, 45%),
+        'filled-color': darken($warning-color, 15%),
+        'filled-border': lighten($warning-color, 35%)),
+    'danger': ('bg': $danger-color,
+        'color': $white,
+        'border': $danger-color,
+        'outlined-color': $danger-color,
+        'filled-bg': lighten($danger-color, 45%),
+        'filled-color': darken($danger-color, 15%),
+        'filled-border': lighten($danger-color, 35%)),
+    'info': ('bg': $info-color,
+        'color': $white,
+        'border': $info-color,
+        'outlined-color': $info-color,
+        'filled-bg': lighten($info-color, 45%),
+        'filled-color': darken($info-color, 15%),
+        'filled-border': lighten($info-color, 35%))
+);
+
+// Chip type variables
+$chip-types: (
+    'solid': ('bg-key': 'bg',
+        'color-key': 'color',
+        'border-key': 'border'
+    ),
+    'outlined': ('bg-key': 'transparent',
+        'color-key': 'outlined-color',
+        'border-key': 'border'
+    ),
+    'filled': ('bg-key': 'filled-bg',
+        'color-key': 'filled-color',
+        'border-key': 'filled-border'
+    )
+);

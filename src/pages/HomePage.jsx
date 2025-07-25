@@ -27,6 +27,10 @@ const HomePage = () => {
     goToRoute('/checkbox');
   };
 
+  const handleChip = () => {
+    goToRoute('/chip');
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -47,6 +51,7 @@ const HomePage = () => {
             <button onClick={throwError}>Throw Error</button>
             <button onClick={handleAccordion}>Accordion</button>
             <button onClick={handleCheckbox}>Checkbox</button>
+            <button onClick={handleChip}>Chip</button>
           </div>
           <ScrollObserver onScrolledToEnd={handleScroll} />
         </div>

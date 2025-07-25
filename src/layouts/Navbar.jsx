@@ -32,13 +32,18 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}>
-              About
+            <Link to="/accordion" className={`nav-link ${location.pathname === '/accordion' ? 'active' : ''}`}>
+              Accordion Demo
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/counter" className={`nav-link ${location.pathname === '/counter' ? 'active' : ''}`}>
-              Counter
+            <Link to="/checkbox" className={`nav-link ${location.pathname === '/checkbox' ? 'active' : ''}`}>
+              Checkbox Demo
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/chip" className={`nav-link ${location.pathname === '/chip' ? 'active' : ''}`}>
+              Chip Demo
             </Link>
           </li>
         </ul>

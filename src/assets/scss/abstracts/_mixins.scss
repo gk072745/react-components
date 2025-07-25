@@ -94,7 +94,6 @@
     overflow: hidden;
 }
 
-
 // Animation Mixins
 @mixin fade-in($duration: $transition-base) {
     animation: fadeIn $duration ease-in-out;
@@ -121,3 +120,6 @@
     white-space: nowrap;
     border: 0;
 }
+
+// Chip Mixins
+@import './mixins/chip-mixins';
