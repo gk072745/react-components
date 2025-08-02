@@ -23,11 +23,13 @@
 @import 'components/basic-accordion';
 @import 'components/basic-checkbox';
 @import 'components/basic-chip';
+@import 'components/basic-radio';
 
 // 5. Pages
 @import 'pages/home';
 @import 'pages/auth';
 @import 'pages/not-found';
+@import 'pages/radio-demo';
 
 // 6. Utilities (should be last for specificity)
 @import 'utilities/spacing';

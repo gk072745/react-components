@@ -1,0 +1,89 @@
+// =============================================================================
+// BASIC RADIO COMPONENT STYLES
+// =============================================================================
+
+.radio-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+  color: #000;
+  position: relative;
+  transition: all 0.2s ease;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // Generate all sizes, colors, and states using mixins
+  @include generate-radio-sizes;
+  @include generate-radio-colors;
+  @include generate-radio-states;
+
+  // Focus styles for accessibility
+  &:focus-visible {
+    outline: 0.125rem solid #2196f3;
+    outline-offset: 0.125rem;
+  }
+
+  // Hidden input
+  input {
+    display: none;
+
+    &:checked + .radio .inner-circle {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  // Radio button
+  .radio {
+    position: relative;
+    display: inline-block;
+    border: 0.0625rem solid;
+    border-radius: 50%;
+    background-color: $white;
+    transition: all 0.2s ease-in-out;
+
+    .inner-circle {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60%;
+      height: 60%;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+
+  &:not(.disabled):not(.readonly) {
+    .radio {
+      // Hover effects only when not disabled or readonly
+      &:hover:not(.disabled):not(.readonly) .inner-circle {
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+
+      // Active effects only when not disabled or readonly
+      &:active:not(.disabled):not(.readonly) {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  // Label
+  .radio-label {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // Default color (when no color class is applied)
+  &:not([class*='color-']) {
+    @include radio-color('default');
+  }
+}

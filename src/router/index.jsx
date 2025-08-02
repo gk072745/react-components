@@ -6,6 +6,7 @@ import App from '@/App.jsx';
 import AccordionDemo from '@/pages/AccordionDemo.jsx';
 import CheckboxDemo from '@/pages/CheckboxDemo.jsx';
 import ChipDemo from '@/pages/ChipDemo.jsx';
+import RadioDemo from '@/pages/RadioDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: '/chip',
         element: <ChipDemo />,
+      },
+      {
+        path: '/radio',
+        element: <RadioDemo />,
       },
     ],
   },

@@ -1,0 +1,90 @@
+// =============================================================================
+// RADIO MIXINS
+// =============================================================================
+
+@mixin radio-size($size) {
+    $size-config: map-get($radio-sizes, $size);
+
+    @if $size-config {
+        font-size: map-get($size-config, 'font-size');
+        gap: map-get($size-config, 'gap');
+
+        .radio {
+            width: map-get($size-config, 'radio-width');
+            height: map-get($size-config, 'radio-height');
+        }
+    }
+}
+
+@mixin radio-color($color) {
+    $color-config: map-get($radio-colors, $color);
+
+    @if $color-config {
+        .radio {
+            border-color: map-get($color-config, 'border');
+            background-color: map-get($color-config, 'background');
+
+            .inner-circle {
+                background-color: map-get($color-config, 'inner-circle');
+            }
+
+            // Hover effects only when not disabled or readonly
+            &:hover:not(.disabled):not(.readonly) {
+                border-color: map-get($color-config, 'hover-border');
+
+                .inner-circle {
+                    background-color: map-get($color-config, 'hover-inner');
+                }
+            }
+        }
+
+        &.disabled .radio {
+            border-color: map-get($color-config, 'disabled-border');
+
+            .inner-circle {
+                background-color: map-get($color-config, 'disabled-inner');
+            }
+        }
+    }
+}
+
+@mixin radio-state($state) {
+    $state-config: map-get($radio-states, $state);
+
+    @if $state-config {
+        opacity: map-get($state-config, 'opacity');
+        cursor: map-get($state-config, 'cursor');
+        pointer-events: map-get($state-config, 'pointer-events');
+    }
+}
+
+@mixin generate-radio-sizes {
+    @each $size, $config in $radio-sizes {
+        &.#{$size} {
+            @include radio-size($size);
+        }
+    }
+}
+
+@mixin generate-radio-colors {
+    @each $color, $config in $radio-colors {
+        &.color-#{$color} {
+            @include radio-color($color);
+        }
+    }
+}
+
+@mixin generate-radio-states {
+    // Default enabled state (applies when no disabled or readonly classes are present)
+    &:not(.disabled):not(.readonly) {
+        @include radio-state('enabled');
+    }
+
+    &.disabled {
+        @include radio-state('disabled');
+    }
+
+    &.readonly {
+        @include radio-state('readonly');
+    }
+}
