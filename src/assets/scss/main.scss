@@ -24,6 +24,7 @@
 @import 'components/basic-checkbox';
 @import 'components/basic-chip';
 @import 'components/basic-radio';
+@import 'components/basic-range';
 @import 'components/side-panel';
 
 // 5. Pages
@@ -31,6 +32,7 @@
 @import 'pages/auth';
 @import 'pages/not-found';
 @import 'pages/radio-demo';
+@import 'pages/range-demo';
 
 // 6. Utilities (should be last for specificity)
 @import 'utilities/spacing';

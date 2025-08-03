@@ -7,6 +7,7 @@ import AccordionDemo from '@/pages/AccordionDemo.jsx';
 import CheckboxDemo from '@/pages/CheckboxDemo.jsx';
 import ChipDemo from '@/pages/ChipDemo.jsx';
 import RadioDemo from '@/pages/RadioDemo.jsx';
+import RangeDemo from '@/pages/RangeDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: '/radio',
         element: <RadioDemo />,
+      },
+      {
+        path: '/range',
+        element: <RangeDemo />,
       },
     ],
   },
