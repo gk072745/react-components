@@ -4,7 +4,7 @@ import { useUserStore } from '../stores/useUser.store';
 import { useTranslation } from 'react-i18next';
 import { useAppContext } from '@/customHooks/useAppContext';
 
-const Navbar = () => {
+const Navbar = ({ onToggleSidePanel }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { logout } = useUserStore();
@@ -20,33 +20,31 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-brand">
+          <button
+            onClick={onToggleSidePanel}
+            style={{
+              background: 'none',
+              border: 'none',
+              fontSize: '1.5rem',
+              cursor: 'pointer',
+              color: '#333',
+              padding: '8px',
+              borderRadius: '4px',
+              marginRight: '15px',
+              transition: 'background-color 0.2s ease',
+            }}
+            onMouseEnter={e => (e.target.style.backgroundColor = '#f0f0f0')}
+            onMouseLeave={e => (e.target.style.backgroundColor = 'transparent')}
+            aria-label="Toggle side panel"
+          >
+            ☰
+          </button>
           <Link to="/" className="navbar-logo">
             <img width={100} height={100} src={appImages['altersquare.png']} alt="Logo" />
           </Link>
         </div>
 
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/accordion" className={`nav-link ${location.pathname === '/accordion' ? 'active' : ''}`}>
-              Accordion Demo
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/checkbox" className={`nav-link ${location.pathname === '/checkbox' ? 'active' : ''}`}>
-              Checkbox Demo
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/chip" className={`nav-link ${location.pathname === '/chip' ? 'active' : ''}`}>
-              Chip Demo
-            </Link>
-          </li>
-        </ul>
+        {/* Navigation moved to side panel */}
 
         <div className="navbar-actions">
           <button onClick={handleLogout} className="btn btn-outline-primary">
