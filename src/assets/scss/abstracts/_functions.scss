@@ -2,6 +2,8 @@
 // FUNCTIONS
 //  this should be use for calculations
 // =============================================================================
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
 // Color Functions
 @function color($color-name, $variant: 'base') {

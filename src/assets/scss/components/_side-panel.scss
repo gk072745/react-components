@@ -1,6 +1,7 @@
 // =============================================================================
 // SIDE PANEL COMPONENT
 // =============================================================================
+@use '../abstracts' as *;
 
 .side-panel {
     // Base styles are handled inline for better performance

@@ -1,6 +1,9 @@
 // =============================================================================
 // BREAKPOINTS
 // =============================================================================
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
 
 // Breakpoint Variables
 $breakpoints: (

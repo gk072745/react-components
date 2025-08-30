@@ -1,6 +1,11 @@
 // =============================================================================
 // RADIO MIXINS
 // =============================================================================
+@use '../variables' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+@use '../variables/radio-variables' as *;
 
 @mixin radio-size($size) {
     $size-config: map-get($radio-sizes, $size);

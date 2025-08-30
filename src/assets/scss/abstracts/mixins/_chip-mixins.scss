@@ -1,6 +1,12 @@
 // =============================================================================
 // CHIP MIXINS
 // =============================================================================
+@use '../variables' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+@use '../variables/chip-variables' as *;
+
 
 @mixin chip-variant($variant, $type: 'solid') {
     $variant-config: map-get($chip-variants, $variant);

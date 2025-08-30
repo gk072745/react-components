@@ -3,6 +3,7 @@
 // =============================================================================
 // This file contains all styles for the BasicAccordion component.
 // The accordion supports both enabled and disabled states with smooth transitions.
+@use '../abstracts' as *;
 
 .basic-accordion {
     // =============================================================================

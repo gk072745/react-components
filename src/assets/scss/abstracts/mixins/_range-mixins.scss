@@ -5,6 +5,11 @@
 // =============================================================================
 // SIZE MIXINS
 // =============================================================================
+@use '../variables' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+@use '../variables/range-variables' as *;
 
 @mixin range-size($size) {
     $size-config: map-get($range-sizes, $size);
