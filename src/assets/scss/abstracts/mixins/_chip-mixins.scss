@@ -6,6 +6,7 @@
 @use '../mixins' as *;
 
 @use '../variables/chip-variables' as *;
+@use "sass:color";
 
 
 @mixin chip-variant($variant, $type: 'solid') {
@@ -24,24 +25,24 @@
         &:hover:not(.disabled) {
             @if $type =='outlined' {
                 background-color: rgba(map-get($variant-config, $border-key), 0.1);
-                border-color: darken(map-get($variant-config, $border-key), 10%);
+                border-color: color.scale(map-get($variant-config, $border-key), $lightness: -10%);
             }
 
             @else {
-                background-color: darken(map-get($variant-config, $bg-key), 10%);
-                border-color: darken(map-get($variant-config, $border-key), 10%);
+                background-color: color.scale(map-get($variant-config, $bg-key), $lightness: -10%);
+                border-color: color.scale(map-get($variant-config, $border-key), $lightness: -10%);
             }
         }
 
         &:active:not(.disabled) {
             @if $type =='outlined' {
                 background-color: rgba(map-get($variant-config, $border-key), 0.2);
-                border-color: darken(map-get($variant-config, $border-key), 15%);
+                border-color: color.scale(map-get($variant-config, $border-key), $lightness: -15%);
             }
 
             @else {
-                background-color: darken(map-get($variant-config, $bg-key), 15%);
-                border-color: darken(map-get($variant-config, $border-key), 15%);
+                background-color: color.scale(map-get($variant-config, $bg-key), $lightness: -15%);
+                border-color: color.scale(map-get($variant-config, $border-key), $lightness: -15%);
             }
         }
     }

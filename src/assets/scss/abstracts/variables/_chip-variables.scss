@@ -2,6 +2,7 @@
 // CHIP VARIABLES - COMPLETE SYSTEM
 // =============================================================================
 @use '../variables' as *;
+@use "sass:color";
 
 // Base chip variables
 $chip-variants: (
@@ -16,37 +17,37 @@ $chip-variants: (
         'color': $white,
         'border': $primary-color,
         'outlined-color': $primary-color,
-        'filled-bg': lighten($primary-color, 45%),
-        'filled-color': darken($primary-color, 15%),
-        'filled-border': lighten($primary-color, 35%)),
+        'filled-bg': color.scale($primary-color, $lightness: 45%),
+        'filled-color': color.scale($primary-color, $lightness: -15%),
+        'filled-border': color.scale($primary-color, $lightness: 35%)),
     'success': ('bg': $success-color,
         'color': $white,
         'border': $success-color,
         'outlined-color': $success-color,
-        'filled-bg': lighten($success-color, 45%),
-        'filled-color': darken($success-color, 15%),
-        'filled-border': lighten($success-color, 35%)),
+        'filled-bg': color.scale($success-color, $lightness: 45%),
+        'filled-color': color.scale($success-color, $lightness: -15%),
+        'filled-border': color.scale($success-color, $lightness: 35%)),
     'warning': ('bg': $warning-color,
         'color': $gray-800,
         'border': $warning-color,
         'outlined-color': $warning-color,
-        'filled-bg': lighten($warning-color, 45%),
-        'filled-color': darken($warning-color, 15%),
-        'filled-border': lighten($warning-color, 35%)),
+        'filled-bg': color.scale($warning-color, $lightness: 45%),
+        'filled-color': color.scale($warning-color, $lightness: -15%),
+        'filled-border': color.scale($warning-color, $lightness: 35%)),
     'danger': ('bg': $danger-color,
         'color': $white,
         'border': $danger-color,
         'outlined-color': $danger-color,
-        'filled-bg': lighten($danger-color, 45%),
-        'filled-color': darken($danger-color, 15%),
-        'filled-border': lighten($danger-color, 35%)),
+        'filled-bg': color.scale($danger-color, $lightness: 45%),
+        'filled-color': color.scale($danger-color, $lightness: -15%),
+        'filled-border': color.scale($danger-color, $lightness: 35%)),
     'info': ('bg': $info-color,
         'color': $white,
         'border': $info-color,
         'outlined-color': $info-color,
-        'filled-bg': lighten($info-color, 45%),
-        'filled-color': darken($info-color, 15%),
-        'filled-border': lighten($info-color, 35%))
+        'filled-bg': color.scale($info-color, $lightness: 45%),
+        'filled-color': color.scale($info-color, $lightness: -15%),
+        'filled-border': color.scale($info-color, $lightness: 35%))
 );
 
 // Chip type variables

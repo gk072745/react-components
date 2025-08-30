@@ -2,6 +2,7 @@
 // RADIO VARIABLES - COMPLETE SYSTEM
 // =============================================================================
 @use '../variables' as *;
+@use "sass:color";
 
 // Radio size variables
 $radio-sizes: (
@@ -39,38 +40,38 @@ $radio-colors: (
     'primary': ('border': $primary-color,
         'background': $white,
         'inner-circle': $primary-color,
-        'hover-border': darken($primary-color, 10%),
-        'hover-inner': darken($primary-color, 10%),
-        'disabled-border': lighten($primary-color, 30%),
-        'disabled-inner': lighten($primary-color, 20%)),
+        'hover-border': color.scale($primary-color, $lightness: -10%),
+        'hover-inner': color.scale($primary-color, $lightness: -10%),
+        'disabled-border': color.scale($primary-color, $lightness: 30%),
+        'disabled-inner': color.scale($primary-color, $lightness: 20%)),
     'success': ('border': $success-color,
         'background': $white,
         'inner-circle': $success-color,
-        'hover-border': darken($success-color, 10%),
-        'hover-inner': darken($success-color, 10%),
-        'disabled-border': lighten($success-color, 30%),
-        'disabled-inner': lighten($success-color, 20%)),
+        'hover-border': color.scale($success-color, $lightness: -10%),
+        'hover-inner': color.scale($success-color, $lightness: -10%),
+        'disabled-border': color.scale($success-color, $lightness: 30%),
+        'disabled-inner': color.scale($success-color, $lightness: 20%)),
     'warning': ('border': $warning-color,
         'background': $white,
         'inner-circle': $warning-color,
-        'hover-border': darken($warning-color, 10%),
-        'hover-inner': darken($warning-color, 10%),
-        'disabled-border': lighten($warning-color, 30%),
-        'disabled-inner': lighten($warning-color, 20%)),
+        'hover-border': color.scale($warning-color, $lightness: -10%),
+        'hover-inner': color.scale($warning-color, $lightness: -10%),
+        'disabled-border': color.scale($warning-color, $lightness: 30%),
+        'disabled-inner': color.scale($warning-color, $lightness: 20%)),
     'danger': ('border': $danger-color,
         'background': $white,
         'inner-circle': $danger-color,
-        'hover-border': darken($danger-color, 10%),
-        'hover-inner': darken($danger-color, 10%),
-        'disabled-border': lighten($danger-color, 30%),
-        'disabled-inner': lighten($danger-color, 20%)),
+        'hover-border': color.scale($danger-color, $lightness: -10%),
+        'hover-inner': color.scale($danger-color, $lightness: -10%),
+        'disabled-border': color.scale($danger-color, $lightness: 30%),
+        'disabled-inner': color.scale($danger-color, $lightness: 20%)),
     'info': ('border': $info-color,
         'background': $white,
         'inner-circle': $info-color,
-        'hover-border': darken($info-color, 10%),
-        'hover-inner': darken($info-color, 10%),
-        'disabled-border': lighten($info-color, 30%),
-        'disabled-inner': lighten($info-color, 20%))
+        'hover-border': color.scale($info-color, $lightness: -10%),
+        'hover-inner': color.scale($info-color, $lightness: -10%),
+        'disabled-border': color.scale($info-color, $lightness: 30%),
+        'disabled-inner': color.scale($info-color, $lightness: 20%))
 );
 
 // Radio state variables
