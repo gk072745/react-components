@@ -6,60 +6,61 @@
 @use '../mixins' as *;
 
 @use '../variables/radio-variables' as *;
+@use "sass:map";
 
 @mixin radio-size($size) {
-    $size-config: map-get($radio-sizes, $size);
+    $size-config: map.get($radio-sizes, $size);
 
     @if $size-config {
-        font-size: map-get($size-config, 'font-size');
-        gap: map-get($size-config, 'gap');
+        font-size: map.get($size-config, 'font-size');
+        gap: map.get($size-config, 'gap');
 
         .radio {
-            width: map-get($size-config, 'radio-width');
-            height: map-get($size-config, 'radio-height');
+            width: map.get($size-config, 'radio-width');
+            height: map.get($size-config, 'radio-height');
         }
     }
 }
 
 @mixin radio-color($color) {
-    $color-config: map-get($radio-colors, $color);
+    $color-config: map.get($radio-colors, $color);
 
     @if $color-config {
         .radio {
-            border-color: map-get($color-config, 'border');
-            background-color: map-get($color-config, 'background');
+            border-color: map.get($color-config, 'border');
+            background-color: map.get($color-config, 'background');
 
             .inner-circle {
-                background-color: map-get($color-config, 'inner-circle');
+                background-color: map.get($color-config, 'inner-circle');
             }
 
             // Hover effects only when not disabled or readonly
             &:hover:not(.disabled):not(.readonly) {
-                border-color: map-get($color-config, 'hover-border');
+                border-color: map.get($color-config, 'hover-border');
 
                 .inner-circle {
-                    background-color: map-get($color-config, 'hover-inner');
+                    background-color: map.get($color-config, 'hover-inner');
                 }
             }
         }
 
         &.disabled .radio {
-            border-color: map-get($color-config, 'disabled-border');
+            border-color: map.get($color-config, 'disabled-border');
 
             .inner-circle {
-                background-color: map-get($color-config, 'disabled-inner');
+                background-color: map.get($color-config, 'disabled-inner');
             }
         }
     }
 }
 
 @mixin radio-state($state) {
-    $state-config: map-get($radio-states, $state);
+    $state-config: map.get($radio-states, $state);
 
     @if $state-config {
-        opacity: map-get($state-config, 'opacity');
-        cursor: map-get($state-config, 'cursor');
-        pointer-events: map-get($state-config, 'pointer-events');
+        opacity: map.get($state-config, 'opacity');
+        cursor: map.get($state-config, 'cursor');
+        pointer-events: map.get($state-config, 'pointer-events');
     }
 }
 

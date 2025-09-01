@@ -132,9 +132,15 @@ const BasicChip = memo(
           : close;
       }
 
-      if (closable && !disabled) {
+      if (closable) {
         return (
-          <button className="chip-close" onClick={handleDelete} aria-label="Remove chip" type="button">
+          <button
+            className="chip-close"
+            onClick={handleDelete}
+            aria-label="Remove chip"
+            type="button"
+            disabled={disabled}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
