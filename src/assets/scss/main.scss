@@ -20,6 +20,7 @@
 @use 'components/basic-radio';
 @use 'components/basic-range';
 @use 'components/basic-breadcrumb';
+@use 'components/linear-progress';
 @use 'components/side-panel';
 
 // 5. Pages
@@ -29,6 +30,7 @@
 @use 'pages/radio-demo';
 @use 'pages/range-demo';
 @use 'pages/breadcrumb-demo';
+@use 'pages/linear-progress-demo';
 
 // 6. Utilities (should be last for specificity)
 @use 'utilities/spacing';

@@ -1,0 +1,104 @@
+// =============================================================================
+// LINEAR PROGRESS COMPONENT STYLES
+// =============================================================================
+@use '../abstracts' as *;
+
+.linear-progress-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    // Focus styles for accessibility
+    &:focus-visible {
+        outline: 0.125rem solid #2196f3;
+        outline-offset: 0.125rem;
+    }
+
+    // Absolute positioning variant
+    &.absolute {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+    }
+
+    // Rounded variant
+    &.rounded {
+        border-radius: 6.25rem;
+
+        .linear-progress-bar {
+            border-radius: 6.25rem;
+        }
+    }
+
+    // Indeterminate state
+    &.indeterminate {
+        .linear-progress-bar {
+            transition: none;
+        }
+    }
+}
+
+// =============================================================================
+// PROGRESS BAR STYLES
+// =============================================================================
+
+.linear-progress-bar {
+    height: 100%;
+    transition: width 0.3s ease;
+    position: relative;
+
+    // Indeterminate animation
+    &.indeterminate-bar {
+        position: absolute;
+        left: -40%;
+        animation: linear-indeterminate 1.2s infinite ease-in-out;
+    }
+}
+
+// =============================================================================
+// ANIMATIONS
+// =============================================================================
+
+@keyframes linear-indeterminate {
+    0% {
+        left: -40%;
+        width: 40%;
+    }
+
+    50% {
+        left: 20%;
+        width: 60%;
+    }
+
+    100% {
+        left: 100%;
+        width: 80%;
+    }
+}
+
+// =============================================================================
+// RESPONSIVE DESIGN
+// =============================================================================
+
+@media (max-width: 768px) {
+    .linear-progress-container {
+        .linear-progress-bar {
+            transition: width 0.2s ease;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .linear-progress-container {
+        .linear-progress-bar {
+            transition: width 0.15s ease;
+        }
+    }
+}

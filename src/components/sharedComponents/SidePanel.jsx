@@ -48,6 +48,11 @@ const SidePanel = ({ isOpen, onToggle, className = '', style = {} }) => {
         icon: '🍞',
       },
       {
+        path: '/linear-progress',
+        label: 'Linear Progress',
+        icon: '📊',
+      },
+      {
         path: null, // No path for popup button
         label: 'Popup Example',
         icon: '💬',

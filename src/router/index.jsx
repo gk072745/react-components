@@ -9,6 +9,7 @@ import ChipDemo from '@/pages/ChipDemo.jsx';
 import RadioDemo from '@/pages/RadioDemo.jsx';
 import RangeDemo from '@/pages/RangeDemo.jsx';
 import BreadcrumbDemo from '@/pages/BreadcrumbDemo.jsx';
+import LinearProgressDemo from '@/pages/LinearProgressDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: '/breadcrumb',
         element: <BreadcrumbDemo />,
+      },
+      {
+        path: '/linear-progress',
+        element: <LinearProgressDemo />,
       },
     ],
   },
