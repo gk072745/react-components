@@ -4,7 +4,7 @@
 // =============================================================================
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
-@use "sass:map";
+@use 'sass:map';
 
 // Color Functions
 @function color($color-name, $variant: 'base') {
@@ -14,11 +14,11 @@
             'dark': $primary-dark ),
     );
 
-@if map-has-key($color-map, $color-name) {
-    $color-variants: map.get($color-map, $color-name);
+@if map.has-key($color-map, $color-name) {
+    $color-variants: map-get($color-map, $color-name);
 
-    @if map-has-key($color-variants, $variant) {
-        @return map.get($color-variants, $variant);
+    @if map.has-key($color-variants, $variant) {
+        @return map-get($color-variants, $variant);
     }
 }
 
@@ -38,8 +38,8 @@
         'tooltip': $z-tooltip
     );
 
-@if map-has-key($z-index-map, $layer) {
-    @return map.get($z-index-map, $layer);
+@if map.has-key($z-index-map, $layer) {
+    @return map-get($z-index-map, $layer);
 }
 
 @warn "Z-index layer '#{$layer}' not found.";
