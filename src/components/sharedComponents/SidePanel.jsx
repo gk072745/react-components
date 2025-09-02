@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import BasicPopup from './BasicPopup';
+import BasicBreadCrumb from './BasicBreadCrumb';
 
 const SidePanel = ({ isOpen, onToggle, className = '', style = {} }) => {
   const location = useLocation();
@@ -40,6 +41,11 @@ const SidePanel = ({ isOpen, onToggle, className = '', style = {} }) => {
         path: '/range',
         label: 'Range',
         icon: '📊',
+      },
+      {
+        path: '/breadcrumb',
+        label: 'Breadcrumb',
+        icon: '🍞',
       },
       {
         path: null, // No path for popup button
@@ -102,29 +108,45 @@ const SidePanel = ({ isOpen, onToggle, className = '', style = {} }) => {
           style={{
             padding: '20px',
             borderBottom: '1px solid #e0e0e0',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
           }}
         >
-          <h2 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '600', color: '#333' }}>Components</h2>
-          <button
-            onClick={onToggle}
+          <div
             style={{
-              background: 'none',
-              border: 'none',
-              fontSize: '1.5rem',
-              cursor: 'pointer',
-              color: '#666',
-              padding: '5px',
-              borderRadius: '4px',
-              transition: 'background-color 0.2s ease',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: '15px',
             }}
-            onMouseEnter={e => (e.target.style.backgroundColor = '#f0f0f0')}
-            onMouseLeave={e => (e.target.style.backgroundColor = 'transparent')}
           >
-            ✕
-          </button>
+            <h2 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '600', color: '#333' }}>Components</h2>
+            <button
+              onClick={onToggle}
+              style={{
+                background: 'none',
+                border: 'none',
+                fontSize: '1.5rem',
+                cursor: 'pointer',
+                color: '#666',
+                padding: '5px',
+                borderRadius: '4px',
+                transition: 'background-color 0.2s ease',
+              }}
+              onMouseEnter={e => (e.target.style.backgroundColor = '#f0f0f0')}
+              onMouseLeave={e => (e.target.style.backgroundColor = 'transparent')}
+            >
+              ✕
+            </button>
+          </div>
+
+          {/* Breadcrumb Navigation */}
+          <BasicBreadCrumb
+            items={[
+              { label: 'Home', to: '/' },
+              { label: 'Components', to: null, disabled: true },
+            ]}
+            separator="›"
+            gap="0.25rem"
+          />
         </div>
 
         {/* Navigation Items */}
