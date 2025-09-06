@@ -16,7 +16,7 @@ function App() {
       <SidePanel isOpen={isSidePanelOpen} onToggle={handleToggleSidePanel} />
       <Navbar onToggleSidePanel={handleToggleSidePanel} />
       <ErrorBoundary>
-        <Outlet />
+        <Outlet context={{ onToggleSidePanel: handleToggleSidePanel }} />
       </ErrorBoundary>
     </div>
   );

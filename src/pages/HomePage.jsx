@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import CircularProgressBar from '../components/sharedComponents/CircularProgressBar';
 import ScrollObserver from '../components/sharedComponents/ScrollObserver';
-import BasicPopup from '../components/sharedComponents/BasicPopup';
 import { useTranslation } from 'react-i18next';
 import { useCommonUtilities } from '@/customHooks/useCommonUtilities';
 
 const HomePage = () => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const { goToRoute } = useCommonUtilities();
+  const { onToggleSidePanel } = useOutletContext();
 
   const throwError = () => {
     throw new Error('This is a test error');
@@ -43,7 +43,7 @@ const HomePage = () => {
             </p>
             <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
               <button
-                onClick={() => setIsPopupOpen(true)}
+                onClick={onToggleSidePanel}
                 style={{
                   padding: '12px 24px',
                   backgroundColor: '#007bff',
@@ -57,7 +57,7 @@ const HomePage = () => {
                 onMouseEnter={e => (e.target.style.backgroundColor = '#0056b3')}
                 onMouseLeave={e => (e.target.style.backgroundColor = '#007bff')}
               >
-                Open Popup
+                Toggle Sidepane
               </button>
               <button
                 onClick={throwError}
@@ -82,14 +82,6 @@ const HomePage = () => {
         </div>
       )}
 
-      {isPopupOpen && (
-        <BasicPopup onPopupOutsideClick={() => setIsPopupOpen(false)}>
-          <div className="popup-content">
-            <h2>Popup Content</h2>
-            <p>This is the content of the popup.</p>
-          </div>
-        </BasicPopup>
-      )}
     </div>
   );
 };

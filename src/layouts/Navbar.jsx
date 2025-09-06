@@ -39,8 +39,12 @@ const Navbar = ({ onToggleSidePanel }) => {
           >
             ☰
           </button>
-          <Link to="/" className="navbar-logo">
-            <img width={100} height={100} src={appImages['altersquare.png']} alt="Logo" />
+          <Link to="/" className="navbar-logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <img width={40} height={40} src={appImages['react.svg']} alt="React Components" />
+            <div style={{ marginLeft: '10px', lineHeight: '1.2' }}>
+              <div style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#333' }}>React</div>
+              <div style={{ fontSize: '0.9rem', fontWeight: '500', color: '#666' }}>Components</div>
+            </div>
           </Link>
         </div>
 
