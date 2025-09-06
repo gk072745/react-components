@@ -303,7 +303,7 @@ const SwitchDemo = () => {
               <h3>Extra Large with Custom Labels</h3>
               <BasicSwitch
                 size="xl"
-                dotLabels={{ true: 'SORT', false: 'LONG' }}
+                dotLabels={{ true: 'SORT', false: 'UNSORT' }}
                 dotLabelColors={{ true: '#ffffff', false: '#666666' }}
                 bgColor="#f3e5f5"
                 activeBgColor="#9c27b0"
