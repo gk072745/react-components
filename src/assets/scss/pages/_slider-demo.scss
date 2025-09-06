@@ -1,0 +1,71 @@
+// =============================================================================
+// SLIDER DEMO PAGE STYLES
+// =============================================================================
+@use '../abstracts' as *;
+
+.slider-demo {
+  padding: 2rem;
+  max-width: 75rem;
+  margin: 0 auto;
+
+  h1 {
+    color: $gray-800;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: $font-weight-bold;
+  }
+
+  h2 {
+    color: $gray-700;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: $font-weight-semibold;
+  }
+
+  .demo-section {
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: $white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+
+    .demo-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: $gray-600;
+      font-size: 0.875rem;
+      margin: 0;
+      padding: 0.5rem 0;
+      background: $gray-50;
+      border-radius: 0.25rem;
+      padding: 0.75rem;
+      border-left: 0.25rem solid $primary-color;
+    }
+  }
+
+  // Responsive design
+  @include respond-to('sm') {
+    padding: 1.5rem;
+    
+    h1 {
+      font-size: 1.75rem;
+    }
+    
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+
+  @include respond-to('xs') {
+    padding: 1rem;
+    
+    .demo-section {
+      padding: 1rem;
+    }
+  }
+}

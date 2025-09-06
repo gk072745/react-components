@@ -280,7 +280,7 @@ const BasicRange = memo(
     // COMPUTED STYLES
     // =============================================================================
     const containerClass = useMemo(() => {
-      const classes = ['basic-slider-input-wrapper', size];
+      const classes = ['basic-range-input-wrapper', size];
       if (disabled) classes.push('disabled');
       if (readonly) classes.push('readonly');
       if (label) classes.push('has-label');

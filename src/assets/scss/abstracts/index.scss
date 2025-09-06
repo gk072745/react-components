@@ -8,6 +8,7 @@
 @forward 'variables/chip-variables';
 @forward 'variables/radio-variables';
 @forward 'variables/range-variables';
+@forward 'variables/slider-variables';
 
 // functions
 @forward 'functions';
@@ -17,6 +18,7 @@
 @forward 'mixins/chip-mixins';
 @forward 'mixins/radio-mixins';
 @forward 'mixins/range-mixins';
+@forward 'mixins/slider-mixins';
 
 // breakpoints
 @forward 'breakpoints';
