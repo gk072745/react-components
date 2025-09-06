@@ -1,0 +1,111 @@
+// =============================================================================
+// BASIC SWITCH COMPONENT STYLES
+// =============================================================================
+@use '../abstracts' as *;
+
+.switch-container {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    *,
+    ::before *,
+    ::after * {
+        box-sizing: border-box;
+    }
+
+    // Generate all sizes, colors, and states using mixins
+    @include generate-switch-sizes;
+    @include generate-switch-colors;
+    @include generate-switch-states;
+
+    // Focus styles for accessibility
+    &:focus-visible {
+        outline: 0.125rem solid #2196f3;
+        outline-offset: 0.125rem;
+    }
+
+    // =============================================================================
+    // INPUT
+    // =============================================================================
+
+    input {
+        display: none;
+
+        &:checked + .switch-slider {
+            background-color: var(--active-bg-color);
+            justify-content: flex-start;
+
+            .switch-slider-dot {
+                background-color: var(--active-slider-color);
+                transform: translateX(-100%);
+                margin: 0;
+            }
+        }
+    }
+
+    // =============================================================================
+    // SWITCH SLIDER
+    // =============================================================================
+
+    .switch-slider {
+        position: relative;
+        background-color: var(--bg-color);
+        border-radius: $switch-slider-border-radius;
+        transition: all $switch-transition-duration $switch-transition-timing;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        justify-content: flex-end;
+
+        .switch-slider-dot {
+            position: absolute;
+            left: 0;
+            border-radius: $switch-dot-border-radius;
+            transition: all $switch-transition-duration $switch-transition-timing;
+            background-color: var(--slider-color);
+            transform: translateX(0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.5rem;
+            overflow: hidden;
+        }
+    }
+
+    // =============================================================================
+    // INSET VARIANT
+    // =============================================================================
+
+    &.inset {
+        input + .switch-slider .switch-slider-dot {
+            transform: translateX(-50%);
+            left: 0;
+            margin: 0;
+        }
+
+        input:checked + .switch-slider .switch-slider-dot {
+            left: calc(100%);
+            margin: 0;
+        }
+    }
+
+    // =============================================================================
+    // LABELS
+    // =============================================================================
+
+    .left-label,
+    .right-label {
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    // Default color (when no color class is applied)
+    &:not([class*='color-']) {
+        @include switch-color('default');
+    }
+}

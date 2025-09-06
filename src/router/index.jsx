@@ -10,6 +10,7 @@ import RadioDemo from '@/pages/RadioDemo.jsx';
 import RangeDemo from '@/pages/RangeDemo.jsx';
 import SliderDemo from '@/pages/SliderDemo.jsx';
 import SliderGroupDemo from '@/pages/SliderGroupDemo.jsx';
+import SwitchDemo from '@/pages/SwitchDemo.jsx';
 import BreadcrumbDemo from '@/pages/BreadcrumbDemo.jsx';
 import LinearProgressDemo from '@/pages/LinearProgressDemo.jsx';
 import LoaderDemo from '@/pages/LoaderDemo.jsx';
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: '/slider-group',
         element: <SliderGroupDemo />,
+      },
+      {
+        path: '/switch',
+        element: <SwitchDemo />,
       },
       {
         path: '/breadcrumb',
