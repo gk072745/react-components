@@ -1,0 +1,141 @@
+// =============================================================================
+// SWITCH COMPONENT MIXINS
+// =============================================================================
+@use '../variables' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+@use '../variables/switch-variables' as *;
+@use "sass:map";
+
+// =============================================================================
+// SIZE MIXINS
+// =============================================================================
+
+@mixin switch-size($size) {
+    $size-config: map.get($switch-sizes, $size);
+
+    @if $size-config {
+        font-size: map.get($size-config, 'container-font-size');
+
+        .switch-slider {
+            min-width: map.get($size-config, 'slider-min-width');
+            height: map.get($size-config, 'slider-height');
+            font-size: map.get($size-config, 'slider-font-size');
+            padding-inline: map.get($size-config, 'slider-padding-inline');
+
+            @if map.has-key($size-config, 'slider-border-radius') {
+                border-radius: map.get($size-config, 'slider-border-radius');
+            }
+
+            .switch-slider-dot {
+                width: map.get($size-config, 'dot-width');
+                height: map.get($size-config, 'dot-height');
+                margin: map.get($size-config, 'dot-margin');
+            }
+        }
+
+        input:checked + .switch-slider .switch-slider-dot {
+            left: map.get($size-config, 'dot-checked-left');
+        }
+
+        // Inset variant
+        &.inset {
+            .switch-slider {
+                min-width: map.get($size-config, 'inset-slider-min-width');
+                height: map.get($size-config, 'inset-slider-height');
+                margin-right: map.get($size-config, 'inset-slider-margin-right');
+
+                @if map.has-key($size-config, 'inset-slider-padding-inline') {
+                    padding-inline: map.get($size-config, 'inset-slider-padding-inline');
+                }
+
+                @if map.has-key($size-config, 'inset-slider-font-size') {
+                    font-size: map.get($size-config, 'inset-slider-font-size');
+                }
+
+                .switch-slider-dot {
+                    width: map.get($size-config, 'inset-dot-width');
+                    height: map.get($size-config, 'inset-dot-height');
+                    margin: map.get($size-config, 'inset-dot-margin');
+                    box-shadow: $switch-dot-shadow;
+                }
+            }
+        }
+    }
+}
+
+// =============================================================================
+// COLOR MIXINS
+// =============================================================================
+
+@mixin switch-color($color) {
+    $color-config: map.get($switch-colors, $color);
+
+    @if $color-config {
+        .switch-slider {
+            background-color: map.get($color-config, 'bg');
+
+            .switch-slider-dot {
+                background-color: map.get($color-config, 'slider');
+            }
+        }
+
+        input:checked + .switch-slider {
+            background-color: map.get($color-config, 'active-bg');
+
+            .switch-slider-dot {
+                background-color: map.get($color-config, 'active-slider');
+            }
+        }
+    }
+}
+
+// =============================================================================
+// STATE MIXINS
+// =============================================================================
+
+@mixin switch-state($state) {
+    $state-config: map.get($switch-states, $state);
+
+    @if $state-config {
+        opacity: map.get($state-config, 'opacity');
+        cursor: map.get($state-config, 'cursor');
+        pointer-events: map.get($state-config, 'pointer-events');
+    }
+}
+
+// =============================================================================
+// GENERATOR MIXINS
+// =============================================================================
+
+@mixin generate-switch-sizes {
+    @each $size, $config in $switch-sizes {
+        &.#{$size} {
+            @include switch-size($size);
+        }
+    }
+}
+
+@mixin generate-switch-colors {
+    @each $color, $config in $switch-colors {
+        &.color-#{$color} {
+            @include switch-color($color);
+        }
+    }
+}
+
+@mixin generate-switch-states {
+    // Default enabled state (applies when no disabled or readonly classes are present)
+    &:not(.disabled):not(.readonly) {
+        @include switch-state('enabled');
+    }
+
+    &.disabled {
+        @include switch-state('disabled');
+    }
+
+    &.readonly {
+        @include switch-state('readonly');
+    }
+}

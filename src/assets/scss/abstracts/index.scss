@@ -9,6 +9,7 @@
 @forward 'variables/radio-variables';
 @forward 'variables/range-variables';
 @forward 'variables/slider-variables';
+@forward 'variables/switch-variables';
 
 // functions
 @forward 'functions';
@@ -19,6 +20,7 @@
 @forward 'mixins/radio-mixins';
 @forward 'mixins/range-mixins';
 @forward 'mixins/slider-mixins';
+@forward 'mixins/switch-mixins';
 
 // breakpoints
 @forward 'breakpoints';

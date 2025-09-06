@@ -53,6 +53,11 @@ const SidePanel = ({ isOpen, onToggle, className = '', style = {} }) => {
         icon: '🎠',
       },
       {
+        path: '/switch',
+        label: 'Switch',
+        icon: '🔘',
+      },
+      {
         path: '/breadcrumb',
         label: 'Breadcrumb',
         icon: '🍞',
