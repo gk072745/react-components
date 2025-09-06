@@ -43,7 +43,7 @@ const Navbar = ({ onToggleSidePanel }) => {
             <img width={40} height={40} src={appImages['react.svg']} alt="React Components" />
             <div style={{ marginLeft: '10px', lineHeight: '1.2' }}>
               <div style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#333' }}>React</div>
-              <div style={{ fontSize: '0.9rem', fontWeight: '500', color: '#666' }}>Components</div>
+              <div style={{ fontSize: '0.9rem', fontWeight: '500', color: '#666' }}>Components <span style={{ fontSize: '0.8rem' , color: '#999'}}>by Govind Kumar</span></div>
             </div>
           </Link>
         </div>
