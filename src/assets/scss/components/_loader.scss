@@ -76,33 +76,14 @@
     }
     50% {
         stroke-dasharray: 89, 200;
-        stroke-dashoffset: -35px;
+        stroke-dashoffset: -2.1875rem;
     }
     100% {
         stroke-dasharray: 89, 200;
-        stroke-dashoffset: -124px;
+        stroke-dashoffset: -7.75rem;
     }
 }
 
-// =============================================================================
-// RESPONSIVE DESIGN
-// =============================================================================
-
-@media (max-width: 768px) {
-    .loader-wrapper {
-        .indeterminate-loader {
-            animation-duration: 1.8s;
-        }
-    }
-}
-
-@media (max-width: 480px) {
-    .loader-wrapper {
-        .indeterminate-loader {
-            animation-duration: 2.2s;
-        }
-    }
-}
 
 // =============================================================================
 // THEME VARIANTS
@@ -133,7 +114,7 @@
             .arc {
                 animation: none;
                 stroke-dasharray: 89, 200;
-                stroke-dashoffset: -35px;
+                stroke-dashoffset: -2.1875rem;
             }
         }
     }
