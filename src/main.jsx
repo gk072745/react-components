@@ -6,6 +6,8 @@ import { RouterProvider } from 'react-router-dom';
 import { AppProvider } from './context/AppProvider.jsx';
 import './i18n';
 
+localStorage.setItem('Authorization', 'test');
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AppProvider>
