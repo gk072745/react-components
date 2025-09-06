@@ -1,0 +1,315 @@
+// =============================================================================
+// SLIDER GROUP DEMO PAGE STYLES
+// =============================================================================
+@use '../abstracts' as *;
+
+.slider-group-demo {
+    padding: 2rem;
+    max-width: 120rem;
+    margin: 0 auto;
+
+    .demo-header {
+        text-align: center;
+        margin-bottom: 3rem;
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: $primary-color;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: $gray-600;
+            max-width: 40rem;
+            margin: 0 auto;
+        }
+    }
+
+    .demo-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        background: $white;
+        border-radius: 1rem;
+        box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: $gray-800;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 0.125rem solid $gray-200;
+        }
+
+        .demo-container {
+            height: 25rem;
+            border: 0.125rem dashed $gray-300;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            background: $gray-50;
+        }
+    }
+
+    .demo-info {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background: $gray-100;
+        border-radius: 0.5rem;
+        border-left: 0.25rem solid $primary-color;
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: $gray-800;
+            margin-bottom: 1rem;
+        }
+
+        pre {
+            background: $white;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            border: 0.0625rem solid $gray-200;
+            font-size: 0.875rem;
+            color: $gray-700;
+            overflow-x: auto;
+        }
+    }
+}
+
+// =============================================================================
+// CUSTOM CARD STYLES
+// =============================================================================
+
+.custom-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: 1rem;
+
+    h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: $gray-800;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        font-size: 0.875rem;
+        color: $gray-600;
+        margin-bottom: 1rem;
+    }
+
+    .card-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $primary-color;
+        background: $gray-100;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.simple-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: 1rem;
+
+    .card-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: $primary-color;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-label {
+        font-size: 0.875rem;
+        color: $gray-600;
+        font-weight: 500;
+    }
+}
+
+.readonly-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: 1rem;
+    position: relative;
+
+    h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: $gray-700;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        font-size: 0.875rem;
+        color: $gray-500;
+        margin-bottom: 1rem;
+    }
+
+    .card-badge {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: $gray-400;
+        color: $white;
+        font-size: 0.625rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-weight: 500;
+    }
+}
+
+.large-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, $white 0%, $gray-50 100%);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 0.0625rem solid $gray-200;
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: $gray-800;
+            margin: 0;
+        }
+
+        .card-id {
+            font-size: 0.875rem;
+            color: $gray-500;
+            background: $gray-100;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+    }
+
+    .card-body {
+        flex: 1;
+        margin-bottom: 1rem;
+
+        p {
+            font-size: 0.875rem;
+            color: $gray-600;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+
+            .feature {
+                font-size: 0.75rem;
+                color: $primary-color;
+                background: rgba($primary-color, 0.1);
+                padding: 0.25rem 0.5rem;
+                border-radius: 0.25rem;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .card-footer {
+        .card-button {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            background: $primary-color;
+            color: $white;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: darken($primary-color, 10%);
+                transform: translateY(-0.0625rem);
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
+    }
+}
+
+// =============================================================================
+// RESPONSIVE DESIGN
+// =============================================================================
+
+@media (max-width: 768px) {
+    .slider-group-demo {
+        padding: 1rem;
+
+        .demo-header {
+            margin-bottom: 2rem;
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+
+        .demo-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            .demo-container {
+                height: 20rem;
+                padding: 0.5rem;
+            }
+        }
+    }
+
+    .large-card {
+        padding: 1rem;
+
+        .card-header {
+            h2 {
+                font-size: 1.125rem;
+            }
+        }
+
+        .card-features {
+            .feature {
+                font-size: 0.625rem;
+            }
+        }
+    }
+}

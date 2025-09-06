@@ -20,6 +20,7 @@
 @use 'components/basic-radio';
 @use 'components/basic-range';
 @use 'components/basic-slider';
+@use 'components/slider-group';
 @use 'components/basic-breadcrumb';
 @use 'components/linear-progress';
 @use 'components/loader';
@@ -32,6 +33,7 @@
 @use 'pages/radio-demo';
 @use 'pages/range-demo';
 @use 'pages/slider-demo';
+@use 'pages/slider-group-demo';
 @use 'pages/breadcrumb-demo';
 @use 'pages/linear-progress-demo';
 @use 'pages/loader-demo';

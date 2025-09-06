@@ -48,6 +48,11 @@ const SidePanel = ({ isOpen, onToggle, className = '', style = {} }) => {
         icon: '🎚️',
       },
       {
+        path: '/slider-group',
+        label: 'Slider Group',
+        icon: '🎠',
+      },
+      {
         path: '/breadcrumb',
         label: 'Breadcrumb',
         icon: '🍞',
