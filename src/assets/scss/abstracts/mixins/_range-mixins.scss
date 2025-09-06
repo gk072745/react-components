@@ -1,0 +1,38 @@
+// =============================================================================
+// RANGE COMPONENT MIXINS
+// =============================================================================
+
+// =============================================================================
+// SIZE MIXINS
+// =============================================================================
+@use '../variables' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+@use '../variables/range-variables' as *;
+@use "sass:map";
+
+@mixin range-size($size) {
+    $size-config: map.get($range-sizes, $size);
+
+    .slider-track {
+        height: map.get($size-config, track-height);
+
+        .slider-thumb {
+            width: map.get($size-config, thumb-size);
+            height: map.get($size-config, thumb-size);
+        }
+    }
+
+    .slider-label {
+        font-size: map.get($size-config, label-font-size);
+    }
+}
+
+@mixin generate-range-sizes {
+    @each $size, $config in $range-sizes {
+        &.#{$size} {
+            @include range-size($size);
+        }
+    }
+}

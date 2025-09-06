@@ -1,6 +1,10 @@
 // =============================================================================
 // BREAKPOINTS
 // =============================================================================
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+@use "sass:map";
 
 // Breakpoint Variables
 $breakpoints: (
@@ -15,7 +19,7 @@ $breakpoints: (
 
 // Responsive Mixins
 @mixin media-up($breakpoint) {
-    $min: map-get($breakpoints, $breakpoint);
+    $min: map.get($breakpoints, $breakpoint);
 
     @if $min !=0 {
         @media (min-width: $min) {
@@ -29,7 +33,7 @@ $breakpoints: (
 }
 
 @mixin media-down($breakpoint) {
-    $max: map-get($breakpoints, $breakpoint);
+    $max: map.get($breakpoints, $breakpoint);
 
     @if $max and $max >0 {
         @media (max-width: ($max - 1px)) {
@@ -39,8 +43,8 @@ $breakpoints: (
 }
 
 @mixin media-between($lower, $upper) {
-    $min: map-get($breakpoints, $lower);
-    $max: map-get($breakpoints, $upper);
+    $min: map.get($breakpoints, $lower);
+    $max: map.get($breakpoints, $upper);
 
     @if $min !=0 and $max {
         @media (min-width: $min) and (max-width: $max - 1px) {

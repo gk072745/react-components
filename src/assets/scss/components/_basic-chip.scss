@@ -1,0 +1,108 @@
+// =============================================================================
+// BASIC CHIP COMPONENT STYLES
+// =============================================================================
+@use '../abstracts' as *;
+
+.basic-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.625rem;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+    border: .0625rem solid transparent;
+    position: relative;
+    outline: none;
+
+    // Focus styles for accessibility
+    &:focus-visible {
+        outline: .125rem solid #2196F3;
+        outline-offset: .125rem;
+    }
+
+    // Generate all variants using mixin
+    @include generate-chip-variants;
+
+    // Disabled state
+    &.disabled {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+}
+
+// =============================================================================
+// CHIP CONTENT SECTIONS
+// =============================================================================
+
+.chip-prepend {
+    margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.chip-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chip-append {
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+// =============================================================================
+// CLOSE BUTTON STYLES
+// =============================================================================
+
+.chip-close {
+    margin-left: 0.5rem;
+    padding: 0.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    opacity: 0.7;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.08);
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    &:focus-visible {
+        outline: .125rem solid currentColor;
+        outline-offset: .125rem;
+    }
+
+    svg {
+        width: 1em;
+        height: 1em;
+        stroke-width: 2;
+    }
+}

@@ -1,0 +1,130 @@
+// =============================================================================
+// SIDE PANEL COMPONENT
+// =============================================================================
+@use '../abstracts' as *;
+
+.side-panel {
+    // Base styles are handled inline for better performance
+    // Additional responsive styles
+
+    @media (max-width: 768px) {
+        width: 280px !important;
+        left: -280px !important;
+        top: 0 !important; // Always start from top
+        height: 100vh !important; // Full height
+
+        &.side-panel-open {
+            left: 0 !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        width: 100% !important;
+        left: -100% !important;
+        top: 0 !important; // Always start from top
+        height: 100vh !important; // Full height
+
+        &.side-panel-open {
+            left: 0 !important;
+        }
+    }
+}
+
+.side-panel-overlay {
+    @media (max-width: 768px) {
+        background-color: rgba(0, 0, 0, 0.6) !important;
+        top: 0 !important; // Always start from top
+    }
+
+    @media (max-width: 480px) {
+        top: 0 !important; // Always start from top
+    }
+}
+
+.side-panel-header {
+    h2 {
+        @media (max-width: 480px) {
+            font-size: 1.3rem !important;
+        }
+    }
+}
+
+.side-panel-link {
+    @media (max-width: 480px) {
+        padding: 16px 20px !important;
+        font-size: 1rem !important;
+
+        span {
+            font-size: 1.2rem !important;
+            margin-right: 12px !important;
+        }
+    }
+
+    &:focus {
+        outline: 2px solid #007bff;
+        outline-offset: -2px;
+    }
+}
+
+.side-panel-link-active {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: 8px solid #007bff;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+    }
+}
+
+// Animation for smooth transitions
+.side-panel {
+    transform: translateZ(0); // Force hardware acceleration
+}
+
+// Smooth scrolling for navigation
+.side-panel-nav {
+    scrollbar-width: thin;
+    scrollbar-color: #c1c1c1 transparent;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #c1c1c1;
+        border-radius: 3px;
+
+        &:hover {
+            background-color: #a8a8a8;
+        }
+    }
+}
+
+.side-panel-overlay {
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+// Focus management for accessibility
+.side-panel:focus-within {
+    outline: none;
+}
+
+// Keyboard navigation support
+.side-panel-link:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: -2px;
+    background-color: #f8f9fa !important;
+    color: #007bff !important;
+}

@@ -5,6 +5,12 @@ import NotFoundPage from '../pages/NotFoundPage.jsx';
 import App from '@/App.jsx';
 import AccordionDemo from '@/pages/AccordionDemo.jsx';
 import CheckboxDemo from '@/pages/CheckboxDemo.jsx';
+import ChipDemo from '@/pages/ChipDemo.jsx';
+import RadioDemo from '@/pages/RadioDemo.jsx';
+import RangeDemo from '@/pages/RangeDemo.jsx';
+import BreadcrumbDemo from '@/pages/BreadcrumbDemo.jsx';
+import LinearProgressDemo from '@/pages/LinearProgressDemo.jsx';
+import LoaderDemo from '@/pages/LoaderDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -42,6 +48,30 @@ const router = createBrowserRouter([
       {
         path: '/checkbox',
         element: <CheckboxDemo />,
+      },
+      {
+        path: '/chip',
+        element: <ChipDemo />,
+      },
+      {
+        path: '/radio',
+        element: <RadioDemo />,
+      },
+      {
+        path: '/range',
+        element: <RangeDemo />,
+      },
+      {
+        path: '/breadcrumb',
+        element: <BreadcrumbDemo />,
+      },
+      {
+        path: '/linear-progress',
+        element: <LinearProgressDemo />,
+      },
+      {
+        path: '/loader',
+        element: <LoaderDemo />,
       },
     ],
   },

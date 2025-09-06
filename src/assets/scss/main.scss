@@ -2,31 +2,37 @@
 // MAIN SCSS FILE
 // =============================================================================
 
-// 1. Variables and Configuration
-@import 'abstracts/variables';
-@import 'abstracts/functions';
-@import 'abstracts/mixins';
-@import 'abstracts/breakpoints';
-
 // 2. Base Styles
-@import 'base/reset';
-@import 'base/typography';
-@import 'base/base';
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/base';
 
 // 3. Layout Components
-@import 'layout/navbar';
+@use 'layout/navbar';
 
 // 4. Components
-@import 'components/circular-progress-bar';
-@import 'components/basic-popup';
-@import 'components/error-boundary';
-@import 'components/basic-accordion';
-@import 'components/basic-checkbox';
+@use 'components/circular-progress-bar';
+@use 'components/basic-popup';
+@use 'components/error-boundary';
+@use 'components/basic-accordion';
+@use 'components/basic-checkbox';
+@use 'components/basic-chip';
+@use 'components/basic-radio';
+@use 'components/basic-range';
+@use 'components/basic-breadcrumb';
+@use 'components/linear-progress';
+@use 'components/loader';
+@use 'components/side-panel';
 
 // 5. Pages
-@import 'pages/home';
-@import 'pages/auth';
-@import 'pages/not-found';
+@use 'pages/home';
+@use 'pages/auth';
+@use 'pages/not-found';
+@use 'pages/radio-demo';
+@use 'pages/range-demo';
+@use 'pages/breadcrumb-demo';
+@use 'pages/linear-progress-demo';
+@use 'pages/loader-demo';
 
 // 6. Utilities (should be last for specificity)
-@import 'utilities/spacing';
+@use 'utilities/spacing';

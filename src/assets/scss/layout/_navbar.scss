@@ -1,6 +1,7 @@
 // =============================================================================
 // NAVBAR LAYOUT
 // =============================================================================
+@use '../abstracts' as *;
 
 .navbar {
     background-color: $white;
@@ -24,6 +25,9 @@
     }
 
     .navbar-brand {
+        display: flex;
+        align-items: center;
+
         .navbar-logo {
             color: $primary-color;
             font-size: 1.5rem;

@@ -1,0 +1,69 @@
+// =============================================================================
+// CHIP MIXINS
+// =============================================================================
+@use '../variables' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+@use '../variables/chip-variables' as *;
+@use "sass:color";
+@use "sass:map";
+
+@mixin chip-variant($variant, $type: 'solid') {
+    $variant-config: map.get($chip-variants, $variant);
+    $type-config: map.get($chip-types, $type);
+
+    @if $variant-config and $type-config {
+        $bg-key: map.get($type-config, 'bg-key');
+        $color-key: map.get($type-config, 'color-key');
+        $border-key: map.get($type-config, 'border-key');
+
+        background-color: if($bg-key =='transparent', transparent, map.get($variant-config, $bg-key));
+        color: map.get($variant-config, $color-key);
+        border-color: map.get($variant-config, $border-key);
+
+        &:hover:not(.disabled) {
+            @if $type =='outlined' {
+                background-color: rgba(map.get($variant-config, $border-key), 0.1);
+                border-color: color.scale(map.get($variant-config, $border-key), $lightness: -10%);
+            }
+
+            @else {
+                background-color: color.scale(map.get($variant-config, $bg-key), $lightness: -10%);
+                border-color: color.scale(map.get($variant-config, $border-key), $lightness: -10%);
+            }
+        }
+
+        &:active:not(.disabled) {
+            @if $type =='outlined' {
+                background-color: rgba(map.get($variant-config, $border-key), 0.2);
+                border-color: color.scale(map.get($variant-config, $border-key), $lightness: -15%);
+            }
+
+            @else {
+                background-color: color.scale(map.get($variant-config, $bg-key), $lightness: -15%);
+                border-color: color.scale(map.get($variant-config, $border-key), $lightness: -15%);
+            }
+        }
+    }
+}
+
+@mixin generate-chip-variants {
+    @each $variant, $config in $chip-variants {
+
+        // Solid variants
+        &.#{$variant} {
+            @include chip-variant($variant, 'solid');
+        }
+
+        // Outlined variants
+        &.outlined-#{$variant} {
+            @include chip-variant($variant, 'outlined');
+        }
+
+        // Filled variants
+        &.filled-#{$variant} {
+            @include chip-variant($variant, 'filled');
+        }
+    }
+}

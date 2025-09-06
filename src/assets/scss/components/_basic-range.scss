@@ -1,0 +1,136 @@
+// =============================================================================
+// BASIC RANGE COMPONENT
+// =============================================================================
+@use '../abstracts' as *;
+
+.basic-slider-input-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+
+    &.has-label {
+        gap: 1rem;
+    }
+
+    // =============================================================================
+    // STATES
+    // =============================================================================
+
+    &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    &.readonly {
+        pointer-events: none;
+    }
+
+    // =============================================================================
+    // LABEL
+    // =============================================================================
+
+    .slider-label {
+        font-size: 1rem;
+        color: $range-label-color;
+        font-weight: 500;
+    }
+
+    // =============================================================================
+    // TRACK
+    // =============================================================================
+
+    .slider-track {
+        position: relative;
+        background-color: var(--track-color, $range-track-color);
+        border-radius: $range-track-border-radius;
+        cursor: pointer;
+        user-select: none;
+        outline: none;
+
+        &:focus-visible {
+            box-shadow: 0 0 0 $range-focus-outline-width $range-focus-shadow;
+        }
+
+        // =============================================================================
+        // FILLED AREA
+        // =============================================================================
+
+        .slider-filled {
+            position: absolute;
+            height: 100%;
+            border-radius: $range-track-border-radius;
+        }
+
+        // =============================================================================
+        // THUMBS
+        // =============================================================================
+
+        .slider-thumb {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            cursor: grab;
+            z-index: 2;
+            box-shadow: 0 .125rem .25rem $range-thumb-shadow;
+
+            &:active {
+                cursor: grabbing;
+                transform: translate(-50%, -50%) scale($range-thumb-scale-active);
+            }
+
+            &.min-thumb {
+                z-index: 3;
+            }
+
+            &.max-thumb {
+                z-index: 3;
+            }
+
+        }
+
+        // =============================================================================
+        // THUMB LABELS
+        // =============================================================================
+
+        .thumb-label {
+            position: absolute;
+            transform: translateX(-50%);
+            background: $range-thumb-label-bg;
+            color: $range-thumb-label-color;
+            font-size: 0.75rem;
+            padding: $range-thumb-label-padding;
+            border-radius: $range-thumb-label-border-radius;
+            white-space: nowrap;
+            bottom: 0;
+            margin-bottom: $range-thumb-label-margin-bottom;
+            z-index: 4;
+            pointer-events: none;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: calc(50% - #{$range-thumb-label-arrow-size / 2});
+                top: 100%;
+                width: $range-thumb-label-arrow-size;
+                height: $range-thumb-label-arrow-size;
+                background: $range-thumb-label-bg;
+                transform: rotate(45deg) translate(-50%, -50%);
+            }
+
+            &.min-label {
+                z-index: 5;
+            }
+
+            &.max-label {
+                z-index: 5;
+            }
+        }
+    }
+
+    // =============================================================================
+    // SIZE VARIANTS
+    // =============================================================================
+    @include generate-range-sizes;
+}

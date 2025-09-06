@@ -94,7 +94,6 @@
     overflow: hidden;
 }
 
-
 // Animation Mixins
 @mixin fade-in($duration: $transition-base) {
     animation: fadeIn $duration ease-in-out;

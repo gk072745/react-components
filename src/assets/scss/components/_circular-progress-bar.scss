@@ -1,3 +1,5 @@
+@use '../abstracts' as *;
+
 .loading-animation {
     z-index: 20;
     position: fixed;
