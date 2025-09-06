@@ -5,6 +5,11 @@ import { fileURLToPath, URL } from 'node:url';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  
+  // TypeScript configuration
+  esbuild: {
+    target: 'es2020'
+  },
 
   // CSS/SCSS configuration
   css: {
