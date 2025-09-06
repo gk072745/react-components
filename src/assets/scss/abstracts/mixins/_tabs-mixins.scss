@@ -1,0 +1,125 @@
+@use 'sass:map';
+@use '../variables/tabs-variables' as *;
+
+// Tabs Mixins
+// ==========================================
+
+// Tab variant mixin
+@mixin tabs-variant($variant: 'default') {
+  $variant-map: map.get($tabs-variants, $variant);
+  
+  @if $variant-map {
+    .tab {
+      background: map.get($variant-map, 'bg');
+      color: map.get($variant-map, 'color');
+      border-color: map.get($variant-map, 'border');
+      
+      &:hover {
+        background: map.get($variant-map, 'hover-bg');
+        color: map.get($variant-map, 'hover-color');
+        border-color: map.get($variant-map, 'hover-border');
+      }
+      
+      &.selected {
+        background: map.get($variant-map, 'selected-bg');
+        color: map.get($variant-map, 'selected-color');
+        border-color: map.get($variant-map, 'selected-border');
+      }
+    }
+  }
+}
+
+// Bottom line style variant mixin
+@mixin tabs-bottom-line-variant($variant: 'default') {
+  $variant-map: map.get($tabs-bottom-line-variants, $variant);
+  
+  @if $variant-map {
+    .tab {
+      background: transparent;
+      color: map.get($variant-map, 'color');
+      
+      &:hover {
+        background: transparent;
+        color: map.get($variant-map, 'hover-color');
+        border-color: transparent;
+      }
+      
+      &.selected {
+        background: transparent;
+        color: map.get($variant-map, 'selected-color');
+        border-color: transparent;
+      }
+    }
+    
+    .bottom-line-container {
+      background: map.get($variant-map, 'line-bg');
+      
+      .bottom-line {
+        background: map.get($variant-map, 'active-line-bg');
+      }
+    }
+  }
+}
+
+// Tab state mixin
+@mixin tabs-state($state: 'enabled') {
+  $state-map: map.get($tabs-states, $state);
+  
+  @if $state-map {
+    opacity: map.get($state-map, 'opacity');
+    cursor: map.get($state-map, 'cursor');
+    pointer-events: map.get($state-map, 'pointer-events');
+  }
+}
+
+// Single packed style mixin
+@mixin tabs-single-packed {
+  border: $tabs-border-width solid $tabs-default-border;
+  border-radius: $tabs-border-radius;
+  gap: $tabs-gap-single-packed;
+  
+  .tab {
+    border-radius: 0;
+    border: none;
+    
+    &:not(:last-child) {
+      border-right: $tabs-border-width solid $tabs-default-border;
+    }
+  }
+}
+
+// Bottom line style mixin
+@mixin tabs-bottom-line-style {
+  position: relative;
+  gap: 0;
+  
+  .tab {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: $tabs-bottom-line-default-color;
+    font-weight: $tabs-font-weight;
+    padding: $tabs-padding-bottom-line;
+    position: relative;
+    transition: color $tabs-transition;
+  }
+  
+  .bottom-line-container {
+    position: absolute;
+    width: 100%;
+    height: $tabs-bottom-line-height;
+    background: $tabs-bottom-line-bg;
+    z-index: 0;
+    bottom: 0px;
+    
+    .bottom-line {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      height: $tabs-bottom-line-height;
+      background: $tabs-bottom-line-active-bg;
+      transition: $tabs-bottom-line-transition;
+      z-index: 1;
+    }
+  }
+}

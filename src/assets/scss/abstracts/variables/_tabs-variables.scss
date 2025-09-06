@@ -1,0 +1,120 @@
+@use 'sass:map';
+
+// Tabs Variables
+// ==========================================
+
+// Base colors
+$tabs-default-bg: #ffffff;
+$tabs-default-color: #000000;
+$tabs-default-border: #000000;
+$tabs-selected-bg: #000000;
+$tabs-selected-color: #ffffff;
+$tabs-selected-border: #000000;
+
+$tabs-hover-bg: #000000;
+$tabs-hover-color: #ffffff;
+$tabs-hover-border: #000000;
+
+// Dark gold variant
+$tabs-dark-gold-bg: #f7dd19;
+$tabs-dark-gold-color: #000000;
+$tabs-dark-gold-border: #f7dd19;
+$tabs-dark-gold-selected-bg: #000000;
+$tabs-dark-gold-selected-color: #f7dd19;
+$tabs-dark-gold-hover-bg: #000000;
+$tabs-dark-gold-hover-color: #f7dd19;
+
+// Bottom line style colors
+$tabs-bottom-line-default-color: #666666;
+$tabs-bottom-line-hover-color: #333333;
+$tabs-bottom-line-selected-color: #007bff;
+$tabs-bottom-line-bg: #e0e0e0;
+$tabs-bottom-line-active-bg: #007bff;
+$tabs-bottom-line-dark-gold-color: #000000;
+$tabs-bottom-line-dark-gold-hover-color: #f7dd19;
+$tabs-bottom-line-dark-gold-selected-color: #f7dd19;
+$tabs-bottom-line-dark-gold-active-bg: #f7dd19;
+
+// Tab variants
+$tabs-variants: (
+  'default': (
+    'bg': $tabs-default-bg,
+    'color': $tabs-default-color,
+    'border': $tabs-default-border,
+    'selected-bg': $tabs-selected-bg,
+    'selected-color': $tabs-selected-color,
+    'selected-border': $tabs-selected-border,
+    'hover-bg': $tabs-hover-bg,
+    'hover-color': $tabs-hover-color,
+    'hover-border': $tabs-hover-border
+  ),
+  'dark-gold': (
+    'bg': $tabs-dark-gold-bg,
+    'color': $tabs-dark-gold-color,
+    'border': $tabs-dark-gold-border,
+    'selected-bg': $tabs-dark-gold-selected-bg,
+    'selected-color': $tabs-dark-gold-selected-color,
+    'selected-border': $tabs-dark-gold-border,
+    'hover-bg': $tabs-dark-gold-hover-bg,
+    'hover-color': $tabs-dark-gold-hover-color,
+    'hover-border': $tabs-dark-gold-border
+  )
+);
+
+// Bottom line style variants
+$tabs-bottom-line-variants: (
+  'default': (
+    'color': $tabs-bottom-line-default-color,
+    'hover-color': $tabs-bottom-line-hover-color,
+    'selected-color': $tabs-bottom-line-selected-color,
+    'line-bg': $tabs-bottom-line-bg,
+    'active-line-bg': $tabs-bottom-line-active-bg
+  ),
+  'dark-gold': (
+    'color': $tabs-bottom-line-dark-gold-color,
+    'hover-color': $tabs-bottom-line-dark-gold-hover-color,
+    'selected-color': $tabs-bottom-line-dark-gold-selected-color,
+    'line-bg': $tabs-bottom-line-bg,
+    'active-line-bg': $tabs-bottom-line-dark-gold-active-bg
+  )
+);
+
+// Tab states
+$tabs-states: (
+  'enabled': (
+    'opacity': 1,
+    'cursor': pointer,
+    'pointer-events': auto
+  ),
+  'disabled': (
+    'opacity': 0.6,
+    'cursor': default,
+    'pointer-events': none
+  )
+);
+
+// Tab dimensions
+$tabs-padding: 0 0.75rem;
+$tabs-padding-icon: 0 0.5rem;
+$tabs-padding-bottom-line: 0.75rem 1.5rem;
+$tabs-min-width: 3.375rem;
+$tabs-height: 2rem;
+$tabs-border-radius: 0.25rem;
+$tabs-border-width: 0.0625rem;
+$tabs-gap: 0.5rem;
+$tabs-gap-single-packed: 0rem;
+
+// Icon dimensions
+$tabs-icon-size: 1.25rem;
+
+// Bottom line dimensions
+$tabs-bottom-line-height: 2px;
+$tabs-bottom-line-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Typography
+$tabs-font-size: 0.8125rem;
+$tabs-font-weight: 500;
+$tabs-text-transform: capitalize;
+
+// Transitions
+$tabs-transition: all 0.3s ease;

@@ -1,0 +1,112 @@
+// Tabs Demo Page Styles
+// ==========================================
+
+.tabs-demo {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  .demo-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      color: #666;
+      margin: 0;
+    }
+  }
+  
+  .demo-section {
+    margin-bottom: 3rem;
+    
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.5rem;
+    }
+    
+    .demo-container {
+      background: #f8f9fa;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      
+      .tabs-example {
+        margin-bottom: 2rem;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+        
+        h3 {
+          font-size: 1.2rem;
+          font-weight: 500;
+          color: #444;
+          margin-bottom: 1rem;
+        }
+        
+        .demo-info {
+          margin-top: 1rem;
+          padding: 0.75rem;
+          background: #e3f2fd;
+          border-radius: 0.25rem;
+          font-size: 0.9rem;
+          color: #1976d2;
+          border-left: 4px solid #1976d2;
+        }
+      }
+      
+      .tabs-examples {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        
+        .tabs-example {
+          background: white;
+          padding: 1.5rem;
+          border-radius: 0.5rem;
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .tabs-demo {
+    padding: 1rem;
+    
+    .demo-header {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
+    }
+    
+    .demo-section {
+      .demo-container {
+        padding: 1rem;
+        
+        .tabs-examples {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+      }
+    }
+  }
+}

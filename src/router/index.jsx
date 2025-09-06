@@ -11,6 +11,7 @@ import RangeDemo from '@/pages/RangeDemo.jsx';
 import SliderDemo from '@/pages/SliderDemo.jsx';
 import SliderGroupDemo from '@/pages/SliderGroupDemo.jsx';
 import SwitchDemo from '@/pages/SwitchDemo.jsx';
+import TabsDemo from '@/pages/TabsDemo.jsx';
 import BreadcrumbDemo from '@/pages/BreadcrumbDemo.jsx';
 import LinearProgressDemo from '@/pages/LinearProgressDemo.jsx';
 import LoaderDemo from '@/pages/LoaderDemo.jsx';
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: '/switch',
         element: <SwitchDemo />,
+      },
+      {
+        path: '/tabs',
+        element: <TabsDemo />,
       },
       {
         path: '/breadcrumb',
