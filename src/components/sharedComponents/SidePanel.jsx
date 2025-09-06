@@ -53,6 +53,11 @@ const SidePanel = ({ isOpen, onToggle, className = '', style = {} }) => {
         icon: '📊',
       },
       {
+        path: '/loader',
+        label: 'Loader',
+        icon: '⏳',
+      },
+      {
         path: null, // No path for popup button
         label: 'Popup Example',
         icon: '💬',

@@ -21,6 +21,7 @@
 @use 'components/basic-range';
 @use 'components/basic-breadcrumb';
 @use 'components/linear-progress';
+@use 'components/loader';
 @use 'components/side-panel';
 
 // 5. Pages
@@ -31,6 +32,7 @@
 @use 'pages/range-demo';
 @use 'pages/breadcrumb-demo';
 @use 'pages/linear-progress-demo';
+@use 'pages/loader-demo';
 
 // 6. Utilities (should be last for specificity)
 @use 'utilities/spacing';
