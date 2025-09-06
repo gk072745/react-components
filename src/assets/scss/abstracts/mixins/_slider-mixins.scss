@@ -1,0 +1,152 @@
+// =============================================================================
+// SLIDER COMPONENT MIXINS
+// =============================================================================
+@use '../variables' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+@use '../variables/slider-variables' as *;
+@use "sass:map";
+
+// =============================================================================
+// SIZE MIXINS
+// =============================================================================
+
+@mixin slider-size($size) {
+    $size-config: map.get($slider-sizes, $size);
+
+    @if $size-config {
+        .slider-track {
+            height: map.get($size-config, 'track-height');
+
+            .slider-thumb {
+                width: map.get($size-config, 'thumb-size');
+                height: map.get($size-config, 'thumb-size');
+            }
+        }
+
+        .slider-label {
+            font-size: map.get($size-config, 'label-font-size');
+        }
+    }
+}
+
+// =============================================================================
+// COLOR MIXINS
+// =============================================================================
+
+@mixin slider-color($color) {
+    $color-config: map.get($slider-colors, $color);
+
+    @if $color-config {
+        .slider-track {
+            background-color: map.get($color-config, 'track');
+
+            .slider-filled {
+                background-color: map.get($color-config, 'filled');
+            }
+
+            .slider-thumb {
+                background-color: map.get($color-config, 'thumb');
+                box-shadow: 0 .125rem .25rem map.get($color-config, 'thumb-shadow');
+            }
+
+            .thumb-label {
+                background: map.get($color-config, 'thumb-label-bg');
+                color: map.get($color-config, 'thumb-label-color');
+
+                &::before {
+                    background: map.get($color-config, 'thumb-label-bg');
+                }
+            }
+
+            // Hover effects only when not disabled or readonly
+            &:hover:not(.disabled):not(.readonly) {
+                background-color: map.get($color-config, 'hover-track');
+
+                .slider-filled {
+                    background-color: map.get($color-config, 'hover-filled');
+                }
+
+                .slider-thumb {
+                    background-color: map.get($color-config, 'hover-thumb');
+                }
+            }
+
+            &:focus-visible {
+                box-shadow: 0 0 0 $slider-focus-outline-width map.get($color-config, 'focus-shadow');
+            }
+        }
+
+        .slider-label {
+            color: map.get($color-config, 'label');
+        }
+
+        &.disabled {
+            .slider-track {
+                background-color: map.get($color-config, 'disabled-track');
+
+                .slider-filled {
+                    background-color: map.get($color-config, 'disabled-filled');
+                }
+
+                .slider-thumb {
+                    background-color: map.get($color-config, 'disabled-thumb');
+                }
+            }
+
+            .slider-label {
+                color: map.get($color-config, 'disabled-label');
+            }
+        }
+    }
+}
+
+// =============================================================================
+// STATE MIXINS
+// =============================================================================
+
+@mixin slider-state($state) {
+    $state-config: map.get($slider-states, $state);
+
+    @if $state-config {
+        opacity: map.get($state-config, 'opacity');
+        cursor: map.get($state-config, 'cursor');
+        pointer-events: map.get($state-config, 'pointer-events');
+    }
+}
+
+// =============================================================================
+// GENERATOR MIXINS
+// =============================================================================
+
+@mixin generate-slider-sizes {
+    @each $size, $config in $slider-sizes {
+        &.#{$size} {
+            @include slider-size($size);
+        }
+    }
+}
+
+@mixin generate-slider-colors {
+    @each $color, $config in $slider-colors {
+        &.color-#{$color} {
+            @include slider-color($color);
+        }
+    }
+}
+
+@mixin generate-slider-states {
+    // Default enabled state (applies when no disabled or readonly classes are present)
+    &:not(.disabled):not(.readonly) {
+        @include slider-state('enabled');
+    }
+
+    &.disabled {
+        @include slider-state('disabled');
+    }
+
+    &.readonly {
+        @include slider-state('readonly');
+    }
+}

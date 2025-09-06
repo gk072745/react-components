@@ -1,0 +1,112 @@
+// =============================================================================
+// BASIC SLIDER COMPONENT STYLES
+// =============================================================================
+@use '../abstracts' as *;
+
+.basic-slider-input-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    &.has-label {
+        gap: 1rem;
+    }
+
+    // Generate all sizes, colors, and states using mixins
+    @include generate-slider-sizes;
+    @include generate-slider-colors;
+    @include generate-slider-states;
+
+    // Focus styles for accessibility
+    &:focus-visible {
+        outline: 0.125rem solid #2196f3;
+        outline-offset: 0.125rem;
+    }
+
+    // =============================================================================
+    // LABEL
+    // =============================================================================
+
+    .slider-label {
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    // =============================================================================
+    // TRACK
+    // =============================================================================
+
+    .slider-track {
+        position: relative;
+        border-radius: $slider-track-border-radius;
+        user-select: none;
+        outline: none;
+
+        // =============================================================================
+        // FILLED AREA
+        // =============================================================================
+
+        .slider-filled {
+            position: absolute;
+            height: 100%;
+            border-radius: $slider-track-border-radius 0 0 $slider-track-border-radius;
+        }
+
+        // =============================================================================
+        // THUMB
+        // =============================================================================
+
+        .slider-thumb {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 2;
+
+            &:active {
+                transform: translate(-50%, -50%) scale($slider-thumb-scale-active);
+            }
+        }
+
+        // =============================================================================
+        // THUMB LABEL
+        // =============================================================================
+
+        .thumb-label {
+            position: absolute;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            padding: $slider-thumb-label-padding;
+            border-radius: $slider-thumb-label-border-radius;
+            white-space: nowrap;
+            bottom: 0;
+            margin-bottom: $slider-thumb-label-margin-bottom;
+            z-index: 4;
+            pointer-events: none;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: calc(50% - #{$slider-thumb-label-arrow-size / 2});
+                top: 100%;
+                width: $slider-thumb-label-arrow-size;
+                height: $slider-thumb-label-arrow-size;
+                transform: rotate(45deg) translate(-50%, -50%);
+            }
+        }
+    }
+
+    // Default color (when no color class is applied)
+    &:not([class*='color-']) {
+        @include slider-color('default');
+    }
+}

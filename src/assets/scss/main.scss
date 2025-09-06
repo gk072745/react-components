@@ -19,6 +19,7 @@
 @use 'components/basic-chip';
 @use 'components/basic-radio';
 @use 'components/basic-range';
+@use 'components/basic-slider';
 @use 'components/basic-breadcrumb';
 @use 'components/linear-progress';
 @use 'components/loader';
@@ -30,6 +31,7 @@
 @use 'pages/not-found';
 @use 'pages/radio-demo';
 @use 'pages/range-demo';
+@use 'pages/slider-demo';
 @use 'pages/breadcrumb-demo';
 @use 'pages/linear-progress-demo';
 @use 'pages/loader-demo';

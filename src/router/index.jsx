@@ -8,6 +8,7 @@ import CheckboxDemo from '@/pages/CheckboxDemo.jsx';
 import ChipDemo from '@/pages/ChipDemo.jsx';
 import RadioDemo from '@/pages/RadioDemo.jsx';
 import RangeDemo from '@/pages/RangeDemo.jsx';
+import SliderDemo from '@/pages/SliderDemo.jsx';
 import BreadcrumbDemo from '@/pages/BreadcrumbDemo.jsx';
 import LinearProgressDemo from '@/pages/LinearProgressDemo.jsx';
 import LoaderDemo from '@/pages/LoaderDemo.jsx';
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: '/range',
         element: <RangeDemo />,
+      },
+      {
+        path: '/slider',
+        element: <SliderDemo />,
       },
       {
         path: '/breadcrumb',
