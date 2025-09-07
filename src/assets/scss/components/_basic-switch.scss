@@ -105,7 +105,5 @@
     }
 
     // Default color (when no color class is applied)
-    &:not([class*='color-']) {
-        @include switch-color('default');
-    }
+    // Removed default color override to allow custom CSS variables to work
 }

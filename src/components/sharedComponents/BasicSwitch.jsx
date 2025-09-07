@@ -6,8 +6,8 @@ const BasicSwitch = memo(
     value,
     disabled = false,
     readonly = false,
-    bgColor = 'grey',
-    activeBgColor = 'grey',
+    bgColor = '#e0e0e0',
+    activeBgColor = '#2196f3',
     sliderColor,
     activeSliderColor,
     size = 'xl',
@@ -31,12 +31,12 @@ const BasicSwitch = memo(
     // =============================================================================
     const computedSliderColor = useMemo(() => {
       if (sliderColor) return sliderColor;
-      return inset ? 'grey' : 'white';
+      return inset ? '#e0e0e0' : '#ffffff';
     }, [sliderColor, inset]);
 
     const computedActiveSliderColor = useMemo(() => {
       if (activeSliderColor) return activeSliderColor;
-      return inset ? 'grey' : 'white';
+      return inset ? '#e0e0e0' : '#ffffff';
     }, [activeSliderColor, inset]);
 
     const currentDotLabelColor = useMemo(() => {
