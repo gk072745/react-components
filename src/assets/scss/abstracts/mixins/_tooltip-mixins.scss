@@ -1,0 +1,87 @@
+// =============================================================================
+// TOOLTIP COMPONENT MIXINS
+// =============================================================================
+@use '../variables/tooltip-variables' as *;
+@use "sass:map";
+
+@mixin tooltip-base() {
+  padding: $tooltip-padding-y $tooltip-padding-x;
+  border-radius: $tooltip-radius;
+  font-size: $tooltip-font-size;
+  line-height: 1.4;
+  white-space: nowrap;
+  box-shadow: $tooltip-shadow;
+  z-index: $tooltip-z-index;
+}
+
+@mixin tooltip-variant($variant) {
+  $config: map.get($tooltip-colors, $variant);
+  @if $config {
+    $bg: map.get($config, 'bg');
+    $fg: map.get($config, 'fg');
+    $border: map.get($config, 'border');
+
+    background: $bg;
+    color: $fg;
+    @if $border != null { border: 0.0625rem solid $border; }
+
+    // Arrow colors by position
+    &.tooltip-top .tooltip-arrow,
+    &.tooltip-top-left .tooltip-arrow,
+    &.tooltip-top-right .tooltip-arrow { border-top-color: $bg; }
+
+    &.tooltip-bottom .tooltip-arrow,
+    &.tooltip-bottom-left .tooltip-arrow,
+    &.tooltip-bottom-right .tooltip-arrow { border-bottom-color: $bg; }
+
+    &.tooltip-left .tooltip-arrow { border-left-color: $bg; }
+    &.tooltip-right .tooltip-arrow { border-right-color: $bg; }
+  }
+}
+
+@mixin tooltip-arrow-base() {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+}
+
+@mixin tooltip-arrow-positions() {
+  .tooltip-top .tooltip-arrow {
+    top: 100%;
+    border-width: $tooltip-arrow-size $tooltip-arrow-size 0 $tooltip-arrow-size;
+  }
+  .tooltip-bottom .tooltip-arrow {
+    bottom: 100%;
+    border-width: 0 $tooltip-arrow-size $tooltip-arrow-size $tooltip-arrow-size;
+  }
+  .tooltip-left .tooltip-arrow {
+    left: 100%;
+    border-width: $tooltip-arrow-size 0 $tooltip-arrow-size $tooltip-arrow-size;
+  }
+  .tooltip-right .tooltip-arrow {
+    right: 100%;
+    border-width: $tooltip-arrow-size $tooltip-arrow-size $tooltip-arrow-size 0;
+  }
+  .tooltip-top-left .tooltip-arrow,
+  .tooltip-top-right .tooltip-arrow {
+    top: 100%;
+    border-width: $tooltip-arrow-size $tooltip-arrow-size 0 $tooltip-arrow-size;
+  }
+  .tooltip-bottom-left .tooltip-arrow,
+  .tooltip-bottom-right .tooltip-arrow {
+    bottom: 100%;
+    border-width: 0 $tooltip-arrow-size $tooltip-arrow-size $tooltip-arrow-size;
+  }
+}
+
+@mixin generate-tooltip-variants() {
+  @each $name, $cfg in $tooltip-colors {
+    &.tooltip-#{$name} {
+      @include tooltip-variant($name);
+    }
+  }
+}
+
+

@@ -1,0 +1,48 @@
+// =============================================================================
+// TOOLTIP COMPONENT VARIABLES
+// =============================================================================
+@use '../variables' as *;
+
+// Spacing and dimensions
+$tooltip-padding-y: 0.5rem !default;
+$tooltip-padding-x: 0.75rem !default;
+$tooltip-radius: 0.375rem !default;
+$tooltip-font-size: 0.875rem !default;
+$tooltip-shadow: 0 0.25rem 0.375rem -0.0625rem rgba(0, 0, 0, 0.1), 0 0.125rem 0.25rem -0.0625rem rgba(0, 0, 0, 0.06) !default;
+
+// Arrow
+$tooltip-arrow-size: 0.375rem !default;
+
+// Z-index
+$tooltip-z-index: $z-tooltip !default;
+
+// Colors map (variants)
+$tooltip-colors: (
+  'default': (
+    'bg': #1f2937,
+    'fg': $white,
+    'border': null
+  ),
+  'light': (
+    'bg': $white,
+    'fg': #1f2937,
+    'border': $gray-200
+  ),
+  'success': (
+    'bg': $success-color,
+    'fg': $white,
+    'border': null
+  ),
+  'error': (
+    'bg': $danger-color,
+    'fg': $white,
+    'border': null
+  ),
+  'warning': (
+    'bg': $warning-color,
+    'fg': $white,
+    'border': null
+  )
+) !default;
+
+

@@ -1,0 +1,39 @@
+@use '../abstracts' as *;
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-trigger {
+  cursor: default;
+
+  &.is-clickable {
+    cursor: pointer;
+  }
+}
+
+.tooltip {
+  @include tooltip-base();
+  @include tooltip-variant('default');
+  pointer-events: none;
+
+  .tooltip-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .tooltip-arrow { @include tooltip-arrow-base(); }
+}
+
+// Position-specific arrow styles
+@include tooltip-arrow-positions();
+
+.tooltip-no-arrow .tooltip-arrow {
+  display: none;
+}
+
+// Theme variants
+.tooltip { @include generate-tooltip-variants(); }
+
+

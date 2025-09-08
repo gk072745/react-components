@@ -15,6 +15,7 @@ import TabsDemo from '@/pages/TabsDemo.jsx';
 import BreadcrumbDemo from '@/pages/BreadcrumbDemo.jsx';
 import LinearProgressDemo from '@/pages/LinearProgressDemo.jsx';
 import LoaderDemo from '@/pages/LoaderDemo.jsx';
+import TooltipDemo from '@/pages/TooltipDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
       {
         path: '/loader',
         element: <LoaderDemo />,
+      },
+      {
+        path: '/tooltip',
+        element: <TooltipDemo />,
       },
     ],
   },

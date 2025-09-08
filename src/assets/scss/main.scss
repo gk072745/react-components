@@ -27,6 +27,7 @@
 @use 'components/linear-progress';
 @use 'components/loader';
 @use 'components/side-panel';
+@use 'components/basic-tooltip';
 
 // 5. Pages
 @use 'pages/home';
@@ -41,6 +42,7 @@
 @use 'pages/breadcrumb-demo';
 @use 'pages/linear-progress-demo';
 @use 'pages/loader-demo';
+@use 'pages/tooltip-demo';
 
 // 6. Utilities (should be last for specificity)
 @use 'utilities/spacing';
