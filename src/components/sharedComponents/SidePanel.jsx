@@ -83,6 +83,11 @@ const SidePanel = ({ isOpen, onToggle, className = '', style = {} }) => {
         icon: '💡',
       },
       {
+        path: '/vertical-app-bar',
+        label: 'Vertical App Bar',
+        icon: '📱',
+      },
+      {
         path: null, // No path for popup button
         label: 'Popup Example',
         icon: '💬',
