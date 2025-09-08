@@ -16,6 +16,7 @@ import BreadcrumbDemo from '@/pages/BreadcrumbDemo.jsx';
 import LinearProgressDemo from '@/pages/LinearProgressDemo.jsx';
 import LoaderDemo from '@/pages/LoaderDemo.jsx';
 import TooltipDemo from '@/pages/TooltipDemo.jsx';
+import VerticalAppBarDemo from '@/pages/VerticalAppBarDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -97,6 +98,10 @@ const router = createBrowserRouter([
       {
         path: '/tooltip',
         element: <TooltipDemo />,
+      },
+      {
+        path: '/vertical-app-bar',
+        element: <VerticalAppBarDemo />,
       },
     ],
   },
