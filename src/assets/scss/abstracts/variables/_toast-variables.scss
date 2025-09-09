@@ -1,0 +1,25 @@
+// =============================================================================
+// TOAST COMPONENT VARIABLES - COMPLETE SYSTEM
+// =============================================================================
+@use '../variables' as *;
+
+// Toast appearance variables
+$toast-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05) !default;
+$toast-border: 1px solid #e5e7eb !default;
+$toast-radius: 8px !default;
+$toast-gap: .5rem !default;
+$toast-padding-y: .75rem !default;
+$toast-padding-x: 1rem !default;
+$toast-min-width: 18.75rem !default;
+$toast-max-width: 25rem !default;
+$toast-z: $z-tooltip + 10 !default;
+
+// Toast color variants
+$toast-colors: (
+  success: #10b981,
+  error: #ef4444,
+  warning: #f59e0b,
+  info: #3b82f6,
+) !default;
+
+

@@ -1,0 +1,169 @@
+// =============================================================================
+// TOAST COMPONENT STYLES
+// =============================================================================
+@use '../abstracts' as *;
+
+// =============================================================================
+// CONTAINER STYLES
+// =============================================================================
+
+.toast-container {
+  position: fixed;
+  z-index: $toast-z;
+  background: transparent;
+  pointer-events: none; // Allow clicks to pass through container
+  
+  // Enable pointer events on toast notifications
+  .toast-notification {
+    pointer-events: auto;
+  }
+}
+
+// =============================================================================
+// STACK STYLES
+// =============================================================================
+
+.toast-stack {
+  display: flex;
+  flex-direction: column;
+  gap: $toast-gap;
+  max-height: 80vh; // Prevent toasts from going off-screen
+  overflow: hidden; // Hide any overflow instead of scrolling
+  
+  // For bottom positions, reverse the order so latest appears at bottom
+  .position-bottom-right &,
+  .position-bottom-left &,
+  .position-bottom & {
+    flex-direction: column-reverse;
+  }
+}
+
+// =============================================================================
+// NOTIFICATION STYLES
+// =============================================================================
+
+.toast-notification {
+  @include toast-base();
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+
+  .toast-content {
+    display: flex;
+    align-items: center;
+    padding: $toast-padding-y $toast-padding-x;
+    gap: .75rem;
+  }
+
+  .toast-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: .125rem;
+  }
+
+  .toast-messages { 
+    flex: 1; 
+    min-width: 0; 
+  }
+  
+  .toast-primary-message { 
+    font-size: .875rem; 
+    font-weight: 500; 
+    color: #111827; 
+    margin: 0; 
+    line-height: 1.4; 
+  }
+  
+  .toast-secondary-message { 
+    font-size: .8125rem; 
+    color: #6b7280; 
+    margin: .25rem 0 0 0; 
+    line-height: 1.4; 
+  }
+
+  .toast-close-button {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: .25rem;
+    border-radius: .25rem;
+    color: #9ca3af;
+    transition: all 0.2s ease;
+    
+    &:hover { 
+      color: #6b7280; 
+      background-color: #f3f4f6; 
+    }
+  }
+
+  // Toast variants
+  &.success { @include toast-variant(success); }
+  &.error { @include toast-variant(error); }
+  &.warning { @include toast-variant(warning); }
+  &.info { @include toast-variant(info); }
+}
+
+// =============================================================================
+// ANIMATION STATES
+// =============================================================================
+
+// Enter animations
+.toast-notification.enter {
+  @include toast-enter-animation();
+}
+
+.toast-notification.enter-active {
+  @include toast-enter-active-animation();
+}
+
+// Exit animations
+.toast-notification.exit {
+  @include toast-exit-animation();
+}
+
+.toast-notification.exit-active {
+  @include toast-exit-active-animation();
+}
+
+// =============================================================================
+// POSITION STYLES
+// =============================================================================
+
+.position-bottom-right .toast-stack,
+.position-bottom-left .toast-stack,
+.position-bottom .toast-stack { 
+  flex-direction: column-reverse; 
+}
+
+// =============================================================================
+// STACKING ANIMATIONS
+// =============================================================================
+
+// Smooth transitions when toasts are added/removed
+.toast-stack {
+  .toast-notification {
+    // Add a slight delay for stacking effect
+    transition-delay: 0ms;
+    
+    // When a toast is removed, other toasts should smoothly move to fill the gap
+    &:not(.exit):not(.exit-active) {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+}
+
+// Stagger animation for multiple toasts appearing at once
+.toast-notification {
+  &:nth-child(1) { transition-delay: 0ms; }
+  &:nth-child(2) { transition-delay: 50ms; }
+  &:nth-child(3) { transition-delay: 100ms; }
+  &:nth-child(4) { transition-delay: 150ms; }
+  &:nth-child(5) { transition-delay: 200ms; }
+  &:nth-child(n+6) { transition-delay: 250ms; }
+}
+
+
