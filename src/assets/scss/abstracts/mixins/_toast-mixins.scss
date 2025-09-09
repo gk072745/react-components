@@ -1,0 +1,89 @@
+// =============================================================================
+// TOAST COMPONENT MIXINS
+// =============================================================================
+@use '../variables' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+@use '../variables/toast-variables' as *;
+@use "sass:map";
+
+// =============================================================================
+// BASE MIXINS
+// =============================================================================
+
+@mixin toast-base() {
+  min-width: $toast-min-width;
+  max-width: $toast-max-width;
+  background: $white;
+  border-radius: $toast-radius;
+  border: $toast-border;
+  overflow: hidden;
+  box-shadow: $toast-shadow;
+  padding: $toast-padding-y $toast-padding-x;
+}
+
+// =============================================================================
+// VARIANT MIXINS
+// =============================================================================
+
+@mixin toast-variant($name) {
+  $color: map-get($toast-colors, $name);
+  border-left: 4px solid $color;
+  
+  .toast-primary-message { 
+    color: $color; 
+  }
+}
+
+// =============================================================================
+// ANIMATION MIXINS
+// =============================================================================
+
+@mixin toast-enter-animation() {
+  opacity: 0;
+  
+  // ALL top positions: slide down from top
+  &.position-top-left,
+  &.position-top,
+  &.position-top-right {
+    transform: translateY(-100%);
+  }
+  
+  // ALL bottom positions: slide up from bottom
+  &.position-bottom-left,
+  &.position-bottom,
+  &.position-bottom-right {
+    transform: translateY(100%);
+  }
+}
+
+@mixin toast-enter-active-animation() {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@mixin toast-exit-animation() {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@mixin toast-exit-active-animation() {
+  opacity: 0;
+  
+  // ALL top positions: slide up to top
+  &.position-top-left,
+  &.position-top,
+  &.position-top-right {
+    transform: translateY(-100%);
+  }
+  
+  // ALL bottom positions: slide down to bottom
+  &.position-bottom-left,
+  &.position-bottom,
+  &.position-bottom-right {
+    transform: translateY(100%);
+  }
+}
+
+

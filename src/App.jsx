@@ -4,6 +4,7 @@ import Navbar from './layouts/Navbar';
 import SidePanel from './components/sharedComponents/SidePanel';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useRemIndicator } from './customHooks/useRemIndicator';
+import OToast from './components/sharedComponents/OToast';
 
 function App() {
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
@@ -20,6 +21,7 @@ function App() {
       <ErrorBoundary>
         <Outlet context={{ onToggleSidePanel: handleToggleSidePanel }} />
       </ErrorBoundary>
+      <OToast />
       <div
         id="remIndicator"
         ref={remIndicatorRef}

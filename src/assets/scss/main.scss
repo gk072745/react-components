@@ -29,6 +29,7 @@
 @use 'components/side-panel';
 @use 'components/vertical-app-bar';
 @use 'components/basic-tooltip';
+@use 'components/toast';
 
 // 5. Pages
 @use 'pages/home';
@@ -45,6 +46,7 @@
 @use 'pages/loader-demo';
 @use 'pages/tooltip-demo';
 @use 'pages/vertical-app-bar-demo';
+@use 'pages/toast-demo';
 
 // 6. Utilities (should be last for specificity)
 @use 'utilities/spacing';

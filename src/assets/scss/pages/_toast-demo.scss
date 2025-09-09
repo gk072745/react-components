@@ -1,0 +1,71 @@
+// =============================================================================
+// TOAST DEMO PAGE STYLES
+// =============================================================================
+@use '../abstracts' as *;
+
+// =============================================================================
+// MAIN CONTAINER
+// =============================================================================
+
+.toast-demo {
+  padding: 2rem;
+  max-width: 75rem;
+  margin: 0 auto;
+
+  // Page title
+  h1 {
+    color: $gray-800;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: $font-weight-bold;
+  }
+
+  // Section titles
+  h2, h3 {
+    color: $gray-700;
+    margin-bottom: 1rem;
+    font-weight: $font-weight-semibold;
+  }
+
+  // =============================================================================
+  // DEMO SECTIONS
+  // =============================================================================
+
+  .demo-section {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: $white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+
+    // Button row layout
+    .row { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 1rem; 
+      align-items: center; 
+    }
+
+    // Demo buttons
+    button {
+      padding: 0.5rem 1rem;
+      background: #007bff;
+      color: $white;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      font-weight: $font-weight-medium;
+      transition: background-color 0.2s ease, transform 0.05s ease;
+
+      &:hover { 
+        background: #0056b3; 
+      }
+      
+      &:active { 
+        transform: scale(0.98); 
+      }
+    }
+  }
+}
+
+
