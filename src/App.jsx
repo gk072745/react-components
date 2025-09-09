@@ -3,9 +3,11 @@ import { Outlet } from 'react-router-dom';
 import Navbar from './layouts/Navbar';
 import SidePanel from './components/sharedComponents/SidePanel';
 import ErrorBoundary from './components/ErrorBoundary';
+import { useRemIndicator } from './customHooks/useRemIndicator';
 
 function App() {
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
+  const { remIndicatorRef } = useRemIndicator();
 
   const handleToggleSidePanel = () => {
     setIsSidePanelOpen(!isSidePanelOpen);
@@ -18,6 +20,11 @@ function App() {
       <ErrorBoundary>
         <Outlet context={{ onToggleSidePanel: handleToggleSidePanel }} />
       </ErrorBoundary>
+      <div
+        id="remIndicator"
+        ref={remIndicatorRef}
+        style={{ position: 'absolute', top: -10000, left: -10000, background: 'transparent', opacity: 0, width: '1rem', height: '1rem', zIndex: 1, pointerEvents: 'none', visibility: 'hidden' }}
+      />
     </div>
   );
 }
