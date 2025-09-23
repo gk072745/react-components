@@ -64,6 +64,10 @@ const BasicInput = memo(
     prependInnerIcon,
     appendIcon,
     appendInnerIcon,
+    // Custom input field support
+    customInputField,
+    customDetailsRightContent,
+    children,
     ...props
   }) => {
     // =============================================================================
@@ -843,45 +847,81 @@ const BasicInput = memo(
           {renderPrependInner}
           <div className="input-field-wrapper" tabIndex="-1">
             {label && <label className={labelClass}>{label}</label>}
-            <input
-              ref={inputRef}
-              className={inputClass}
-              type={internalType}
-              readOnly={readonly}
-              disabled={disabled}
-              placeholder={placeholder}
-              value={internalValue}
-              onInput={e => triggerEvent('input', e)}
-              onChange={e => onChangeEvent?.(e)}
-              onFocus={e => {
-                triggerEvent('focus', e);
-                onFocus?.(e);
-              }}
-              onBlur={e => {
-                triggerEvent('blur', e);
-                onBlur?.(e);
-              }}
-              onKeyDown={onKeyDown}
-              onClick={onClick}
-              onDoubleClick={onDoubleClick}
-              onMouseDown={onMouseDown}
-              onMouseUp={onMouseUp}
-              onMouseEnter={onMouseEnter}
-              onMouseLeave={onMouseLeave}
-              onKeyUp={onKeyUp}
-              onKeyPress={onKeyPress}
-              onCopy={onCopy}
-              onCut={onCut}
-              onPaste={onPaste}
-              onCompositionStart={onCompositionStart}
-              onCompositionUpdate={onCompositionUpdate}
-              onCompositionEnd={onCompositionEnd}
-              onDragEnter={onDragEnter}
-              onDragOver={onDragOver}
-              onDragLeave={onDragLeave}
-              onDrop={onDrop}
-            />
-            {renderClearButton}
+            {customInputField ? (
+              customInputField({
+                inputRef,
+                inputClass,
+                internalType,
+                readonly,
+                disabled,
+                placeholder,
+                internalValue,
+                triggerEvent,
+                onChangeEvent,
+                onFocus,
+                onBlur,
+                onKeyDown,
+                onClick,
+                onDoubleClick,
+                onMouseDown,
+                onMouseUp,
+                onMouseEnter,
+                onMouseLeave,
+                onKeyUp,
+                onKeyPress,
+                onCopy,
+                onCut,
+                onPaste,
+                onCompositionStart,
+                onCompositionUpdate,
+                onCompositionEnd,
+                onDragEnter,
+                onDragOver,
+                onDragLeave,
+                onDrop,
+                renderClearButton,
+              })
+            ) : (
+              <input
+                ref={inputRef}
+                className={inputClass}
+                type={internalType}
+                readOnly={readonly}
+                disabled={disabled}
+                placeholder={placeholder}
+                value={internalValue}
+                onInput={e => triggerEvent('input', e)}
+                onChange={e => onChangeEvent?.(e)}
+                onFocus={e => {
+                  triggerEvent('focus', e);
+                  onFocus?.(e);
+                }}
+                onBlur={e => {
+                  triggerEvent('blur', e);
+                  onBlur?.(e);
+                }}
+                onKeyDown={onKeyDown}
+                onClick={onClick}
+                onDoubleClick={onDoubleClick}
+                onMouseDown={onMouseDown}
+                onMouseUp={onMouseUp}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                onKeyUp={onKeyUp}
+                onKeyPress={onKeyPress}
+                onCopy={onCopy}
+                onCut={onCut}
+                onPaste={onPaste}
+                onCompositionStart={onCompositionStart}
+                onCompositionUpdate={onCompositionUpdate}
+                onCompositionEnd={onCompositionEnd}
+                onDragEnter={onDragEnter}
+                onDragOver={onDragOver}
+                onDragLeave={onDragLeave}
+                onDrop={onDrop}
+              />
+            )}
+            {!customInputField && renderClearButton}
           </div>
           {renderAppendInner}
         </div>
@@ -889,6 +929,18 @@ const BasicInput = memo(
         {!hideDetails && (
           <div className="details-wrapper">
             <div className={messageClass}>{error ? errorMessage : hint}</div>
+            {customDetailsRightContent && (
+              <div className="details-right-content">
+                {customDetailsRightContent({
+                  internalValue,
+                  hint,
+                  error,
+                  errorMessage,
+                  persistentDetails,
+                  focused,
+                })}
+              </div>
+            )}
           </div>
         )}
       </div>
