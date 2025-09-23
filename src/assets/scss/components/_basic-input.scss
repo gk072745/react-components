@@ -1,0 +1,427 @@
+// =============================================================================
+// BASIC INPUT COMPONENT STYLES
+// =============================================================================
+@use '../abstracts' as *;
+
+.basic-input-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+        'prepend control append'
+        'a messages b';
+    grid-template-columns: max-content minmax(0, 1fr) max-content;
+    grid-template-rows: 1fr auto;
+    align-items: center;
+
+    &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+
+        .prepend-wrapper,
+        .prepend-inner-wrapper,
+        .input-field,
+        .append-wrapper,
+        .append-inner-wrapper,
+        .details-wrapper {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .input-wrapper {
+            .input-field-wrapper {
+                .label.floating {
+                    color: rgba(#333, 0.5);
+                }
+            }
+        }
+    }
+
+    &.readonly {
+        pointer-events: none;
+
+        input {
+            pointer-events: none;
+        }
+    }
+
+    // =============================================================================
+    // PREPEND BUTTON
+    // =============================================================================
+    .prepend-wrapper {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-inline-end: 1rem;
+        overflow: hidden;
+        grid-area: prepend;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+    }
+
+    // =============================================================================
+    // INPUT WRAPPER
+    // =============================================================================
+    .input-wrapper {
+        position: relative;
+        grid-area: control;
+        padding: 0 0.625rem;
+        display: grid;
+        align-items: center;
+        grid-template-areas: 'prepend-inner field clear append-inner';
+        grid-template-columns: min-content minmax(0, 1fr) min-content min-content;
+        font-size: 1rem;
+        letter-spacing: 0.009375em;
+        max-width: 100%;
+        border-radius: 0.25rem;
+        border: 0.0625rem solid grey;
+
+        // =============================================================================
+        // PREPEND INNER BUTTON
+        // =============================================================================
+        .prepend-inner-wrapper {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-inline-end: 0.375rem;
+            overflow: hidden;
+            grid-area: prepend-inner;
+
+            svg {
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+            }
+        }
+
+        // =============================================================================
+        // INPUT FIELD WRAPPER
+        // =============================================================================
+        .input-field-wrapper {
+            grid-area: field;
+
+            // =============================================================================
+            // LABEL
+            // =============================================================================
+            .label {
+                font-size: 0.875rem;
+                color: #333;
+                position: absolute;
+                height: 100%;
+                display: flex;
+                align-items: center;
+
+                &:not(.has-inner-prepend) {
+                    transition: all 0.2s ease;
+
+                    &.floating {
+                        top: 0;
+                        left: 0.625rem;
+                        font-size: 0.625rem;
+                        height: max-content;
+                        transform: translateY(-50%);
+                        background: white;
+                        padding: 0 0.25rem;
+                    }
+                }
+
+                &.has-inner-prepend {
+                    transition: none;
+
+                    &.floating {
+                        animation: float-diagonal 0.2s ease forwards;
+                        font-size: 0.625rem;
+                        height: max-content;
+                        transform: translateY(-50%);
+                        left: 0.625rem;
+                        background: white;
+                        padding: 0 0.25rem;
+                    }
+
+                    &.un-floating {
+                        animation: reverse-float-diagonal 0.2s ease forwards;
+                        font-size: 0.875rem;
+                        height: 100%;
+                        left: calc(0.625rem + 0.375rem + 1.5rem);
+                        top: 50%;
+                        transform: translateY(-50%);
+                        padding: 0;
+                    }
+                }
+
+                // =============================================================================
+                // LABEL ANIMATIONS
+                // =============================================================================
+                @keyframes float-diagonal {
+                    0% {
+                        left: calc(0.625rem + 0.375rem + 1.5rem);
+                        top: 40%;
+                    }
+
+                    100% {
+                        left: 0.625rem;
+                        top: 0;
+                    }
+                }
+
+                @keyframes reverse-float-diagonal {
+                    0% {
+                        left: calc(0.625rem + 0.375rem);
+                        top: 0%;
+                    }
+
+                    100% {
+                        left: calc(0.625rem + 0.375rem + 1.5rem);
+                        top: 50%;
+                    }
+                }
+            }
+
+            // =============================================================================
+            // INPUT FIELD
+            // =============================================================================
+            &:has(.label) {
+                .input-field {
+                    &:not(:focus) {
+                        &::placeholder {
+                            width: 0;
+                        }
+                    }
+                }
+            }
+
+            input {
+                position: relative;
+                z-index: 1;
+                background: transparent;
+                padding: 0;
+                margin: 0;
+                border: none;
+                outline: 0;
+                padding: 1rem 0;
+                width: 100%;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &.hideSpinButtons {
+
+                    // For Chrome, Safari, Edge, Opera
+                    &[type='number']::-webkit-inner-spin-button,
+                    &[type='number']::-webkit-outer-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+
+                    // For Firefox
+                    &[type='number'] {
+                        -moz-appearance: textfield;
+                        appearance: textfield;
+                    }
+                }
+
+                // Always set cursor pointer on spin buttons if they exist
+                &[type='number']::-webkit-inner-spin-button,
+                &[type='number']::-webkit-outer-spin-button {
+                    cursor: pointer;
+                }
+            }
+
+            // =============================================================================
+            // CLEAR BUTTON
+            // =============================================================================
+            .clear-wrapper {
+                width: 1.5rem;
+                height: 1.5rem;
+                position: absolute;
+                top: 50%;
+                right: 1rem;
+                transform: translateY(-50%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.2s ease-in-out;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                z-index: 10;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.1);
+                }
+
+                svg {
+                    width: 100%;
+                    height: 100%;
+                    pointer-events: none; // Prevent SVG from blocking clicks
+                }
+            }
+
+            // Show clear button when focused and has value
+            &:focus-within {
+                &:has(.has-value) {
+                    .clear-wrapper {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+
+            // Adjust clear button position when there's an append inner button
+            &:has(.append-inner-wrapper) {
+                &:focus-within {
+                    &:has(.has-value) {
+                        .clear-wrapper {
+                            right: 2.5rem; // Move more to the left when append inner is present
+                        }
+                    }
+                }
+            }
+        }
+
+        // =============================================================================
+        // APPEND INNER BUTTON
+        // =============================================================================
+        .append-inner-wrapper {
+            min-width: 1.5rem;
+            min-height: 1.5rem;
+            height: 100%;
+            margin-inline-start: 0.375rem;
+            overflow: hidden;
+            grid-area: append-inner;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+
+            svg {
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+            }
+
+            .loader-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 1.5rem;
+                min-height: 1.5rem;
+
+                .default-loader {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+            }
+
+            .append-button-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 1.5rem;
+                min-height: 1.5rem;
+            }
+
+            // =============================================================================
+            // LOADER ANIMATION
+            // =============================================================================
+            .default-loader {
+                animation: rotate 2s linear infinite;
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+
+            .default-loader .path {
+                stroke: #1c274c;
+                stroke-linecap: round;
+                animation: dash 1.5s ease-in-out infinite;
+            }
+
+            // =============================================================================
+            // LOADER ANIMATIONS
+            // =============================================================================
+            @keyframes rotate {
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            @keyframes dash {
+                0% {
+                    stroke-dasharray: 1, 150;
+                    stroke-dashoffset: 0;
+                }
+
+                50% {
+                    stroke-dasharray: 90, 150;
+                    stroke-dashoffset: -35;
+                }
+
+                100% {
+                    stroke-dasharray: 90, 150;
+                    stroke-dashoffset: -124;
+                }
+            }
+        }
+    }
+
+    // =============================================================================
+    // APPEND BUTTON
+    // =============================================================================
+    .append-wrapper {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-inline-start: 1rem;
+        overflow: hidden;
+        grid-area: append;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+    }
+
+    // =============================================================================
+    // VALIDATION DETAILS
+    // =============================================================================
+    .details-wrapper {
+        grid-area: messages;
+        padding: 0.375rem 1rem 0;
+        overflow: hidden;
+        position: relative;
+        min-height: 1.375rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        .message {
+            opacity: 0;
+            visibility: hidden;
+            font-size: 0.75rem;
+            min-height: 0.875rem;
+            min-width: 0.0625rem;
+            position: relative;
+            transform: translateY(-100%);
+            transition: all 0.2s ease-in-out;
+
+            &.hint {
+                color: #666;
+            }
+
+            &.error {
+                color: red;
+            }
+
+            &.focused,
+            &.persistentDetails {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+    }
+}
