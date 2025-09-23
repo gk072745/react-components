@@ -19,6 +19,7 @@ import TooltipDemo from '@/pages/TooltipDemo.jsx';
 import VerticalAppBarDemo from '@/pages/VerticalAppBarDemo.jsx';
 import ToastDemo from '@/pages/ToastDemo.jsx';
 import InputDemo from '@/pages/InputDemo.jsx';
+import FileInputDemo from '@/pages/FileInputDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -112,6 +113,10 @@ const router = createBrowserRouter([
       {
         path: '/input',
         element: <InputDemo />,
+      },
+      {
+        path: '/file-input',
+        element: <FileInputDemo />,
       },
     ],
   },
