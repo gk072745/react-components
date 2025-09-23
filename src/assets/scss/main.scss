@@ -18,6 +18,7 @@
 @use 'components/basic-checkbox';
 @use 'components/basic-chip';
 @use 'components/basic-input';
+@use 'components/basic-file-input';
 @use 'components/basic-radio';
 @use 'components/basic-range';
 @use 'components/basic-slider';
@@ -49,6 +50,7 @@
 @use 'pages/vertical-app-bar-demo';
 @use 'pages/toast-demo';
 @use 'pages/input-demo';
+@use 'pages/file-input-demo';
 
 // 6. Utilities (should be last for specificity)
 @use 'utilities/spacing';
