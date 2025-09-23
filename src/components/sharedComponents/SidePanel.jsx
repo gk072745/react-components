@@ -33,6 +33,11 @@ const SidePanel = ({ isOpen, onToggle, className = '', style = {} }) => {
         icon: '🏷️',
       },
       {
+        path: '/input',
+        label: 'Input',
+        icon: '📝',
+      },
+      {
         path: '/radio',
         label: 'Radio',
         icon: '🔘',
