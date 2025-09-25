@@ -1,0 +1,281 @@
+// =============================================================================
+// PAGINATION DEMO PAGE STYLES
+// =============================================================================
+@use '../abstracts' as *;
+
+.pagination-demo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  h1 {
+    text-align: center;
+    color: #1976d2;
+    margin-bottom: 2.5rem;
+  }
+
+  .demo-section {
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+
+    h2 {
+      color: #333;
+      border-bottom: 0.125rem solid #1976d2;
+      padding-bottom: 0.625rem;
+      margin-bottom: 1.25rem;
+    }
+
+    h3 {
+      color: #555;
+      margin: 1.25rem 0 0.625rem 0;
+      font-size: 1rem;
+    }
+  }
+
+  .demo-card {
+    background: white;
+    border: 0.0625rem solid #e0e0e0;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.1);
+  }
+
+  .demo-info {
+    margin-top: 0.9375rem;
+    padding: 0.625rem;
+    background: #f5f5f5;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .demo-controls {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: 0.625rem;
+    align-items: center;
+  }
+
+  .demo-btn {
+    padding: 0.5rem 1rem;
+    background: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: #1565c0;
+    }
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+
+    input {
+      margin: 0;
+    }
+  }
+
+  /* Table styles */
+  .table-container {
+    overflow-x: auto;
+    margin-bottom: 1.25rem;
+  }
+
+  .demo-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+
+    th,
+    td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 0.0625rem solid #e0e0e0;
+    }
+
+    th {
+      background: #f5f5f5;
+      font-weight: 600;
+      color: #333;
+    }
+
+    tr:hover {
+      background: #f9f9f9;
+    }
+  }
+
+  .table-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 0.0625rem solid #e0e0e0;
+  }
+
+  .table-info {
+    color: #666;
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  .features-list {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 0.5rem 0;
+        border-bottom: 0.0625rem solid #e5e7eb;
+        font-size: 0.9rem;
+        color: #374151;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        strong {
+          color: #111827;
+        }
+      }
+    }
+  }
+
+  /* Interactive Controls Styles */
+  .controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    border: 0.0625rem solid #e9ecef;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+  }
+
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 1;
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 0.25rem;
+    }
+
+    input[type="number"],
+    select {
+      padding: 0.5rem 0.75rem;
+      border: 0.0625rem solid #d1d5db;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      background: white;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+      z-index: 10;
+
+      &:focus {
+        outline: none;
+        border-color: #1976d2;
+        box-shadow: 0 0 0 0.125rem rgba(25, 118, 210, 0.1);
+      }
+    }
+
+    select {
+      z-index: 1000;
+      position: relative;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 0.5rem;
+      transform: scale(1.1);
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      cursor: pointer;
+      color: #374151;
+
+      input {
+        margin: 0;
+      }
+    }
+  }
+
+  .interactive-pagination {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 0.5rem;
+    border: 0.0625rem solid #e9ecef;
+    margin-top: 1rem;
+  }
+
+  .demo-input,
+  .demo-select {
+    padding: 0.5rem 0.75rem;
+    border: 0.0625rem solid #d1d5db;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: #1976d2;
+      box-shadow: 0 0 0 0.125rem rgba(25, 118, 210, 0.1);
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 48rem) {
+    padding: 0.625rem;
+    
+    .demo-card {
+      padding: 1rem;
+    }
+    
+    .table-pagination {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .demo-controls {
+      flex-wrap: wrap;
+    }
+
+    .controls {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      padding: 1rem;
+    }
+
+    .control-group {
+      gap: 0.375rem;
+    }
+  }
+}
