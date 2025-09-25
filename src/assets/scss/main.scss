@@ -34,6 +34,7 @@
 @use 'components/basic-tooltip';
 @use 'components/toast';
 @use 'components/basic-snackbar';
+@use 'components/basic-pagination';
 
 // 5. Pages
 @use 'pages/home';
@@ -55,6 +56,7 @@
 @use 'pages/file-input-demo';
 @use 'pages/textarea-demo';
 @use 'pages/snackbar-demo';
+@use 'pages/pagination-demo';
 
 // 6. Utilities (should be last for specificity)
 @use 'utilities/spacing';

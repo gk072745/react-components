@@ -1,0 +1,130 @@
+// =============================================================================
+// BASIC PAGINATION COMPONENT STYLES
+// =============================================================================
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+}
+
+.pagination-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  color: rgba(0, 0, 0, 0.87);
+  position: relative;
+  overflow: hidden;
+}
+
+.pagination-button:hover:not(.pagination-button--disabled) {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.pagination-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.125rem rgba(25, 118, 210, 0.2);
+}
+
+.pagination-button--disabled {
+  cursor: default;
+  color: rgba(0, 0, 0, 0.26) !important;
+  pointer-events: none;
+}
+
+.pagination-button--icon {
+  min-width: 2.5rem;
+  width: 2.5rem;
+  border-radius: 0.5rem;
+}
+
+.pagination-button--page {
+  min-width: 2.5rem;
+  border-radius: 0.5rem;
+}
+
+.pagination-button--active {
+  background-color: #1976d2 !important;
+  color: white !important;
+}
+
+.pagination-button--active:hover {
+  background-color: #1565c0 !important;
+}
+
+.pagination-button--rounded {
+  border-radius: 50%;
+}
+
+/* Size variants */
+.pagination--small .pagination-button {
+  min-width: 2rem;
+  height: 2rem;
+  font-size: 0.75rem;
+}
+
+.pagination--small .pagination-button--icon {
+  width: 2rem;
+}
+
+.pagination--large .pagination-button {
+  min-width: 3rem;
+  height: 3rem;
+  font-size: 1rem;
+}
+
+.pagination--large .pagination-button--icon {
+  width: 3rem;
+}
+
+.pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Ripple effect */
+.pagination-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: currentColor;
+  opacity: 0;
+  border-radius: inherit;
+  transition: opacity 0.2s;
+}
+
+.pagination-button:active::before {
+  opacity: 0.12;
+}
+
+.pagination-button--active::before {
+  opacity: 0.12;
+}
+
+/* Color variants */
+.pagination-button--primary.pagination-button--active {
+  background-color: #1976d2 !important;
+}
+
+.pagination-button--secondary.pagination-button--active {
+  background-color: #424242 !important;
+}
