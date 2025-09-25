@@ -21,6 +21,7 @@ import ToastDemo from '@/pages/ToastDemo.jsx';
 import InputDemo from '@/pages/InputDemo.jsx';
 import FileInputDemo from '@/pages/FileInputDemo.jsx';
 import TextareaDemo from '@/pages/TextareaDemo.jsx';
+import SnackbarDemo from '@/pages/SnackbarDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -122,6 +123,10 @@ const router = createBrowserRouter([
       {
         path: '/textarea',
         element: <TextareaDemo />,
+      },
+      {
+        path: '/snackbar',
+        element: <SnackbarDemo />,
       },
     ],
   },

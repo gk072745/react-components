@@ -33,6 +33,7 @@
 @use 'components/vertical-app-bar';
 @use 'components/basic-tooltip';
 @use 'components/toast';
+@use 'components/basic-snackbar';
 
 // 5. Pages
 @use 'pages/home';
@@ -53,6 +54,7 @@
 @use 'pages/input-demo';
 @use 'pages/file-input-demo';
 @use 'pages/textarea-demo';
+@use 'pages/snackbar-demo';
 
 // 6. Utilities (should be last for specificity)
 @use 'utilities/spacing';

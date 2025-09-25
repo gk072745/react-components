@@ -1,0 +1,24 @@
+// =============================================================================
+// SNACKBAR COMPONENT MIXINS
+// =============================================================================
+@use '../variables' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+@use '../variables/snackbar-variables' as *;
+@use "sass:map";
+
+// =============================================================================
+// VARIANT MIXINS - Only repeating part
+// =============================================================================
+
+@mixin snackbar-variant($name) {
+  $color: map-get($snackbar-colors, $name);
+  border-left: 0.25rem solid $color;
+  
+  .snackbar-content {
+    .snackbar-primary-message {
+      color: $color;
+    }
+  }
+}

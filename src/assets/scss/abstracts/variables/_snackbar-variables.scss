@@ -1,0 +1,12 @@
+// =============================================================================
+// SNACKBAR COMPONENT VARIABLES
+// =============================================================================
+@use '../variables' as *;
+
+// Snackbar color variants - only repeating part
+$snackbar-colors: (
+  success: #10b981,
+  error: #ef4444,
+  warning: #f59e0b,
+  info: #3b82f6,
+) !default;
