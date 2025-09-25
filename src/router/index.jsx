@@ -23,6 +23,7 @@ import FileInputDemo from '@/pages/FileInputDemo.jsx';
 import TextareaDemo from '@/pages/TextareaDemo.jsx';
 import SnackbarDemo from '@/pages/SnackbarDemo.jsx';
 import PaginationDemo from '@/pages/PaginationDemo.jsx';
+import TableDemo from '@/pages/TableDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -132,6 +133,10 @@ const router = createBrowserRouter([
       {
         path: '/pagination',
         element: <PaginationDemo />,
+      },
+      {
+        path: '/table',
+        element: <TableDemo />,
       },
     ],
   },

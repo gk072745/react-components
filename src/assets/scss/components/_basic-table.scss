@@ -1,0 +1,264 @@
+// =============================================================================
+// BASIC TABLE COMPONENT STYLES
+// =============================================================================
+
+.table-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+  background: white;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  .table-container {
+    height: 100%;
+    overflow: none;
+    border-radius: 0.25rem;
+    background: white;
+    
+    .table-body {
+      display: grid;
+      grid-template-rows: max-content 1fr;
+      overflow-y: auto;
+      overflow-x: none;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      
+      .table-body-row {
+        display: grid;
+        align-items: center;
+        width: 100%;
+
+        .table-body-cell {
+          border: 0.0625rem solid #e5e7eb;
+          padding: 0.5rem;
+          align-self: stretch;
+          place-content: center;
+
+          .cell-content {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+
+            .cell-content-text {
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+
+            &.copy-enabled {
+              cursor: pointer;
+              display: grid;
+              width: 100%;
+              grid-template-columns: minmax(0, 1fr) max-content;
+              align-items: center;
+              gap: 0.25rem;
+
+              .cell-content-text {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+
+              svg {
+                display: none;
+                width: 1rem;
+                height: 1rem;
+              }
+
+              &:hover {
+                svg {
+                  display: inline-flex;
+                }
+              }
+            }
+          }
+
+          &.left-align {
+            .cell-content-text {
+              text-align: left;
+            }
+          }
+
+          &.right-align {
+            .cell-content-text {
+              text-align: right;
+            }
+          }
+
+          &.center-align {
+            .cell-content-text {
+              text-align: center;
+            }
+          }
+        }
+
+        &.table-header {
+          position: sticky;
+          top: 0;
+          left: 0;
+          z-index: 1;
+
+          .table-header-cell {
+            background: #f8fafc;
+            border: 0.0625rem solid #e5e7eb;
+            padding: 0.5rem;
+            align-self: stretch;
+            place-content: center;
+
+            &:first-child {
+              border-top-left-radius: 0.5rem;
+            }
+
+            &:last-child {
+              border-top-right-radius: 0.5rem;
+            }
+
+            &.sortable {
+              cursor: pointer;
+              transition: background-color 0.2s ease;
+
+              &:hover {
+                background: #f1f5f9;
+              }
+            }
+
+            &.sorted-asc,
+            &.sorted-desc {
+              background: #e0f2fe;
+              color: #0369a1;
+            }
+
+            &.left-align {
+              .header-content {
+                text-align: left;
+              }
+            }
+
+            &.right-align {
+              .header-content {
+                text-align: right;
+              }
+            }
+
+            &.center-align {
+              .header-content {
+                text-align: center;
+              }
+            }
+
+            .header-content {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              font-weight: 600;
+              color: #374151;
+
+              .sort-icon {
+                display: flex;
+                align-items: center;
+                color: #6b7280;
+                transition: color 0.2s ease;
+              }
+            }
+          }
+        }
+
+        &.hover-enabled {
+          &:hover {
+            .table-body-cell {
+              background: #f8fafc;
+            }
+          }
+        }
+
+        &.alternate-row-colored {
+          &:nth-child(odd) {
+            .table-body-cell {
+              background: #f0fdf4;
+            }
+          }
+        }
+
+        &.alternate-column-colored {
+          .table-body-cell {
+            &:nth-child(even) {
+              background: #f0fdf4;
+            }
+          }
+        }
+
+        &:last-child {
+          .table-body-cell {
+            &:first-child {
+              border-bottom-left-radius: 0.5rem;
+            }
+
+            &:last-child {
+              border-bottom-right-radius: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 0.25rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 0.25rem;
+
+    &:hover {
+      background-color: #94a3b8;
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-top: 0.0625rem solid #e5e7eb;
+
+  .pagination-button {
+    border: 0.0625rem solid #3b82f6;
+    border-radius: 0.25rem;
+    background: white;
+    color: #3b82f6;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: #3b82f6;
+      color: white;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      border-color: #d1d5db;
+      color: #9ca3af;
+    }
+  }
+
+  .page-info {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 500;
+  }
+}
