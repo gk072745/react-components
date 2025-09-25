@@ -19,6 +19,7 @@
 @use 'components/basic-chip';
 @use 'components/basic-input';
 @use 'components/basic-file-input';
+@use 'components/basic-textarea';
 @use 'components/basic-radio';
 @use 'components/basic-range';
 @use 'components/basic-slider';
@@ -51,6 +52,7 @@
 @use 'pages/toast-demo';
 @use 'pages/input-demo';
 @use 'pages/file-input-demo';
+@use 'pages/textarea-demo';
 
 // 6. Utilities (should be last for specificity)
 @use 'utilities/spacing';

@@ -43,6 +43,11 @@ const SidePanel = ({ isOpen, onToggle, className = '', style = {} }) => {
         icon: '📁',
       },
       {
+        path: '/textarea',
+        label: 'Textarea',
+        icon: '📄',
+      },
+      {
         path: '/radio',
         label: 'Radio',
         icon: '🔘',

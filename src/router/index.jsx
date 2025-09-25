@@ -20,6 +20,7 @@ import VerticalAppBarDemo from '@/pages/VerticalAppBarDemo.jsx';
 import ToastDemo from '@/pages/ToastDemo.jsx';
 import InputDemo from '@/pages/InputDemo.jsx';
 import FileInputDemo from '@/pages/FileInputDemo.jsx';
+import TextareaDemo from '@/pages/TextareaDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -117,6 +118,10 @@ const router = createBrowserRouter([
       {
         path: '/file-input',
         element: <FileInputDemo />,
+      },
+      {
+        path: '/textarea',
+        element: <TextareaDemo />,
       },
     ],
   },
