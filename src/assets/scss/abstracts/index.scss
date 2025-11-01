@@ -4,7 +4,6 @@
 
 // variables
 @forward 'variables';
-@forward 'variables/chip-variables';
 @forward 'variables/radio-variables';
 @forward 'variables/range-variables';
 @forward 'variables/slider-variables';
@@ -19,7 +18,6 @@
 
 // mixins
 @forward 'mixins';
-@forward 'mixins/chip-mixins';
 @forward 'mixins/radio-mixins';
 @forward 'mixins/range-mixins';
 @forward 'mixins/slider-mixins';
