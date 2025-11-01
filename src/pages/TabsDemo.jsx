@@ -123,17 +123,29 @@ const TabsDemo = () => {
       </div>
 
       <div className="demo-section">
-        <h2>Dark Gold Variant</h2>
+        <h2>Variants</h2>
         <div className="demo-container">
-          <div className="tabs-example">
-            <h3>Dark Gold Theme</h3>
-            <BasicTabs
-              tabItems={basicTabItems}
-              selected={darkGoldTabs}
-              tabClasses={['dark-gold-tab']}
-              onItemClicked={(item) => handleTabClick(item, setDarkGoldTabs)}
-            />
-            <p className="demo-info">Selected: {darkGoldTabs}</p>
+          <div className="tabs-examples">
+            <div className="tabs-example">
+              <h3>Default Variant</h3>
+              <BasicTabs
+                tabItems={basicTabItems}
+                selected={basicTabs}
+                variant="default"
+                onItemClicked={(item) => handleTabClick(item, setBasicTabs)}
+              />
+              <p className="demo-info">Selected: {basicTabs}</p>
+            </div>
+            <div className="tabs-example">
+              <h3>Dark Gold Variant</h3>
+              <BasicTabs
+                tabItems={basicTabItems}
+                selected={darkGoldTabs}
+                variant="dark-gold"
+                onItemClicked={(item) => handleTabClick(item, setDarkGoldTabs)}
+              />
+              <p className="demo-info">Selected: {darkGoldTabs}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -163,19 +175,19 @@ const TabsDemo = () => {
                 tabItems={basicTabItems}
                 selected={bottomLineDarkGoldTabs}
                 bottomLineStyle={true}
-                tabClasses={['dark-gold-tab']}
+                variant="dark-gold"
                 onItemClicked={(item) => handleTabClick(item, setBottomLineDarkGoldTabs)}
               />
               <p className="demo-info">Selected: {bottomLineDarkGoldTabs}</p>
             </div>
-            
+
             <div className="tabs-example">
               <h3>Single Packed + Dark Gold</h3>
               <BasicTabs
                 tabItems={basicTabItems}
                 selected={singlePackedTabs}
                 singlePacked={true}
-                tabClasses={['dark-gold-tab']}
+                variant="dark-gold"
                 onItemClicked={(item) => handleTabClick(item, setSinglePackedTabs)}
               />
               <p className="demo-info">Selected: {singlePackedTabs}</p>

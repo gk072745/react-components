@@ -1,5 +1,4 @@
-@use '../abstracts/variables/tabs-variables' as *;
-@use '../abstracts/mixins/tabs-mixins' as *;
+@use '../abstracts' as *;
 
 // Basic Tabs Component
 // ==========================================
@@ -9,74 +8,177 @@
   position: relative;
   overflow-x: hidden;
   width: 100%;
-  
+
   .overflow-container {
     display: flex;
     align-items: center;
     justify-content: start;
     overflow: hidden;
     overflow-x: auto;
-    gap: $tabs-gap;
-    
+    gap: 0.5rem;
+
     &:has(.icon) {
       width: max-content;
-      border-radius: $tabs-border-radius;
+      border-radius: 0.25rem;
     }
-    
+
     .tab {
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: $tabs-padding;
-      border-radius: $tabs-border-radius;
-      border: $tabs-border-width solid $tabs-default-border;
-      background: $tabs-default-bg;
-      color: $tabs-default-color;
-      font-size: $tabs-font-size;
-      font-weight: $tabs-font-weight;
-      min-width: $tabs-min-width;
-      height: $tabs-height;
-      transition: $tabs-transition;
-      text-transform: $tabs-text-transform;
-      
+      padding: 0 0.75rem;
+      border-radius: 0.25rem;
+      border: 0.0625rem solid #000000;
+      background: #ffffff;
+      color: #000000;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      min-width: 3.375rem;
+      height: 2rem;
+      transition: all 0.3s ease;
+      text-transform: capitalize;
+
       &:hover,
       &.selected {
-        color: $tabs-selected-color;
-        border-color: $tabs-selected-border;
-        background: $tabs-selected-bg;
+        color: #ffffff;
+        border-color: #000000;
+        background: #000000;
       }
-      
+
       &:has(.icon) {
-        padding: $tabs-padding-icon;
-        
+        padding: 0 0.5rem;
+
         .icon {
           display: flex;
           justify-content: center;
           align-items: center;
-          width: $tabs-icon-size;
-          height: $tabs-icon-size;
+          width: 1.25rem;
+          height: 1.25rem;
         }
       }
     }
-    
+
     // Single packed style
     &.single-packed {
-      @include tabs-single-packed;
+      border: 0.0625rem solid #000000;
+      border-radius: 0.25rem;
+      gap: 0rem;
+
+      .tab {
+        border-radius: 0;
+        border: none;
+
+        &:not(:last-child) {
+          border-right: 0.0625rem solid #000000;
+        }
+      }
     }
-    
-    // Dark gold variant
-    &.dark-gold-tab {
-      @include tabs-variant('dark-gold');
-    }
-    
+
     // Bottom line style
     &.bottom-line-style {
-      @include tabs-bottom-line-style;
-      
-      // Dark gold variant for bottom line style
-      &.dark-gold-tab {
-        @include tabs-bottom-line-variant('dark-gold');
+      position: relative;
+      gap: 0;
+
+      .tab {
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        color: #666666;
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .bottom-line-container {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #e0e0e0;
+        z-index: 0;
+        bottom: 0px;
+
+        .bottom-line {
+          position: absolute;
+          bottom: 0px;
+          left: 0;
+          height: 2px;
+          background: #007bff;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 1;
+        }
+      }
+    }
+
+    // =============================================================================
+    // VARIANT STYLES - DEFAULT
+    // =============================================================================
+
+    &.variant-default {
+      // Default styles are already in .tab above
+    }
+
+    // =============================================================================
+    // VARIANT STYLES - DARK GOLD
+    // =============================================================================
+
+    &.variant-dark-gold {
+      .tab {
+        background: #f7dd19;
+        color: #000000;
+        border-color: #f7dd19;
+
+        &:hover {
+          background: #000000;
+          color: #f7dd19;
+          border-color: #f7dd19;
+        }
+
+        &.selected {
+          background: #000000;
+          color: #f7dd19;
+          border-color: #f7dd19;
+        }
+      }
+
+      // Dark gold with single packed style
+      &.single-packed {
+        border-color: #f7dd19;
+
+        .tab {
+          &:not(:last-child) {
+            border-right-color: #f7dd19;
+          }
+        }
+      }
+
+      // Dark gold with bottom line style
+      &.bottom-line-style {
+        .tab {
+          background: transparent;
+          color: #000000;
+
+          &:hover {
+            background: transparent;
+            color: #f7dd19;
+            border-color: transparent;
+          }
+
+          &.selected {
+            background: transparent;
+            color: #f7dd19;
+            border-color: transparent;
+          }
+        }
+
+        .bottom-line-container {
+          background: #e0e0e0;
+
+          .bottom-line {
+            background: #f7dd19;
+          }
+        }
       }
     }
   }
