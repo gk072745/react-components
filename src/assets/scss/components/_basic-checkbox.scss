@@ -6,163 +6,201 @@
 @use '../abstracts' as *;
 
 .checkbox-container {
+  // =============================================================================
+  // BASIC CONTAINER PROPERTIES
+  // =============================================================================
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  & {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+    color: #000000;
+    position: relative;
+  }
+
+  // =============================================================================
+  // HIDDEN INPUT STYLES
+  // =============================================================================
+  // Hide the actual checkbox input but keep it accessible
+  input {
+    display: none;
 
     // =============================================================================
-    // BASIC CONTAINER PROPERTIES
+    // CHECKED STATE STYLES
     // =============================================================================
-    *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
+    // When checkbox is checked, style the custom checkbox
+    &:checked + .checkbox {
+      .inner-tick {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  // =============================================================================
+  // DISABLED STATE STYLES
+  // =============================================================================
+  // When checkbox is disabled, reduce opacity and prevent interactions
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  // =============================================================================
+  // READONLY STATE STYLES
+  // =============================================================================
+  // When checkbox is readonly, prevent interactions but maintain visibility
+  &.readonly {
+    pointer-events: none;
+  }
+
+  // =============================================================================
+  // CUSTOM CHECKBOX STYLES
+  // =============================================================================
+  // The visual checkbox element that replaces the default input
+  .checkbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.0625rem solid;
+    border-radius: 0.125rem;
+    background-color: transparent;
+    transition: all $transition-base;
+
+    // =============================================================================
+    // INNER TICK STYLES
+    // =============================================================================
+    // The checkmark/tick that appears when checkbox is selected
+    .inner-tick {
+      border-bottom-right-radius: 0.0625rem;
+      width: 33%;
+      height: 80%;
+      border-bottom: 0.125rem solid;
+      border-right: 0.125rem solid;
+      transform: rotate(45deg) translate(-10%, -10%);
+      visibility: hidden;
+      opacity: 0;
+      transition: all $transition-base;
     }
 
-    &{
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        cursor: pointer;
-        user-select: none;
-        color: #000000;
-        position: relative;
+    // =============================================================================
+    // ACTIVE STATE
+    // =============================================================================
+    // Visual feedback when clicking
+    &:active {
+      opacity: 0.7;
     }
+  }
 
-    // =============================================================================
-    // HIDDEN INPUT STYLES
-    // =============================================================================
-    // Hide the actual checkbox input but keep it accessible
-    input {
-        display: none;
+  // =============================================================================
+  // SIZE VARIANTS
+  // =============================================================================
+  // Different sizes for different use cases
 
-        // =============================================================================
-        // CHECKED STATE STYLES
-        // =============================================================================
-        // When checkbox is checked, style the custom checkbox
-        &:checked+.checkbox {
-            background-color: var(--background-checked-color, #000000) !important;
+  // Extra Small Size
+  &.xs {
+    font-size: 0.625rem;
 
-            .inner-tick {
-                visibility: visible;
-                opacity: 1;
-            }
-        }
-    }
-
-    // =============================================================================
-    // DISABLED STATE STYLES
-    // =============================================================================
-    // When checkbox is disabled, reduce opacity and prevent interactions
-    &.disabled {
-        pointer-events: none;
-        opacity: 0.5;
-    }
-
-    // =============================================================================
-    // READONLY STATE STYLES
-    // =============================================================================
-    // When checkbox is readonly, prevent interactions but maintain visibility
-    &.readonly {
-        pointer-events: none;
-    }
-
-    // =============================================================================
-    // CUSTOM CHECKBOX STYLES
-    // =============================================================================
-    // The visual checkbox element that replaces the default input
     .checkbox {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 0.0625rem solid;
-        border-radius: 0.125rem;
-        background-color: transparent;
-        transition: all $transition-base;
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+  }
 
-        // =============================================================================
-        // INNER TICK STYLES
-        // =============================================================================
-        // The checkmark/tick that appears when checkbox is selected
-        .inner-tick {
-            border-bottom-right-radius: 0.0625rem;
-            width: 33%;
-            height: 80%;
-            border-bottom: 0.125rem solid;
-            border-right: 0.125rem solid;
-            transform: rotate(45deg);
-            visibility: hidden;
-            opacity: 0;
-            transition: all $transition-base;
-        }
+  // Small Size
+  &.sm {
+    font-size: 0.75rem;
 
-        // =============================================================================
-        // HOVER EFFECTS
-        // =============================================================================
-        // Subtle background change on hover for better UX
-        &:hover {
-            background-color: var(--background-checked-color, #000000) !important;
-        }
+    .checkbox {
+      width: 0.875rem;
+      height: 0.875rem;
+    }
+  }
 
-        // =============================================================================
-        // ACTIVE STATE
-        // =============================================================================
-        // Visual feedback when clicking
-        &:active {
-            opacity: 0.7;
-        }
+  // Medium Size (Default)
+  &.md {
+    font-size: 0.875rem;
+
+    .checkbox {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  // Large Size
+  &.lg {
+    font-size: 1rem;
+
+    .checkbox {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+  }
+
+  // Extra Large Size
+  &.xl {
+    font-size: 1.125rem;
+
+    .checkbox {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  // =============================================================================
+  // VARIANT STYLES
+  // =============================================================================
+  // Different color variants for different use cases
+
+  // Default Variant
+  &.default {
+    color: #000000;
+
+    .checkbox {
+      border-color: #000000;
+
+      &:hover {
+        background-color: #000000;
+      }
     }
 
-    // =============================================================================
-    // SIZE VARIANTS
-    // =============================================================================
-    // Different sizes for different use cases
+    input:checked + .checkbox {
+      background-color: #000000;
+      border-color: #000000;
 
-    // Extra Small Size
-    &.xs {
-        font-size: 0.625rem;
+      .inner-tick {
+        border-color: #ffffff;
+      }
+    }
+  }
 
-        .checkbox {
-            width: 0.75rem;
-            height: 0.75rem;
-        }
+  // Info Variant
+  &.info {
+    color: #0c63e4;
+
+    .checkbox {
+      border-color: #2196f3;
+
+      &:hover {
+        background-color: #2196f3;
+      }
     }
 
-    // Small Size
-    &.sm {
-        font-size: 0.75rem;
+    input:checked + .checkbox {
+      background-color: #2196f3;
+      border-color: #2196f3;
 
-        .checkbox {
-            width: 0.875rem;
-            height: 0.875rem;
-        }
+      .inner-tick {
+        border-color: #ffffff;
+      }
     }
-
-    // Medium Size (Default)
-    &.md {
-        font-size: 0.875rem;
-
-        .checkbox {
-            width: 1rem;
-            height: 1rem;
-        }
-    }
-
-    // Large Size
-    &.lg {
-        font-size: 1rem;
-
-        .checkbox {
-            width: 1.125rem;
-            height: 1.125rem;
-        }
-    }
-
-    // Extra Large Size
-    &.xl {
-        font-size: 1.125rem;
-
-        .checkbox {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-    }
+  }
 }

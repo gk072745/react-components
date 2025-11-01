@@ -6,11 +6,6 @@ const CheckboxDemo = () => {
   // STATE MANAGEMENT
   // =============================================================================
   const [selectedItems, setSelectedItems] = useState([]);
-  const [customColors, setCustomColors] = useState({
-    backgroundColor: '#2196F3',
-    innerTickColor: '#ffffff',
-    labelColor: '#333333',
-  });
 
   // =============================================================================
   // SAMPLE DATA
@@ -142,46 +137,24 @@ const CheckboxDemo = () => {
         />
       </div>
 
-      {/* Demo 4: Custom Colors */}
-      <h3 style={{ marginTop: '2rem' }}>Demo 4: Custom Colors</h3>
-      <div style={{ marginBottom: '1rem' }}>
-        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
-          Background Color:
-          <input
-            type="color"
-            value={customColors.backgroundColor}
-            onChange={e => setCustomColors(prev => ({ ...prev, backgroundColor: e.target.value }))}
-            style={{ marginLeft: '0.5rem' }}
-          />
-        </label>
-        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
-          Tick Color:
-          <input
-            type="color"
-            value={customColors.innerTickColor}
-            onChange={e => setCustomColors(prev => ({ ...prev, innerTickColor: e.target.value }))}
-            style={{ marginLeft: '0.5rem' }}
-          />
-        </label>
-        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
-          Label Color:
-          <input
-            type="color"
-            value={customColors.labelColor}
-            onChange={e => setCustomColors(prev => ({ ...prev, labelColor: e.target.value }))}
-            style={{ marginLeft: '0.5rem' }}
-          />
-        </label>
+      {/* Demo 4: Variants */}
+      <h3 style={{ marginTop: '2rem' }}>Demo 4: Variants</h3>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <BasicCheckbox
+          label="Default Variant"
+          value="default-variant"
+          selected={selectedItems}
+          onChange={handleCheckboxChange}
+          variant="default"
+        />
+        <BasicCheckbox
+          label="Info Variant"
+          value="info-variant"
+          selected={selectedItems}
+          onChange={handleCheckboxChange}
+          variant="info"
+        />
       </div>
-      <BasicCheckbox
-        label="Custom Colored Checkbox"
-        value="custom"
-        selected={selectedItems}
-        onChange={handleCheckboxChange}
-        backgroundColor={customColors.backgroundColor}
-        innerTickColor={customColors.innerTickColor}
-        labelColor={customColors.labelColor}
-      />
 
       {/* Demo 5: Select All Functionality */}
       <h3 style={{ marginTop: '2rem' }}>Demo 5: Select All Functionality</h3>
