@@ -20,29 +20,41 @@ const BasicPagination = ({
   ...props
 }) => {
   // Default icon components
-  const defaultFirstIcon = useCallback(() => (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-      <path d="M18.41,16.59L13.82,12L18.41,7.41L17,6L11,12L17,18L18.41,16.59M6,6H8V18H6V6Z" />
-    </svg>
-  ), []);
+  const defaultFirstIcon = useCallback(
+    () => (
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M18.41,16.59L13.82,12L18.41,7.41L17,6L11,12L17,18L18.41,16.59M6,6H8V18H6V6Z" />
+      </svg>
+    ),
+    []
+  );
 
-  const defaultPrevIcon = useCallback(() => (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-      <path d="M15.41,16.58L10.83,12L15.41,7.42L14,6L8,12L14,18L15.41,16.58Z" />
-    </svg>
-  ), []);
+  const defaultPrevIcon = useCallback(
+    () => (
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M15.41,16.58L10.83,12L15.41,7.42L14,6L8,12L14,18L15.41,16.58Z" />
+      </svg>
+    ),
+    []
+  );
 
-  const defaultNextIcon = useCallback(() => (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-      <path d="M8.59,16.58L13.17,12L8.59,7.42L10,6L16,12L10,18L8.59,16.58Z" />
-    </svg>
-  ), []);
+  const defaultNextIcon = useCallback(
+    () => (
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M8.59,16.58L13.17,12L8.59,7.42L10,6L16,12L10,18L8.59,16.58Z" />
+      </svg>
+    ),
+    []
+  );
 
-  const defaultLastIcon = useCallback(() => (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-      <path d="M5.59,7.41L10.18,12L5.59,16.59L7,18L13,12L7,6L5.59,7.41M16,6H18V18H16V6Z" />
-    </svg>
-  ), []);
+  const defaultLastIcon = useCallback(
+    () => (
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M5.59,7.41L10.18,12L5.59,16.59L7,18L13,12L7,6L5.59,7.41M16,6H18V18H16V6Z" />
+      </svg>
+    ),
+    []
+  );
 
   // Computed properties for button states
   const isFirstDisabled = useMemo(() => disabled || currentPage <= 1, [disabled, currentPage]);
@@ -94,56 +106,77 @@ const BasicPagination = ({
   // CSS classes
   const paginationClasses = useMemo(() => {
     const classes = ['pagination'];
-    if (size !== 'default') classes.push(`pagination--${size}`);
-    if (disabled) classes.push('pagination--disabled');
+    if (size !== 'default') classes.push(`pagination-${size}`);
+    if (disabled) classes.push('pagination-disabled');
     if (className) classes.push(className);
     return classes.join(' ');
   }, [size, disabled, className]);
 
-  const getButtonClasses = useCallback((active = false) => {
-    const classes = ['pagination-button'];
-    if (size !== 'default') classes.push(`pagination-button--${size}`);
-    if (active) classes.push(`pagination-button--${color}`, 'pagination-button--active');
-    if (disabled) classes.push('pagination-button--disabled');
-    if (rounded) classes.push('pagination-button--rounded');
-    return classes.join(' ');
-  }, [size, color, disabled, rounded]);
+  const getButtonClasses = useCallback(
+    (active = false) => {
+      const classes = ['pagination-button'];
+      if (size !== 'default') classes.push(`pagination-button-${size}`);
+      if (active) classes.push(`pagination-button-${color}`, 'pagination-button-active');
+      if (disabled) classes.push('pagination-button-disabled');
+      if (rounded) classes.push('pagination-button-rounded');
+      return classes.join(' ');
+    },
+    [size, color, disabled, rounded]
+  );
 
-  const getPageButtonClasses = useCallback((page) => getButtonClasses(page === currentPage), [getButtonClasses, currentPage]);
+  const getPageButtonClasses = useCallback(
+    page => getButtonClasses(page === currentPage),
+    [getButtonClasses, currentPage]
+  );
 
   // Event handlers
-  const handleFirstClick = useCallback((e) => {
-    if (isFirstDisabled) return;
-    onFirst?.(1);
-    onPageChange?.(1);
-  }, [isFirstDisabled, onFirst, onPageChange]);
+  const handleFirstClick = useCallback(
+    e => {
+      if (isFirstDisabled) return;
+      onFirst?.(1);
+      onPageChange?.(1);
+    },
+    [isFirstDisabled, onFirst, onPageChange]
+  );
 
-  const handlePrevClick = useCallback((e) => {
-    if (isPrevDisabled) return;
-    const prevPage = currentPage - 1;
-    onPrev?.(prevPage);
-    onPageChange?.(prevPage);
-  }, [isPrevDisabled, currentPage, onPrev, onPageChange]);
+  const handlePrevClick = useCallback(
+    e => {
+      if (isPrevDisabled) return;
+      const prevPage = currentPage - 1;
+      onPrev?.(prevPage);
+      onPageChange?.(prevPage);
+    },
+    [isPrevDisabled, currentPage, onPrev, onPageChange]
+  );
 
-  const handleNextClick = useCallback((e) => {
-    if (isNextDisabled) return;
-    const nextPage = currentPage + 1;
-    onNext?.(nextPage);
-    onPageChange?.(nextPage);
-  }, [isNextDisabled, currentPage, onNext, onPageChange]);
+  const handleNextClick = useCallback(
+    e => {
+      if (isNextDisabled) return;
+      const nextPage = currentPage + 1;
+      onNext?.(nextPage);
+      onPageChange?.(nextPage);
+    },
+    [isNextDisabled, currentPage, onNext, onPageChange]
+  );
 
-  const handleLastClick = useCallback((e) => {
-    if (isLastDisabled) return;
-    onLast?.(totalPages);
-    onPageChange?.(totalPages);
-  }, [isLastDisabled, totalPages, onLast, onPageChange]);
+  const handleLastClick = useCallback(
+    e => {
+      if (isLastDisabled) return;
+      onLast?.(totalPages);
+      onPageChange?.(totalPages);
+    },
+    [isLastDisabled, totalPages, onLast, onPageChange]
+  );
 
-  const handlePageClick = useCallback((page) => {
-    if (disabled || page < 1 || page > totalPages || page === currentPage) {
-      return;
-    }
-    onPageChange?.(page);
-  }, [disabled, totalPages, currentPage, onPageChange]);
+  const handlePageClick = useCallback(
+    page => {
+      if (disabled || page < 1 || page > totalPages || page === currentPage) {
+        return;
+      }
+      onPageChange?.(page);
+    },
+    [disabled, totalPages, currentPage, onPageChange]
+  );
 
   // Don't render if no pages
   if (totalPages <= 0) {
@@ -155,7 +188,7 @@ const BasicPagination = ({
       {/* First page button */}
       {showFirstLast && totalPages > 0 && (
         <button
-          className={`pagination-button pagination-button--icon ${getButtonClasses()}`}
+          className={`pagination-button pagination-button-icon ${getButtonClasses()}`}
           disabled={isFirstDisabled}
           aria-label="Go to first page"
           aria-disabled={isFirstDisabled}
@@ -169,7 +202,7 @@ const BasicPagination = ({
       {/* Previous page button */}
       {showPrevNext && (
         <button
-          className={`pagination-button pagination-button--icon ${getButtonClasses()}`}
+          className={`pagination-button pagination-button-icon ${getButtonClasses()}`}
           disabled={isPrevDisabled}
           aria-label="Go to previous page"
           aria-disabled={isPrevDisabled}
@@ -193,7 +226,7 @@ const BasicPagination = ({
           ) : (
             /* Page number button */
             <button
-              className={`pagination-button pagination-button--page ${getPageButtonClasses(pageItem)}`}
+              className={`pagination-button pagination-button-page ${getPageButtonClasses(pageItem)}`}
               aria-label={`Go to page ${pageItem}`}
               aria-current={pageItem === currentPage ? 'page' : undefined}
               onClick={() => handlePageClick(pageItem)}
@@ -208,7 +241,7 @@ const BasicPagination = ({
       {/* Next page button */}
       {showPrevNext && (
         <button
-          className={`pagination-button pagination-button--icon ${getButtonClasses()}`}
+          className={`pagination-button pagination-button-icon ${getButtonClasses()}`}
           disabled={isNextDisabled}
           aria-label="Go to next page"
           aria-disabled={isNextDisabled}
@@ -222,7 +255,7 @@ const BasicPagination = ({
       {/* Last page button */}
       {showFirstLast && totalPages > 0 && (
         <button
-          className={`pagination-button pagination-button--icon ${getButtonClasses()}`}
+          className={`pagination-button pagination-button-icon ${getButtonClasses()}`}
           disabled={isLastDisabled}
           aria-label="Go to last page"
           aria-disabled={isLastDisabled}
