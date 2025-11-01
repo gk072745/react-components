@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import BasicMenu from '@/components/sharedComponents/BasicMenu.jsx';
 import '@/assets/scss/pages/_menu-demo.scss';
 
 const MenuDemo = () => {
+  // React 19 ref usage - ref as a prop
+  const menuRef1 = useRef(null);
+  const menuRef2 = useRef(null);
   const menuItems = [
     { id: 1, label: 'Profile', icon: '👤' },
     { id: 2, label: 'Settings', icon: '⚙️' },
@@ -250,6 +253,113 @@ const MenuDemo = () => {
           <BasicMenu trigger={<Box>No Offset</Box>} placement="bottom" offset={[0, 0]}>
             <MenuContent />
           </BasicMenu>
+        </div>
+      </section>
+
+      {/* React 19 Ref Usage */}
+      <section className="demo-section">
+        <h2>React 19 Ref Prop Usage</h2>
+        <p style={{ marginBottom: '1rem', color: '#6b7280', fontSize: '0.875rem' }}>
+          BasicMenu now uses React 19's ref prop syntax. You can access imperative methods like openMenu, closeMenu, toggleMenu, isOpen, and actualPlacement.
+        </p>
+        <div className="demo-group-row" style={{ flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            <BasicMenu ref={menuRef1} trigger={<Box>Programmatic Control</Box>} placement="bottom">
+              <MenuContent />
+            </BasicMenu>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <button
+                onClick={() => menuRef1.current?.openMenu()}
+                style={{
+                  padding: '0.5rem 1rem',
+                  background: '#3b82f6',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '0.375rem',
+                  cursor: 'pointer',
+                  fontSize: '0.875rem',
+                }}
+              >
+                Open Menu
+              </button>
+              <button
+                onClick={() => menuRef1.current?.closeMenu()}
+                style={{
+                  padding: '0.5rem 1rem',
+                  background: '#ef4444',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '0.375rem',
+                  cursor: 'pointer',
+                  fontSize: '0.875rem',
+                }}
+              >
+                Close Menu
+              </button>
+              <button
+                onClick={() => menuRef1.current?.toggleMenu()}
+                style={{
+                  padding: '0.5rem 1rem',
+                  background: '#10b981',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '0.375rem',
+                  cursor: 'pointer',
+                  fontSize: '0.875rem',
+                }}
+              >
+                Toggle Menu
+              </button>
+              <button
+                onClick={() => {
+                  const status = menuRef1.current?.isOpen ? 'open' : 'closed';
+                  const placement = menuRef1.current?.actualPlacement || 'unknown';
+                  alert(`Menu is ${status}\nPlacement: ${placement}`);
+                }}
+                style={{
+                  padding: '0.5rem 1rem',
+                  background: '#6366f1',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '0.375rem',
+                  cursor: 'pointer',
+                  fontSize: '0.875rem',
+                }}
+              >
+                Check Status
+              </button>
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            <BasicMenu
+              ref={menuRef2}
+              trigger={<Box>Auto-Open on Mount</Box>}
+              placement="bottom-start"
+              onOpen={() => console.log('Menu opened!')}
+              onClose={() => console.log('Menu closed!')}
+            >
+              <MenuContent />
+            </BasicMenu>
+            <button
+              onClick={() => {
+                menuRef2.current?.openMenu();
+                setTimeout(() => {
+                  menuRef2.current?.closeMenu();
+                }, 2000);
+              }}
+              style={{
+                padding: '0.5rem 1rem',
+                background: '#f59e0b',
+                color: 'white',
+                border: 'none',
+                borderRadius: '0.375rem',
+                cursor: 'pointer',
+                fontSize: '0.875rem',
+              }}
+            >
+              Open for 2 seconds
+            </button>
+          </div>
         </div>
       </section>
     </div>
