@@ -42,9 +42,7 @@ const RangeDemo = () => {
             min={0}
             max={100}
             step={1}
-            color="#007bff"
-            thumbColor="#007bff"
-            trackColor="#e9ecef"
+            variant="primary"
             size="md"
           />
         </div>
@@ -64,9 +62,7 @@ const RangeDemo = () => {
             min={-50}
             max={150}
             step={5}
-            color="#28a745"
-            thumbColor="#28a745"
-            trackColor="#e9ecef"
+            variant="success"
             thumbLabel={true}
             size="lg"
           />
@@ -87,9 +83,7 @@ const RangeDemo = () => {
             min={0}
             max={100}
             step={0.1}
-            color="#dc3545"
-            thumbColor="#dc3545"
-            trackColor="#e9ecef"
+            variant="danger"
             thumbLabel="always"
             size="md"
           />
@@ -103,61 +97,11 @@ const RangeDemo = () => {
       <section className="demo-section">
         <h2>Different Sizes</h2>
         <div className="demo-group">
-          <BasicRange
-            value={[25, 75]}
-            label="Extra Small"
-            min={0}
-            max={100}
-            step={1}
-            color="#6f42c1"
-            thumbColor="#6f42c1"
-            trackColor="#e9ecef"
-            size="xs"
-          />
-          <BasicRange
-            value={[30, 70]}
-            label="Small"
-            min={0}
-            max={100}
-            step={1}
-            color="#fd7e14"
-            thumbColor="#fd7e14"
-            trackColor="#e9ecef"
-            size="sm"
-          />
-          <BasicRange
-            value={[35, 65]}
-            label="Medium"
-            min={0}
-            max={100}
-            step={1}
-            color="#20c997"
-            thumbColor="#20c997"
-            trackColor="#e9ecef"
-            size="md"
-          />
-          <BasicRange
-            value={[40, 60]}
-            label="Large"
-            min={0}
-            max={100}
-            step={1}
-            color="#e83e8c"
-            thumbColor="#e83e8c"
-            trackColor="#e9ecef"
-            size="lg"
-          />
-          <BasicRange
-            value={[45, 55]}
-            label="Extra Large"
-            min={0}
-            max={100}
-            step={1}
-            color="#6c757d"
-            thumbColor="#6c757d"
-            trackColor="#e9ecef"
-            size="xl"
-          />
+          <BasicRange value={[25, 75]} label="Extra Small" min={0} max={100} step={1} variant="primary" size="xs" />
+          <BasicRange value={[30, 70]} label="Small" min={0} max={100} step={1} variant="warning" size="sm" />
+          <BasicRange value={[35, 65]} label="Medium" min={0} max={100} step={1} variant="success" size="md" />
+          <BasicRange value={[40, 60]} label="Large" min={0} max={100} step={1} variant="danger" size="lg" />
+          <BasicRange value={[45, 55]} label="Extra Large" min={0} max={100} step={1} variant="info" size="xl" />
         </div>
       </section>
 
@@ -171,9 +115,7 @@ const RangeDemo = () => {
             min={0}
             max={100}
             step={1}
-            color="#007bff"
-            thumbColor="#007bff"
-            trackColor="#e9ecef"
+            variant="primary"
             disabled={true}
             size="md"
           />
@@ -183,9 +125,7 @@ const RangeDemo = () => {
             min={0}
             max={100}
             step={1}
-            color="#28a745"
-            thumbColor="#28a745"
-            trackColor="#e9ecef"
+            variant="success"
             readonly={true}
             size="md"
           />
@@ -203,9 +143,7 @@ const RangeDemo = () => {
             min={0}
             max={10}
             step={0.25}
-            color="#17a2b8"
-            thumbColor="#17a2b8"
-            trackColor="#e9ecef"
+            variant="info"
             thumbLabel={true}
             size="md"
           />

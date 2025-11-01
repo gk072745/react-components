@@ -4,133 +4,305 @@
 @use '../abstracts' as *;
 
 .basic-range-input-wrapper {
-    width: 100%;
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    align-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
 
-    &.has-label {
-        gap: 1rem;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &.has-label {
+    gap: 1rem;
+  }
+
+  // =============================================================================
+  // STATES
+  // =============================================================================
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.readonly {
+    pointer-events: none;
+  }
+
+  // =============================================================================
+  // LABEL
+  // =============================================================================
+
+  .slider-label {
+    font-size: 1rem;
+    color: #333333;
+    font-weight: 500;
+  }
+
+  // =============================================================================
+  // TRACK
+  // =============================================================================
+
+  .slider-track {
+    position: relative;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+
+    &:focus-visible {
+      box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.1);
     }
 
     // =============================================================================
-    // STATES
+    // FILLED AREA
     // =============================================================================
 
-    &.disabled {
-        opacity: 0.5;
-        pointer-events: none;
-    }
-
-    &.readonly {
-        pointer-events: none;
+    .slider-filled {
+      position: absolute;
+      height: 100%;
+      border-radius: 0.25rem;
     }
 
     // =============================================================================
-    // LABEL
+    // THUMBS
     // =============================================================================
+
+    .slider-thumb {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      cursor: grab;
+      z-index: 2;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+
+      &:active {
+        cursor: grabbing;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      &.min-thumb {
+        z-index: 3;
+      }
+
+      &.max-thumb {
+        z-index: 3;
+      }
+    }
+
+    // =============================================================================
+    // THUMB LABELS
+    // =============================================================================
+
+    .thumb-label {
+      position: absolute;
+      transform: translateX(-50%);
+      background: #333333;
+      color: #ffffff;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      white-space: nowrap;
+      bottom: 0;
+      margin-bottom: 1rem;
+      z-index: 4;
+      pointer-events: none;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: calc(50% - 0.25rem);
+        top: 100%;
+        width: 0.5rem;
+        height: 0.5rem;
+        background: #333333;
+        transform: rotate(45deg) translate(-50%, -50%);
+      }
+
+      &.min-label {
+        z-index: 5;
+      }
+
+      &.max-label {
+        z-index: 5;
+      }
+    }
+  }
+
+  // =============================================================================
+  // SIZE VARIANTS
+  // =============================================================================
+
+  &.xs {
+    .slider-track {
+      height: 0.25rem;
+
+      .slider-thumb {
+        width: 0.75rem;
+        height: 0.75rem;
+      }
+    }
 
     .slider-label {
-        font-size: 1rem;
-        color: $range-label-color;
-        font-weight: 500;
+      font-size: 0.875rem;
     }
+  }
 
-    // =============================================================================
-    // TRACK
-    // =============================================================================
-
+  &.sm {
     .slider-track {
-        position: relative;
-        background-color: var(--track-color, $range-track-color);
-        border-radius: $range-track-border-radius;
-        cursor: pointer;
-        user-select: none;
-        outline: none;
+      height: 0.3125rem;
 
-        &:focus-visible {
-            box-shadow: 0 0 0 $range-focus-outline-width $range-focus-shadow;
-        }
-
-        // =============================================================================
-        // FILLED AREA
-        // =============================================================================
-
-        .slider-filled {
-            position: absolute;
-            height: 100%;
-            border-radius: $range-track-border-radius;
-        }
-
-        // =============================================================================
-        // THUMBS
-        // =============================================================================
-
-        .slider-thumb {
-            position: absolute;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            cursor: grab;
-            z-index: 2;
-            box-shadow: 0 .125rem .25rem $range-thumb-shadow;
-
-            &:active {
-                cursor: grabbing;
-                transform: translate(-50%, -50%) scale($range-thumb-scale-active);
-            }
-
-            &.min-thumb {
-                z-index: 3;
-            }
-
-            &.max-thumb {
-                z-index: 3;
-            }
-
-        }
-
-        // =============================================================================
-        // THUMB LABELS
-        // =============================================================================
-
-        .thumb-label {
-            position: absolute;
-            transform: translateX(-50%);
-            background: $range-thumb-label-bg;
-            color: $range-thumb-label-color;
-            font-size: 0.75rem;
-            padding: $range-thumb-label-padding;
-            border-radius: $range-thumb-label-border-radius;
-            white-space: nowrap;
-            bottom: 0;
-            margin-bottom: $range-thumb-label-margin-bottom;
-            z-index: 4;
-            pointer-events: none;
-
-            &::before {
-                content: "";
-                position: absolute;
-                left: calc(50% - #{$range-thumb-label-arrow-size / 2});
-                top: 100%;
-                width: $range-thumb-label-arrow-size;
-                height: $range-thumb-label-arrow-size;
-                background: $range-thumb-label-bg;
-                transform: rotate(45deg) translate(-50%, -50%);
-            }
-
-            &.min-label {
-                z-index: 5;
-            }
-
-            &.max-label {
-                z-index: 5;
-            }
-        }
+      .slider-thumb {
+        width: 0.875rem;
+        height: 0.875rem;
+      }
     }
 
-    // =============================================================================
-    // SIZE VARIANTS
-    // =============================================================================
-    @include generate-range-sizes;
+    .slider-label {
+      font-size: 0.9375rem;
+    }
+  }
+
+  &.md {
+    .slider-track {
+      height: 0.375rem;
+
+      .slider-thumb {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
+    .slider-label {
+      font-size: 1rem;
+    }
+  }
+
+  &.lg {
+    .slider-track {
+      height: 0.5rem;
+
+      .slider-thumb {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+
+    .slider-label {
+      font-size: 1.125rem;
+    }
+  }
+
+  &.xl {
+    .slider-track {
+      height: 0.625rem;
+
+      .slider-thumb {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+
+    .slider-label {
+      font-size: 1.25rem;
+    }
+  }
+
+  // =============================================================================
+  // VARIANT STYLES
+  // =============================================================================
+
+  // Default Variant
+  &.default {
+    .slider-track {
+      background-color: #e9ecef;
+
+      .slider-filled {
+        background-color: #007bff;
+      }
+
+      .slider-thumb {
+        background-color: #007bff;
+      }
+    }
+  }
+
+  // Primary Variant
+  &.primary {
+    .slider-track {
+      background-color: #e9ecef;
+
+      .slider-filled {
+        background-color: #007bff;
+      }
+
+      .slider-thumb {
+        background-color: #007bff;
+      }
+    }
+  }
+
+  // Success Variant
+  &.success {
+    .slider-track {
+      background-color: #e9ecef;
+
+      .slider-filled {
+        background-color: #28a745;
+      }
+
+      .slider-thumb {
+        background-color: #28a745;
+      }
+    }
+  }
+
+  // Warning Variant
+  &.warning {
+    .slider-track {
+      background-color: #e9ecef;
+
+      .slider-filled {
+        background-color: #ffc107;
+      }
+
+      .slider-thumb {
+        background-color: #ffc107;
+      }
+    }
+  }
+
+  // Danger Variant
+  &.danger {
+    .slider-track {
+      background-color: #e9ecef;
+
+      .slider-filled {
+        background-color: #dc3545;
+      }
+
+      .slider-thumb {
+        background-color: #dc3545;
+      }
+    }
+  }
+
+  // Info Variant
+  &.info {
+    .slider-track {
+      background-color: #e9ecef;
+
+      .slider-filled {
+        background-color: #17a2b8;
+      }
+
+      .slider-thumb {
+        background-color: #17a2b8;
+      }
+    }
+  }
 }

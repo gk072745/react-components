@@ -5,12 +5,10 @@ import { useDeepCompareEffect } from 'use-deep-compare';
 const BasicRange = memo(
   ({
     size = 'md',
+    variant = 'default',
     disabled = false,
     readonly = false,
     step = 0.1,
-    color = 'black',
-    thumbColor = 'black',
-    trackColor = 'grey',
     label = '',
     min = 0,
     max = 100,
@@ -280,44 +278,34 @@ const BasicRange = memo(
     // COMPUTED STYLES
     // =============================================================================
     const containerClass = useMemo(() => {
-      const classes = ['basic-range-input-wrapper', size];
+      const classes = ['basic-range-input-wrapper', size, variant];
       if (disabled) classes.push('disabled');
       if (readonly) classes.push('readonly');
       if (label) classes.push('has-label');
       if (className) classes.push(className);
       return classes.join(' ');
-    }, [size, disabled, readonly, label, className]);
-
-    const trackStyle = useMemo(
-      () => ({
-        '--track-color': trackColor,
-      }),
-      [trackColor]
-    );
+    }, [size, variant, disabled, readonly, label, className]);
 
     const filledStyle = useMemo(
       () => ({
         left: fillPercent.min + '%',
         width: fillPercent.max - fillPercent.min + '%',
-        backgroundColor: color,
       }),
-      [fillPercent, color]
+      [fillPercent]
     );
 
     const minThumbStyle = useMemo(
       () => ({
         left: fillPercent.min + '%',
-        backgroundColor: thumbColor,
       }),
-      [fillPercent.min, thumbColor]
+      [fillPercent.min]
     );
 
     const maxThumbStyle = useMemo(
       () => ({
         left: fillPercent.max + '%',
-        backgroundColor: thumbColor,
       }),
-      [fillPercent.max, thumbColor]
+      [fillPercent.max]
     );
 
     const minLabelStyle = useMemo(
@@ -380,7 +368,6 @@ const BasicRange = memo(
           aria-valuenow={currentValues[0]}
           aria-disabled={disabled}
           aria-readonly={readonly}
-          style={trackStyle}
         >
           <div className="slider-filled" style={filledStyle} />
           <div
@@ -410,9 +397,7 @@ BasicRange.propTypes = {
   disabled: PropTypes.bool,
   readonly: PropTypes.bool,
   step: PropTypes.number,
-  color: PropTypes.string,
-  thumbColor: PropTypes.string,
-  trackColor: PropTypes.string,
+  variant: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'danger', 'info']),
   label: PropTypes.string,
   min: PropTypes.number,
   max: PropTypes.number,
