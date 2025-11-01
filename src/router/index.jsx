@@ -24,6 +24,7 @@ import TextareaDemo from '@/pages/TextareaDemo.jsx';
 import SnackbarDemo from '@/pages/SnackbarDemo.jsx';
 import PaginationDemo from '@/pages/PaginationDemo.jsx';
 import TableDemo from '@/pages/TableDemo.jsx';
+import MenuDemo from '@/pages/MenuDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -137,6 +138,10 @@ const router = createBrowserRouter([
       {
         path: '/table',
         element: <TableDemo />,
+      },
+      {
+        path: '/menu',
+        element: <MenuDemo />,
       },
     ],
   },

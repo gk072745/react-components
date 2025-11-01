@@ -36,6 +36,7 @@
 @use 'components/basic-snackbar';
 @use 'components/basic-pagination';
 @use 'components/basic-table';
+@use 'components/basic-menu';
 
 // 5. Pages
 @use 'pages/home';
@@ -59,6 +60,7 @@
 @use 'pages/snackbar-demo';
 @use 'pages/pagination-demo';
 @use 'pages/table-demo';
+@use 'pages/menu-demo';
 
 // 6. Utilities (should be last for specificity)
 @use 'utilities/spacing';
