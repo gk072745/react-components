@@ -121,16 +121,16 @@ const RadioDemo = () => {
         </div>
       </section>
 
-      {/* Colors */}
+      {/* Variants */}
       <section className="demo-section">
-        <h2>Colors</h2>
+        <h2>Variants</h2>
         <div className="demo-group">
           <BasicRadio
             value="default"
             modelValue={colorValue}
             onUpdateModelValue={handleColorChange}
             label="Default"
-            color="gray"
+            variant="default"
             size="md"
           />
           <BasicRadio
@@ -138,7 +138,7 @@ const RadioDemo = () => {
             modelValue={colorValue}
             onUpdateModelValue={handleColorChange}
             label="Primary"
-            color="blue"
+            variant="primary"
             size="md"
           />
           <BasicRadio
@@ -146,7 +146,7 @@ const RadioDemo = () => {
             modelValue={colorValue}
             onUpdateModelValue={handleColorChange}
             label="Success"
-            color="green"
+            variant="success"
             size="md"
           />
           <BasicRadio
@@ -154,7 +154,7 @@ const RadioDemo = () => {
             modelValue={colorValue}
             onUpdateModelValue={handleColorChange}
             label="Warning"
-            color="orange"
+            variant="warning"
             size="md"
           />
           <BasicRadio
@@ -162,7 +162,7 @@ const RadioDemo = () => {
             modelValue={colorValue}
             onUpdateModelValue={handleColorChange}
             label="Danger"
-            color="red"
+            variant="danger"
             size="md"
           />
           <BasicRadio
@@ -170,7 +170,7 @@ const RadioDemo = () => {
             modelValue={colorValue}
             onUpdateModelValue={handleColorChange}
             label="Info"
-            color="cyan"
+            variant="info"
             size="md"
           />
         </div>

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const BasicRadio = memo(
   ({
     size = 'sm',
+    variant = 'default',
     disabled = false,
     readonly = false,
     toggle = false,
@@ -13,8 +14,6 @@ const BasicRadio = memo(
     modelValue,
     selected,
     valueComparator,
-    color = 'green',
-    labelColor = '#000',
     className = '',
     style = {},
     onChange,
@@ -90,33 +89,18 @@ const BasicRadio = memo(
     // COMPUTED STYLES
     // =============================================================================
     const containerClass = useMemo(() => {
-      const classes = ['radio-container', size];
+      const classes = ['radio-container', size, variant];
       if (disabled) classes.push('disabled');
       if (readonly) classes.push('readonly');
       if (className) classes.push(className);
       return classes.join(' ');
-    }, [size, disabled, readonly, className]);
+    }, [size, variant, disabled, readonly, className]);
 
     const containerStyle = useMemo(
       () => ({
-        color: labelColor,
         ...style,
       }),
-      [labelColor, style]
-    );
-
-    const radioStyle = useMemo(
-      () => ({
-        borderColor: color,
-      }),
-      [color]
-    );
-
-    const innerCircleStyle = useMemo(
-      () => ({
-        backgroundColor: color,
-      }),
-      [color]
+      [style]
     );
 
     // =============================================================================
@@ -131,11 +115,11 @@ const BasicRadio = memo(
       }
 
       return (
-        <div className="radio" style={radioStyle}>
-          <div className="inner-circle" style={innerCircleStyle}></div>
+        <div className="radio">
+          <div className="inner-circle"></div>
         </div>
       );
-    }, [children, isChecked, disabled, readonly, radioStyle, innerCircleStyle]);
+    }, [children, isChecked, disabled, readonly]);
 
     const renderLabel = useMemo(() => {
       if (label) {
@@ -191,8 +175,7 @@ BasicRadio.propTypes = {
   modelValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool, PropTypes.array]),
   selected: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool, PropTypes.array]),
   valueComparator: PropTypes.func,
-  color: PropTypes.string,
-  labelColor: PropTypes.string,
+  variant: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'danger', 'info']),
   className: PropTypes.string,
   style: PropTypes.object,
   onChange: PropTypes.func,
