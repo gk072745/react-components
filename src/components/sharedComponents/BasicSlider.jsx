@@ -4,12 +4,10 @@ import PropTypes from 'prop-types';
 const BasicSlider = memo(
   ({
     size = 'md',
+    variant = 'default',
     disabled = false,
     readonly = false,
     step = 0.1,
-    color = 'default',
-    thumbColor = 'black',
-    trackColor = 'grey',
     label = '',
     min = 0,
     max = 100,
@@ -64,29 +62,26 @@ const BasicSlider = memo(
       setIsDragging(false);
     }, []);
 
-    const updateValueFromPosition = useCallback((clientX) => {
-      if (!trackRef.current) return;
-      const rect = trackRef.current.getBoundingClientRect();
-      let percent = (clientX - rect.left) / rect.width;
-      percent = Math.max(0, Math.min(1, percent));
-      let rawValue = min + percent * (max - min);
-      const steppedValue = roundToStep(Math.round(rawValue / step) * step, step);
-      
-      if (steppedValue !== currentValue) {
-        setCurrentValue(steppedValue);
-        onChange?.(steppedValue);
-      }
-    }, [min, max, step, roundToStep, currentValue, onChange]);
+    const updateValueFromPosition = useCallback(
+      clientX => {
+        if (!trackRef.current) return;
+        const rect = trackRef.current.getBoundingClientRect();
+        let percent = (clientX - rect.left) / rect.width;
+        percent = Math.max(0, Math.min(1, percent));
+        let rawValue = min + percent * (max - min);
+        const steppedValue = roundToStep(Math.round(rawValue / step) * step, step);
 
-    const handleMouseMove = useCallback(
-      e => updateValueFromPosition(e.clientX),
-      [updateValueFromPosition]
+        if (steppedValue !== currentValue) {
+          setCurrentValue(steppedValue);
+          onChange?.(steppedValue);
+        }
+      },
+      [min, max, step, roundToStep, currentValue, onChange]
     );
 
-    const handleTouchMove = useCallback(
-      e => updateValueFromPosition(e.touches[0].clientX),
-      [updateValueFromPosition]
-    );
+    const handleMouseMove = useCallback(e => updateValueFromPosition(e.clientX), [updateValueFromPosition]);
+
+    const handleTouchMove = useCallback(e => updateValueFromPosition(e.touches[0].clientX), [updateValueFromPosition]);
 
     useEffect(() => {
       if (!isDragging) return;
@@ -108,7 +103,7 @@ const BasicSlider = memo(
     }, [isDragging, handleMouseMove, handleTouchMove, stopDrag]);
 
     const startDrag = useCallback(
-      (e) => {
+      e => {
         if (disabled || readonly) return;
         e.preventDefault();
         e.stopPropagation();
@@ -161,59 +156,26 @@ const BasicSlider = memo(
     // COMPUTED STYLES
     // =============================================================================
     const containerClass = useMemo(() => {
-      const classes = ['basic-slider-input-wrapper', size];
-      
-      // Add color class for new system
-      if (color && color !== 'default') {
-        classes.push(`color-${color}`);
-      }
-      
+      const classes = ['basic-slider-input-wrapper', size, variant];
       if (disabled) classes.push('disabled');
       if (readonly) classes.push('readonly');
       if (label) classes.push('has-label');
       if (className) classes.push(className);
       return classes.join(' ');
-    }, [size, color, disabled, readonly, label, className]);
-
-    // Legacy style support for backward compatibility
-    const trackStyle = useMemo(
-      () => {
-        const style = {};
-        // Only apply legacy styles if using old color system
-        if (color === 'black' || color === 'default') {
-          style['--track-color'] = trackColor;
-        }
-        return style;
-      },
-      [trackColor, color]
-    );
+    }, [size, variant, disabled, readonly, label, className]);
 
     const filledStyle = useMemo(
-      () => {
-        const style = {
-          width: fillPercent + '%',
-        };
-        // Only apply legacy styles if using old color system
-        if (color === 'black' || color === 'default') {
-          style.backgroundColor = color === 'black' ? color : thumbColor;
-        }
-        return style;
-      },
-      [fillPercent, color, thumbColor]
+      () => ({
+        width: fillPercent + '%',
+      }),
+      [fillPercent]
     );
 
     const thumbStyle = useMemo(
-      () => {
-        const style = {
-          left: fillPercent + '%',
-        };
-        // Only apply legacy styles if using old color system
-        if (color === 'black' || color === 'default') {
-          style.backgroundColor = thumbColor;
-        }
-        return style;
-      },
-      [fillPercent, thumbColor, color]
+      () => ({
+        left: fillPercent + '%',
+      }),
+      [fillPercent]
     );
 
     const labelStyle = useMemo(
@@ -264,7 +226,6 @@ const BasicSlider = memo(
           aria-valuenow={currentValue}
           aria-disabled={disabled}
           aria-readonly={readonly}
-          style={trackStyle}
         >
           <div className="slider-filled" style={filledStyle} />
           <div
@@ -288,9 +249,7 @@ BasicSlider.propTypes = {
   disabled: PropTypes.bool,
   readonly: PropTypes.bool,
   step: PropTypes.number,
-  color: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'danger', 'info']),
-  thumbColor: PropTypes.string,
-  trackColor: PropTypes.string,
+  variant: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'danger', 'info']),
   label: PropTypes.string,
   min: PropTypes.number,
   max: PropTypes.number,

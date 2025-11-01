@@ -31,64 +31,16 @@ const SliderDemo = () => {
     <div className="slider-demo">
       <h1>Basic Slider Component Demo</h1>
 
-      {/* Color Variants */}
+      {/* Variants */}
       <section className="demo-section">
-        <h2>Color Variants</h2>
+        <h2>Variants</h2>
         <div className="demo-group">
-          <BasicSlider
-            value={50}
-            label="Default Color"
-            min={0}
-            max={100}
-            step={1}
-            color="default"
-            size="md"
-          />
-          <BasicSlider
-            value={60}
-            label="Primary Color"
-            min={0}
-            max={100}
-            step={1}
-            color="primary"
-            size="md"
-          />
-          <BasicSlider
-            value={70}
-            label="Success Color"
-            min={0}
-            max={100}
-            step={1}
-            color="success"
-            size="md"
-          />
-          <BasicSlider
-            value={80}
-            label="Warning Color"
-            min={0}
-            max={100}
-            step={1}
-            color="warning"
-            size="md"
-          />
-          <BasicSlider
-            value={90}
-            label="Danger Color"
-            min={0}
-            max={100}
-            step={1}
-            color="danger"
-            size="md"
-          />
-          <BasicSlider
-            value={40}
-            label="Info Color"
-            min={0}
-            max={100}
-            step={1}
-            color="info"
-            size="md"
-          />
+          <BasicSlider value={50} label="Default Variant" min={0} max={100} step={1} variant="default" size="md" />
+          <BasicSlider value={60} label="Primary Variant" min={0} max={100} step={1} variant="primary" size="md" />
+          <BasicSlider value={70} label="Success Variant" min={0} max={100} step={1} variant="success" size="md" />
+          <BasicSlider value={80} label="Warning Variant" min={0} max={100} step={1} variant="warning" size="md" />
+          <BasicSlider value={90} label="Danger Variant" min={0} max={100} step={1} variant="danger" size="md" />
+          <BasicSlider value={40} label="Info Variant" min={0} max={100} step={1} variant="info" size="md" />
         </div>
       </section>
 
@@ -103,13 +55,11 @@ const SliderDemo = () => {
             min={0}
             max={100}
             step={1}
-            color="primary"
+            variant="primary"
             size="md"
           />
         </div>
-        <p>
-          Current Value: {sliderValue1}
-        </p>
+        <p>Current Value: {sliderValue1}</p>
       </section>
 
       {/* Slider with Thumb Labels */}
@@ -123,14 +73,12 @@ const SliderDemo = () => {
             min={-50}
             max={150}
             step={5}
-            color="success"
+            variant="success"
             thumbLabel={true}
             size="lg"
           />
         </div>
-        <p>
-          Current Temperature: {sliderValue2}°C
-        </p>
+        <p>Current Temperature: {sliderValue2}°C</p>
       </section>
 
       {/* Slider with Always Visible Labels */}
@@ -144,65 +92,23 @@ const SliderDemo = () => {
             min={0}
             max={100}
             step={0.1}
-            color="danger"
+            variant="danger"
             thumbLabel="always"
             size="md"
           />
         </div>
-        <p>
-          Current Percentage: {sliderValue3.toFixed(1)}%
-        </p>
+        <p>Current Percentage: {sliderValue3.toFixed(1)}%</p>
       </section>
 
       {/* Different Sizes */}
       <section className="demo-section">
         <h2>Different Sizes</h2>
         <div className="demo-group">
-          <BasicSlider
-            value={25}
-            label="Extra Small"
-            min={0}
-            max={100}
-            step={1}
-            color="info"
-            size="xs"
-          />
-          <BasicSlider
-            value={30}
-            label="Small"
-            min={0}
-            max={100}
-            step={1}
-            color="warning"
-            size="sm"
-          />
-          <BasicSlider
-            value={35}
-            label="Medium"
-            min={0}
-            max={100}
-            step={1}
-            color="success"
-            size="md"
-          />
-          <BasicSlider
-            value={40}
-            label="Large"
-            min={0}
-            max={100}
-            step={1}
-            color="danger"
-            size="lg"
-          />
-          <BasicSlider
-            value={45}
-            label="Extra Large"
-            min={0}
-            max={100}
-            step={1}
-            color="primary"
-            size="xl"
-          />
+          <BasicSlider value={25} label="Extra Small" min={0} max={100} step={1} variant="info" size="xs" />
+          <BasicSlider value={30} label="Small" min={0} max={100} step={1} variant="warning" size="sm" />
+          <BasicSlider value={35} label="Medium" min={0} max={100} step={1} variant="success" size="md" />
+          <BasicSlider value={40} label="Large" min={0} max={100} step={1} variant="danger" size="lg" />
+          <BasicSlider value={45} label="Extra Large" min={0} max={100} step={1} variant="primary" size="xl" />
         </div>
       </section>
 
@@ -216,7 +122,7 @@ const SliderDemo = () => {
             min={0}
             max={100}
             step={1}
-            color="primary"
+            variant="primary"
             disabled={true}
             size="md"
           />
@@ -226,7 +132,7 @@ const SliderDemo = () => {
             min={0}
             max={100}
             step={1}
-            color="success"
+            variant="success"
             readonly={true}
             size="md"
           />
@@ -244,36 +150,26 @@ const SliderDemo = () => {
             min={0}
             max={10}
             step={0.25}
-            color="info"
+            variant="info"
             thumbLabel={true}
             size="md"
           />
         </div>
-        <p>
-          Current Value: {sliderValue4.toFixed(2)}
-        </p>
+        <p>Current Value: {sliderValue4.toFixed(2)}</p>
       </section>
 
       {/* Custom Ranges */}
       <section className="demo-section">
         <h2>Custom Ranges</h2>
         <div className="demo-group">
-          <BasicSlider
-            value={5}
-            label="Small Range (0-10)"
-            min={0}
-            max={10}
-            step={1}
-            color="primary"
-            size="md"
-          />
+          <BasicSlider value={5} label="Small Range (0-10)" min={0} max={10} step={1} variant="primary" size="md" />
           <BasicSlider
             value={500}
             label="Large Range (0-1000)"
             min={0}
             max={1000}
             step={10}
-            color="success"
+            variant="success"
             size="md"
           />
           <BasicSlider
@@ -282,25 +178,7 @@ const SliderDemo = () => {
             min={-100}
             max={100}
             step={5}
-            color="warning"
-            size="md"
-          />
-        </div>
-      </section>
-
-      {/* Legacy Color Support */}
-      <section className="demo-section">
-        <h2>Legacy Color Support (Backward Compatibility)</h2>
-        <div className="demo-group">
-          <BasicSlider
-            value={50}
-            label="Legacy Black Color"
-            min={0}
-            max={100}
-            step={1}
-            color="black"
-            thumbColor="#000000"
-            trackColor="#e9ecef"
+            variant="warning"
             size="md"
           />
         </div>

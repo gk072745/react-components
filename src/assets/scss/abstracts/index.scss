@@ -4,7 +4,6 @@
 
 // variables
 @forward 'variables';
-@forward 'variables/slider-variables';
 @forward 'variables/switch-variables';
 @forward 'variables/tabs-variables';
 @forward 'variables/tooltip-variables';
@@ -16,7 +15,6 @@
 
 // mixins
 @forward 'mixins';
-@forward 'mixins/slider-mixins';
 @forward 'mixins/switch-mixins';
 @forward 'mixins/tabs-mixins';
 @forward 'mixins/tooltip-mixins';
