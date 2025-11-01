@@ -5,7 +5,6 @@
 // variables
 @forward 'variables';
 @forward 'variables/tooltip-variables';
-@forward 'variables/toast-variables';
 
 // functions
 @forward 'functions';
@@ -13,7 +12,6 @@
 // mixins
 @forward 'mixins';
 @forward 'mixins/tooltip-mixins';
-@forward 'mixins/toast-mixins';
 
 // breakpoints
 @forward 'breakpoints';
