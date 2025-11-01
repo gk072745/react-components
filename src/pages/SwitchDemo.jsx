@@ -119,38 +119,53 @@ const SwitchDemo = () => {
       </div>
 
       <div className="demo-section">
-        <h2>Custom Colors</h2>
+        <h2>Variants</h2>
         <div className="demo-container">
           <div className="switch-examples">
             <div className="switch-example">
-              <h3>Custom Background Colors</h3>
+              <h3>Default Variant</h3>
               <BasicSwitch
-                bgColor="#e0e0e0"
-                activeBgColor="#4caf50"
-                sliderColor="#ffffff"
-                activeSliderColor="#ffffff"
+                variant="default"
                 value={customColorsSwitch}
                 onChange={(value) => handleSwitchChange(value, setCustomColorsSwitch)}
               />
             </div>
             <div className="switch-example">
-              <h3>Purple Theme</h3>
+              <h3>Primary Variant</h3>
               <BasicSwitch
-                bgColor="#f3e5f5"
-                activeBgColor="#9c27b0"
-                sliderColor="#ffffff"
-                activeSliderColor="#ffffff"
+                variant="primary"
                 value={customColorsSwitch}
                 onChange={(value) => handleSwitchChange(value, setCustomColorsSwitch)}
               />
             </div>
             <div className="switch-example">
-              <h3>Orange Theme</h3>
+              <h3>Success Variant</h3>
               <BasicSwitch
-                bgColor="#fff3e0"
-                activeBgColor="#ff9800"
-                sliderColor="#ffffff"
-                activeSliderColor="#ffffff"
+                variant="success"
+                value={customColorsSwitch}
+                onChange={(value) => handleSwitchChange(value, setCustomColorsSwitch)}
+              />
+            </div>
+            <div className="switch-example">
+              <h3>Warning Variant</h3>
+              <BasicSwitch
+                variant="warning"
+                value={customColorsSwitch}
+                onChange={(value) => handleSwitchChange(value, setCustomColorsSwitch)}
+              />
+            </div>
+            <div className="switch-example">
+              <h3>Danger Variant</h3>
+              <BasicSwitch
+                variant="danger"
+                value={customColorsSwitch}
+                onChange={(value) => handleSwitchChange(value, setCustomColorsSwitch)}
+              />
+            </div>
+            <div className="switch-example">
+              <h3>Info Variant</h3>
+              <BasicSwitch
+                variant="info"
                 value={customColorsSwitch}
                 onChange={(value) => handleSwitchChange(value, setCustomColorsSwitch)}
               />
@@ -167,7 +182,6 @@ const SwitchDemo = () => {
               <h3>Text Labels</h3>
               <BasicSwitch
                 dotLabels={{ true: 'ON', false: 'OFF' }}
-                dotLabelColors={{ true: '#ffffff', false: '#666666' }}
                 value={dotLabelsSwitch}
                 onChange={(value) => handleSwitchChange(value, setDotLabelsSwitch)}
               />
@@ -176,7 +190,6 @@ const SwitchDemo = () => {
               <h3>Symbol Labels</h3>
               <BasicSwitch
                 dotLabels={{ true: '✓', false: '✗' }}
-                dotLabelColors={{ true: '#ffffff', false: '#666666' }}
                 value={dotLabelsSwitch}
                 onChange={(value) => handleSwitchChange(value, setDotLabelsSwitch)}
               />
@@ -210,19 +223,15 @@ const SwitchDemo = () => {
               <BasicSwitch
                 inset={true}
                 dotLabels={{ true: 'ON', false: 'OFF' }}
-                dotLabelColors={{ true: '#ffffff', false: '#666666' }}
                 value={insetSwitch}
                 onChange={(value) => handleSwitchChange(value, setInsetSwitch)}
               />
             </div>
             <div className="switch-example">
-              <h3>Inset with Custom Colors</h3>
+              <h3>Inset with Primary Variant</h3>
               <BasicSwitch
                 inset={true}
-                bgColor="#e0e0e0"
-                activeBgColor="#2196f3"
-                sliderColor="#ffffff"
-                activeSliderColor="#ffffff"
+                variant="primary"
                 value={insetSwitch}
                 onChange={(value) => handleSwitchChange(value, setInsetSwitch)}
               />
@@ -281,8 +290,7 @@ const SwitchDemo = () => {
                 size="lg"
                 label="Enable advanced features"
                 labelPosition="right"
-                bgColor="#e8f5e8"
-                activeBgColor="#4caf50"
+                variant="success"
                 value={basicSwitch}
                 onChange={(value) => handleSwitchChange(value, setBasicSwitch)}
               />
@@ -293,8 +301,7 @@ const SwitchDemo = () => {
                 size="sm"
                 inset={true}
                 dotLabels={{ true: '🌞', false: '🌙' }}
-                bgColor="#fff3e0"
-                activeBgColor="#ff9800"
+                variant="warning"
                 value={basicSwitch}
                 onChange={(value) => handleSwitchChange(value, setBasicSwitch)}
               />
@@ -304,9 +311,7 @@ const SwitchDemo = () => {
               <BasicSwitch
                 size="xl"
                 dotLabels={{ true: 'SORT', false: 'UNSORT' }}
-                dotLabelColors={{ true: '#ffffff', false: '#666666' }}
-                bgColor="#f3e5f5"
-                activeBgColor="#9c27b0"
+                variant="danger"
                 value={basicSwitch}
                 onChange={(value) => handleSwitchChange(value, setBasicSwitch)}
               />

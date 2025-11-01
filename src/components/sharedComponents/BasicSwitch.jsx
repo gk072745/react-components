@@ -4,18 +4,14 @@ import PropTypes from 'prop-types';
 const BasicSwitch = memo(
   ({
     value,
+    variant = 'default',
     disabled = false,
     readonly = false,
-    bgColor = '#e0e0e0',
-    activeBgColor = '#2196f3',
-    sliderColor,
-    activeSliderColor,
     size = 'xl',
     label = '',
     labelPosition = 'right',
     inset = false,
     dotLabels = null,
-    dotLabelColors = { true: '#000', false: '#000' },
     className = '',
     style = {},
     onChange,
@@ -29,19 +25,6 @@ const BasicSwitch = memo(
     // =============================================================================
     // COMPUTED VALUES
     // =============================================================================
-    const computedSliderColor = useMemo(() => {
-      if (sliderColor) return sliderColor;
-      return inset ? '#e0e0e0' : '#ffffff';
-    }, [sliderColor, inset]);
-
-    const computedActiveSliderColor = useMemo(() => {
-      if (activeSliderColor) return activeSliderColor;
-      return inset ? '#e0e0e0' : '#ffffff';
-    }, [activeSliderColor, inset]);
-
-    const currentDotLabelColor = useMemo(() => {
-      return dotLabelColors?.[internalValue] || '#000';
-    }, [dotLabelColors, internalValue]);
 
     const currentDotLabel = useMemo(() => {
       return dotLabels?.[internalValue] || '';
@@ -61,10 +44,10 @@ const BasicSwitch = memo(
     // =============================================================================
     const handleSwitchChange = useCallback(() => {
       if (readonly || disabled) return;
-      
+
       const newValue = !internalValue;
       setInternalValue(newValue);
-      
+
       onChange?.(newValue);
     }, [readonly, disabled, internalValue, onChange]);
 
@@ -72,52 +55,36 @@ const BasicSwitch = memo(
     // COMPUTED STYLES
     // =============================================================================
     const containerClass = useMemo(() => {
-      const classes = ['switch-container', size];
-      
+      const classes = ['switch-container', size, variant];
+
       if (disabled) classes.push('disabled');
       if (readonly) classes.push('readonly');
       if (internalValue) classes.push('checked');
       if (inset) classes.push('inset');
       if (className) classes.push(className);
-      
+
       return classes.join(' ');
-    }, [size, disabled, readonly, internalValue, inset, className]);
-
-    const sliderStyle = useMemo(() => ({
-      '--bg-color': bgColor,
-      '--active-bg-color': activeBgColor,
-      color: currentDotLabelColor,
-      ...style,
-    }), [bgColor, activeBgColor, currentDotLabelColor, style]);
-
-    const dotStyle = useMemo(() => ({
-      '--slider-color': computedSliderColor,
-      '--active-slider-color': computedActiveSliderColor,
-    }), [computedSliderColor, computedActiveSliderColor]);
+    }, [size, variant, disabled, readonly, internalValue, inset, className]);
 
     // =============================================================================
     // RENDER FUNCTIONS
     // =============================================================================
-    const renderLabel = useCallback((position) => {
-      if (!label || labelPosition !== position) return null;
-      
-      return (
-        <span className={`${position}-label`}>
-          {label}
-        </span>
-      );
-    }, [label, labelPosition]);
+    const renderLabel = useCallback(
+      position => {
+        if (!label || labelPosition !== position) return null;
+
+        return <span className={`${position}-label`}>{label}</span>;
+      },
+      [label, labelPosition]
+    );
 
     // =============================================================================
     // RENDER
     // =============================================================================
     return (
-      <label
-        className={containerClass}
-        {...props}
-      >
+      <label className={containerClass} {...props}>
         {renderLabel('left')}
-        
+
         <input
           type="checkbox"
           checked={internalValue}
@@ -126,12 +93,12 @@ const BasicSwitch = memo(
           disabled={disabled}
           onChange={handleSwitchChange}
         />
-        
-        <span className="switch-slider" style={sliderStyle}>
+
+        <span className="switch-slider" style={style}>
           {currentDotLabel}
-          <span className="switch-slider-dot" style={dotStyle} />
+          <span className="switch-slider-dot" />
         </span>
-        
+
         {renderLabel('right')}
       </label>
     );
@@ -143,18 +110,14 @@ const BasicSwitch = memo(
 // =============================================================================
 BasicSwitch.propTypes = {
   value: PropTypes.bool,
+  variant: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'danger', 'info']),
   disabled: PropTypes.bool,
   readonly: PropTypes.bool,
-  bgColor: PropTypes.string,
-  activeBgColor: PropTypes.string,
-  sliderColor: PropTypes.string,
-  activeSliderColor: PropTypes.string,
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   label: PropTypes.string,
   labelPosition: PropTypes.oneOf(['left', 'right']),
   inset: PropTypes.bool,
   dotLabels: PropTypes.object,
-  dotLabelColors: PropTypes.object,
   className: PropTypes.string,
   style: PropTypes.object,
   onChange: PropTypes.func,
