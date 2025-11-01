@@ -14,8 +14,15 @@
 }
 
 .tooltip {
-  @include tooltip-base();
-  @include tooltip-variant('default');
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  box-shadow:
+    0 0.25rem 0.375rem -0.0625rem rgba(0, 0, 0, 0.1),
+    0 0.125rem 0.25rem -0.0625rem rgba(0, 0, 0, 0.06);
+  z-index: 1060;
   pointer-events: none;
 
   .tooltip-content {
@@ -23,17 +30,188 @@
     z-index: 1;
   }
 
-  .tooltip-arrow { @include tooltip-arrow-base(); }
+  .tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+  }
 }
 
 // Position-specific arrow styles
-@include tooltip-arrow-positions();
+.tooltip-top .tooltip-arrow {
+  top: 100%;
+  border-width: 0.375rem 0.375rem 0 0.375rem;
+}
+
+.tooltip-bottom .tooltip-arrow {
+  bottom: 100%;
+  border-width: 0 0.375rem 0.375rem 0.375rem;
+}
+
+.tooltip-left .tooltip-arrow {
+  left: 100%;
+  border-width: 0.375rem 0 0.375rem 0.375rem;
+}
+
+.tooltip-right .tooltip-arrow {
+  right: 100%;
+  border-width: 0.375rem 0.375rem 0.375rem 0;
+}
+
+.tooltip-top-left .tooltip-arrow,
+.tooltip-top-right .tooltip-arrow {
+  top: 100%;
+  border-width: 0.375rem 0.375rem 0 0.375rem;
+}
+
+.tooltip-bottom-left .tooltip-arrow,
+.tooltip-bottom-right .tooltip-arrow {
+  bottom: 100%;
+  border-width: 0 0.375rem 0.375rem 0.375rem;
+}
 
 .tooltip-no-arrow .tooltip-arrow {
   display: none;
 }
 
-// Theme variants
-.tooltip { @include generate-tooltip-variants(); }
+// =============================================================================
+// VARIANT STYLES
+// =============================================================================
 
+// Default Variant
+.tooltip-default {
+  background: #1f2937;
+  color: #ffffff;
 
+  // Arrow colors by position
+  &.tooltip-top .tooltip-arrow,
+  &.tooltip-top-left .tooltip-arrow,
+  &.tooltip-top-right .tooltip-arrow {
+    border-top-color: #1f2937;
+  }
+
+  &.tooltip-bottom .tooltip-arrow,
+  &.tooltip-bottom-left .tooltip-arrow,
+  &.tooltip-bottom-right .tooltip-arrow {
+    border-bottom-color: #1f2937;
+  }
+
+  &.tooltip-left .tooltip-arrow {
+    border-left-color: #1f2937;
+  }
+
+  &.tooltip-right .tooltip-arrow {
+    border-right-color: #1f2937;
+  }
+}
+
+// Light Variant
+.tooltip-light {
+  background: #ffffff;
+  color: #1f2937;
+  border: 0.0625rem solid #e5e7eb;
+
+  // Arrow colors by position
+  &.tooltip-top .tooltip-arrow,
+  &.tooltip-top-left .tooltip-arrow,
+  &.tooltip-top-right .tooltip-arrow {
+    border-top-color: #ffffff;
+  }
+
+  &.tooltip-bottom .tooltip-arrow,
+  &.tooltip-bottom-left .tooltip-arrow,
+  &.tooltip-bottom-right .tooltip-arrow {
+    border-bottom-color: #ffffff;
+  }
+
+  &.tooltip-left .tooltip-arrow {
+    border-left-color: #ffffff;
+  }
+
+  &.tooltip-right .tooltip-arrow {
+    border-right-color: #ffffff;
+  }
+}
+
+// Success Variant
+.tooltip-success {
+  background: #28a745;
+  color: #ffffff;
+
+  // Arrow colors by position
+  &.tooltip-top .tooltip-arrow,
+  &.tooltip-top-left .tooltip-arrow,
+  &.tooltip-top-right .tooltip-arrow {
+    border-top-color: #28a745;
+  }
+
+  &.tooltip-bottom .tooltip-arrow,
+  &.tooltip-bottom-left .tooltip-arrow,
+  &.tooltip-bottom-right .tooltip-arrow {
+    border-bottom-color: #28a745;
+  }
+
+  &.tooltip-left .tooltip-arrow {
+    border-left-color: #28a745;
+  }
+
+  &.tooltip-right .tooltip-arrow {
+    border-right-color: #28a745;
+  }
+}
+
+// Error Variant
+.tooltip-error {
+  background: #dc3545;
+  color: #ffffff;
+
+  // Arrow colors by position
+  &.tooltip-top .tooltip-arrow,
+  &.tooltip-top-left .tooltip-arrow,
+  &.tooltip-top-right .tooltip-arrow {
+    border-top-color: #dc3545;
+  }
+
+  &.tooltip-bottom .tooltip-arrow,
+  &.tooltip-bottom-left .tooltip-arrow,
+  &.tooltip-bottom-right .tooltip-arrow {
+    border-bottom-color: #dc3545;
+  }
+
+  &.tooltip-left .tooltip-arrow {
+    border-left-color: #dc3545;
+  }
+
+  &.tooltip-right .tooltip-arrow {
+    border-right-color: #dc3545;
+  }
+}
+
+// Warning Variant
+.tooltip-warning {
+  background: #ffc107;
+  color: #ffffff;
+
+  // Arrow colors by position
+  &.tooltip-top .tooltip-arrow,
+  &.tooltip-top-left .tooltip-arrow,
+  &.tooltip-top-right .tooltip-arrow {
+    border-top-color: #ffc107;
+  }
+
+  &.tooltip-bottom .tooltip-arrow,
+  &.tooltip-bottom-left .tooltip-arrow,
+  &.tooltip-bottom-right .tooltip-arrow {
+    border-bottom-color: #ffc107;
+  }
+
+  &.tooltip-left .tooltip-arrow {
+    border-left-color: #ffc107;
+  }
+
+  &.tooltip-right .tooltip-arrow {
+    border-right-color: #ffc107;
+  }
+}
