@@ -5,8 +5,6 @@ const LinearProgressDemo = () => {
   const [progress, setProgress] = useState(0);
   const [customProgress, setCustomProgress] = useState(45);
   const [customHeight, setCustomHeight] = useState(8);
-  const [customColor, setCustomColor] = useState('#007bff');
-  const [customBgColor, setCustomBgColor] = useState('#e0e0e0');
 
   // Auto-progress simulation
   useEffect(() => {
@@ -69,48 +67,29 @@ const LinearProgressDemo = () => {
         <p>Different heights for various use cases and visual emphasis</p>
       </section>
 
-      {/* Color Variants */}
+      {/* Variants */}
       <section className="demo-section">
-        <h2>Color Variants</h2>
+        <h2>Variants</h2>
         <div className="demo-group">
-          <h3>Default Colors:</h3>
-          <LinearProgress modelValue={60} color="#000" bgColor="#e0e0e0" />
+          <h3>Default:</h3>
+          <LinearProgress modelValue={60} variant="default" height={8} />
 
-          <h3>Blue Theme:</h3>
-          <LinearProgress modelValue={60} color="#007bff" bgColor="#e3f2fd" />
+          <h3>Primary:</h3>
+          <LinearProgress modelValue={60} variant="primary" height={8} />
 
-          <h3>Green Theme:</h3>
-          <LinearProgress modelValue={60} color="#28a745" bgColor="#e8f5e8" />
+          <h3>Success:</h3>
+          <LinearProgress modelValue={60} variant="success" height={8} />
 
-          <h3>Red Theme:</h3>
-          <LinearProgress modelValue={60} color="#dc3545" bgColor="#f8e8e8" />
+          <h3>Warning:</h3>
+          <LinearProgress modelValue={60} variant="warning" height={8} />
 
-          <h3>Custom Colors:</h3>
-          <div style={{ marginBottom: '1rem' }}>
-            <div style={{ marginBottom: '0.5rem' }}>
-              <label htmlFor="color">Progress Color: </label>
-              <input
-                id="color"
-                type="color"
-                value={customColor}
-                onChange={e => setCustomColor(e.target.value)}
-                style={{ marginLeft: '0.5rem' }}
-              />
-            </div>
-            <div>
-              <label htmlFor="bgColor">Background Color: </label>
-              <input
-                id="bgColor"
-                type="color"
-                value={customBgColor}
-                onChange={e => setCustomBgColor(e.target.value)}
-                style={{ marginLeft: '0.5rem' }}
-              />
-            </div>
-          </div>
-          <LinearProgress modelValue={60} color={customColor} bgColor={customBgColor} height={8} />
+          <h3>Danger:</h3>
+          <LinearProgress modelValue={60} variant="danger" height={8} />
+
+          <h3>Info:</h3>
+          <LinearProgress modelValue={60} variant="info" height={8} />
         </div>
-        <p>Customize colors to match your design system</p>
+        <p>Different color variants for various use cases</p>
       </section>
 
       {/* Progress Values */}
@@ -142,18 +121,18 @@ const LinearProgressDemo = () => {
         <p>Control progress values from 0 to 100%</p>
       </section>
 
-      {/* Variants */}
+      {/* Style Variants */}
       <section className="demo-section">
-        <h2>Variants</h2>
+        <h2>Style Variants</h2>
         <div className="demo-group">
           <h3>Rounded:</h3>
-          <LinearProgress modelValue={65} rounded={true} height={8} />
+          <LinearProgress modelValue={65} rounded={true} height={8} variant="primary" />
 
           <h3>Indeterminate:</h3>
-          <LinearProgress indeterminate={true} height={8} />
+          <LinearProgress indeterminate={true} height={8} variant="primary" />
 
           <h3>Rounded + Indeterminate:</h3>
-          <LinearProgress indeterminate={true} rounded={true} height={8} />
+          <LinearProgress indeterminate={true} rounded={true} height={8} variant="primary" />
         </div>
         <p>Rounded corners and indeterminate animation states</p>
       </section>
@@ -163,7 +142,7 @@ const LinearProgressDemo = () => {
         <h2>Absolute Positioning</h2>
         <div className="demo-group">
           <div style={{ position: 'relative', height: '100px', border: '1px solid #ddd', padding: '20px' }}>
-            <LinearProgress absolute={true} modelValue={80} height={4} color="#007bff" />
+            <LinearProgress absolute={true} modelValue={80} height={4} variant="primary" />
             <p>Progress bar positioned at the top of this container</p>
             <p>Content below the progress bar</p>
           </div>
@@ -176,19 +155,18 @@ const LinearProgressDemo = () => {
         <h2>Real-world Examples</h2>
         <div className="demo-group">
           <h3>File Upload Progress:</h3>
-          <LinearProgress modelValue={67} height={6} color="#28a745" bgColor="#e8f5e8" rounded={true} />
+          <LinearProgress modelValue={67} height={6} variant="success" rounded={true} />
           <p>Uploading file... 67% complete</p>
 
           <h3>Loading State:</h3>
-          <LinearProgress indeterminate={true} height={4} color="#007bff" rounded={true} />
+          <LinearProgress indeterminate={true} height={4} variant="primary" rounded={true} />
           <p>Loading data...</p>
 
           <h3>Battery Level:</h3>
           <LinearProgress
             modelValue={23}
             height={12}
-            color={customProgress < 20 ? '#dc3545' : customProgress < 50 ? '#ffc107' : '#28a745'}
-            bgColor="#f8f9fa"
+            variant={customProgress < 20 ? 'danger' : customProgress < 50 ? 'warning' : 'success'}
             rounded={true}
           />
           <p>Battery: 23% {customProgress < 20 ? '(Low)' : customProgress < 50 ? '(Medium)' : '(Good)'}</p>
@@ -204,14 +182,14 @@ const LinearProgressDemo = () => {
           <LinearProgress modelValue={75} />
 
           <h3>Custom styling:</h3>
-          <LinearProgress modelValue={60} height={8} color="#007bff" bgColor="#e3f2fd" rounded={true} />
+          <LinearProgress modelValue={60} height={8} variant="primary" rounded={true} />
 
           <h3>Indeterminate loading:</h3>
-          <LinearProgress indeterminate={true} height={6} />
+          <LinearProgress indeterminate={true} height={6} variant="primary" />
 
           <h3>Absolute positioning:</h3>
           <div style={{ position: 'relative', height: '60px', border: '1px solid #ddd', padding: '15px' }}>
-            <LinearProgress absolute={true} modelValue={80} height={4} color="#28a745" />
+            <LinearProgress absolute={true} modelValue={80} height={4} variant="success" />
             <p style={{ marginTop: '10px', fontSize: '0.9rem' }}>Content below progress bar</p>
           </div>
         </div>

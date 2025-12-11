@@ -6,9 +6,6 @@ const LoaderDemo = () => {
   const [showLocalLoader, setShowLocalLoader] = useState(false);
   const [customSize, setCustomSize] = useState(40);
   const [customWidth, setCustomWidth] = useState(4);
-  const [customFillColor, setCustomFillColor] = useState('#000');
-  const [customEmptyColor, setCustomEmptyColor] = useState('#e0e0e0');
-  const [customBgColor, setCustomBgColor] = useState('rgba(255, 255, 255, 0.75)');
 
   // Auto-hide full screen loader after 3 seconds
   useEffect(() => {
@@ -126,62 +123,41 @@ const LoaderDemo = () => {
         <p>Different stroke widths for various visual styles</p>
       </section>
 
-      {/* Color Variants */}
+      {/* Variants */}
       <section className="demo-section">
-        <h2>Color Variants</h2>
+        <h2>Variants</h2>
         <div className="demo-group">
-          <h3>Default Colors:</h3>
+          <h3>Default:</h3>
           <div style={{ position: 'relative', height: '100px', border: '1px solid #ddd', padding: '20px' }}>
-            <Loader fillColor="#000" emptyColor="#e0e0e0" />
+            <Loader variant="default" />
           </div>
 
-          <h3>Blue Theme:</h3>
+          <h3>Primary:</h3>
           <div style={{ position: 'relative', height: '100px', border: '1px solid #ddd', padding: '20px' }}>
-            <Loader fillColor="#007bff" emptyColor="#e3f2fd" />
+            <Loader variant="primary" />
           </div>
 
-          <h3>Green Theme:</h3>
+          <h3>Success:</h3>
           <div style={{ position: 'relative', height: '100px', border: '1px solid #ddd', padding: '20px' }}>
-            <Loader fillColor="#28a745" emptyColor="#e8f5e8" />
+            <Loader variant="success" />
           </div>
 
-          <h3>Red Theme:</h3>
+          <h3>Warning:</h3>
           <div style={{ position: 'relative', height: '100px', border: '1px solid #ddd', padding: '20px' }}>
-            <Loader fillColor="#dc3545" emptyColor="#f8e8e8" />
+            <Loader variant="warning" />
           </div>
 
-          <h3>Custom Colors:</h3>
-          <div style={{ marginBottom: '1rem' }}>
-            <div style={{ marginBottom: '0.5rem' }}>
-              <label htmlFor="fillColor">Fill Color: </label>
-              <input
-                id="fillColor"
-                type="color"
-                value={customFillColor}
-                onChange={e => setCustomFillColor(e.target.value)}
-                style={{ marginLeft: '0.5rem' }}
-              />
-            </div>
-            <div style={{ marginBottom: '0.5rem' }}>
-              <label htmlFor="emptyColor">Empty Color: </label>
-              <input
-                id="emptyColor"
-                type="color"
-                value={customEmptyColor}
-                onChange={e => setCustomEmptyColor(e.target.value)}
-                style={{ marginLeft: '0.5rem' }}
-              />
-            </div>
-          </div>
+          <h3>Danger:</h3>
           <div style={{ position: 'relative', height: '100px', border: '1px solid #ddd', padding: '20px' }}>
-            <Loader 
-              size={50} 
-              fillColor={customFillColor} 
-              emptyColor={customEmptyColor} 
-            />
+            <Loader variant="danger" />
+          </div>
+
+          <h3>Info:</h3>
+          <div style={{ position: 'relative', height: '100px', border: '1px solid #ddd', padding: '20px' }}>
+            <Loader variant="info" />
           </div>
         </div>
-        <p>Customize colors to match your design system</p>
+        <p>Different color variants for various use cases</p>
       </section>
 
       {/* Positioning Variants */}
@@ -230,42 +206,6 @@ const LoaderDemo = () => {
         </div>
       </section>
 
-      {/* Background Color Variants */}
-      <section className="demo-section">
-        <h2>Background Color Variants</h2>
-        <div className="demo-group">
-          <h3>Transparent Background:</h3>
-          <div style={{ position: 'relative', height: '100px', border: '1px solid #ddd', padding: '20px' }}>
-            <Loader bgColor="transparent" />
-          </div>
-
-          <h3>White Background:</h3>
-          <div style={{ position: 'relative', height: '100px', border: '1px solid #ddd', padding: '20px' }}>
-            <Loader bgColor="rgba(255, 255, 255, 0.9)" />
-          </div>
-
-          <h3>Dark Background:</h3>
-          <div style={{ position: 'relative', height: '100px', border: '1px solid #ddd', padding: '20px' }}>
-            <Loader bgColor="rgba(0, 0, 0, 0.7)" fillColor="#fff" emptyColor="#404040" />
-          </div>
-
-          <h3>Custom Background:</h3>
-          <div style={{ marginBottom: '1rem' }}>
-            <label htmlFor="bgColor">Background Color: </label>
-            <input
-              id="bgColor"
-              type="color"
-              value={customBgColor}
-              onChange={e => setCustomBgColor(e.target.value)}
-              style={{ marginLeft: '0.5rem' }}
-            />
-          </div>
-          <div style={{ position: 'relative', height: '100px', border: '1px solid #ddd', padding: '20px' }}>
-            <Loader bgColor={customBgColor} />
-          </div>
-        </div>
-        <p>Customize background colors for different overlay styles</p>
-      </section>
 
       {/* Real-world Examples */}
       <section className="demo-section">
@@ -299,7 +239,7 @@ const LoaderDemo = () => {
             backgroundColor: '#f8f9fa'
           }}>
             {showLocalLoader ? (
-              <Loader size={50} fillColor="#007bff" />
+              <Loader size={50} variant="primary" />
             ) : (
               <div>
                 <h4>Card Content</h4>
@@ -350,12 +290,12 @@ const LoaderDemo = () => {
 
           <h3>Custom styling:</h3>
           <div style={{ position: 'relative', height: '100px', border: '1px solid #ddd', padding: '20px' }}>
-            <Loader size={50} width={6} fillColor="#007bff" emptyColor="#e3f2fd" />
+            <Loader size={50} width={6} variant="primary" />
           </div>
 
           <h3>Large loader:</h3>
           <div style={{ position: 'relative', height: '120px', border: '1px solid #ddd', padding: '20px' }}>
-            <Loader size={80} width={8} fillColor="#28a745" emptyColor="#e8f5e8" />
+            <Loader size={80} width={8} variant="success" />
           </div>
         </div>
         <p>Interactive examples showing different Loader configurations</p>
@@ -365,9 +305,7 @@ const LoaderDemo = () => {
       {showFullScreenLoader && (
         <Loader 
           isLocalLoader={false}
-          bgColor="rgba(0, 0, 0, 0.7)"
-          fillColor="#fff"
-          emptyColor="#404040"
+          variant="default"
           size={60}
         />
       )}
