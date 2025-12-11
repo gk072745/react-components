@@ -11,18 +11,12 @@ const VerticalAppBar = ({
   roundedLogo = false,
   title = '',
   showCloseButton = true,
-  prependHeight = '4rem',
-  navigationLogoSize = '2.5rem',
-  logoSize = '2.5rem',
-  titleColor = '#111',
-  backgroundColor = '#f2f2f2',
   modelValue = false,
   persistIconsOnHide = true,
   expandOnHover = false,
   expandOnClick = true,
   overlay = true,
   position = 'left',
-  transitionDuration = '0.3s',
   items = [],
   activeItem = '',
   showChevron = true,
@@ -148,11 +142,8 @@ const VerticalAppBar = ({
   // COMPUTED STYLES/CLASSES
   // =============================================================================
   const positionStyles = useMemo(() => ({
-    '--logo-size': logoSize,
     '--width': width,
-    '--transition-duration': transitionDuration,
-    '--navigation-logo-size': navigationLogoSize,
-  }), [logoSize, width, transitionDuration, navigationLogoSize]);
+  }), [width]);
 
   const containerClasses = useMemo(() => {
     const classes = ['vertical-app-bar'];
@@ -174,13 +165,12 @@ const VerticalAppBar = ({
   const renderLogo = useCallback(() => {
     if (!logo) return null;
 
-    const wrapperStyle = { width: logoSize, height: logoSize };
     const wrapperClass = `logo-wrapper ${roundedLogo ? 'rounded' : ''}`;
 
     const isInlineSvg = typeof logo === 'string' && logo.trim().startsWith('<svg');
 
     return (
-      <div className={wrapperClass} onClick={handleLogoClick} style={wrapperStyle}>
+      <div className={wrapperClass} onClick={handleLogoClick}>
         {isInlineSvg ? (
           <div className="logo-svg" dangerouslySetInnerHTML={{ __html: logo }} />
         ) : (
@@ -188,16 +178,16 @@ const VerticalAppBar = ({
         )}
       </div>
     );
-  }, [logo, logoSize, roundedLogo, handleLogoClick]);
+  }, [logo, roundedLogo, handleLogoClick]);
 
   const renderTitle = useCallback(() => {
     if (!title) return null;
     return (
-      <div className="title" style={{ color: titleColor }} onClick={handleTitleClick}>
+      <div className="title" onClick={handleTitleClick}>
         {title}
       </div>
     );
-  }, [title, titleColor, handleTitleClick]);
+  }, [title, handleTitleClick]);
 
   const renderCloseBtn = useCallback(() => {
     if (!showCloseButton) return null;
@@ -212,13 +202,13 @@ const VerticalAppBar = ({
 
   const renderDefaultPrepend = useCallback(() => {
     return (
-      <div className="prepend" style={{ height: prependHeight }}>
+      <div className="prepend">
         {renderLogo()}
         {renderTitle()}
         {renderCloseBtn()}
       </div>
     );
-  }, [prependHeight, renderLogo, renderTitle, renderCloseBtn]);
+  }, [renderLogo, renderTitle, renderCloseBtn]);
 
   const renderItemIcon = useCallback((icon) => {
     if (!icon) return null;
@@ -270,7 +260,6 @@ const VerticalAppBar = ({
         className={containerClasses}
         style={{
           height,
-          backgroundColor,
           ...positionStyles,
           ...style,
         }}
@@ -299,18 +288,12 @@ VerticalAppBar.propTypes = {
   roundedLogo: PropTypes.bool,
   title: PropTypes.string,
   showCloseButton: PropTypes.bool,
-  prependHeight: PropTypes.string,
-  navigationLogoSize: PropTypes.string,
-  logoSize: PropTypes.string,
-  titleColor: PropTypes.string,
-  backgroundColor: PropTypes.string,
   modelValue: PropTypes.bool,
   persistIconsOnHide: PropTypes.bool,
   expandOnHover: PropTypes.bool,
   expandOnClick: PropTypes.bool,
   overlay: PropTypes.bool,
   position: PropTypes.oneOf(['left', 'right']),
-  transitionDuration: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
     value: PropTypes.string,

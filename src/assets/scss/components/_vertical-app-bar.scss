@@ -16,7 +16,7 @@
     background-color: #f2f2f2;
     display: grid;
     grid-template-rows: max-content 1fr max-content;
-    transition: all var(--transition-duration) ease;
+    transition: all 0.3s ease;
     opacity: 1;
     position: relative;
     z-index: z('modal');
@@ -49,8 +49,9 @@
             overflow: hidden;
             visibility: hidden;
         }
+
         &.persistIconsOnHide {
-            width: calc(max(var(--logo-size), var(--navigation-logo-size)) + 2rem) !important;
+            width: 4.5rem !important;
             overflow: hidden;
             place-content: center;
 
@@ -70,6 +71,7 @@
                     display: none;
                 }
             }
+
             .item {
                 gap: 0;
                 grid-template-columns: 1fr;
@@ -78,6 +80,7 @@
                 &:not(.item-0) {
                     display: none;
                 }
+
                 .item-label {
                     display: none;
                 }
@@ -114,6 +117,7 @@
                     display: initial;
                 }
             }
+
             .item {
                 grid-template-columns: max-content 1fr max-content;
                 gap: 0.5rem;
@@ -122,6 +126,7 @@
                 &:not(.item-0) {
                     display: initial;
                 }
+
                 .item-label {
                     display: initial;
                 }
@@ -147,6 +152,7 @@
         padding: 0.5rem;
         border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.1);
         background-color: inherit;
+        height: 4rem;
 
         &:has(.logo-wrapper) {
             grid-template-columns: max-content 1fr max-content;
@@ -157,6 +163,8 @@
             overflow: hidden;
             transition: transform 0.2s ease;
             border-radius: 0.25rem;
+            width: 2.5rem;
+            height: 2.5rem;
 
             &:hover {
                 transform: scale(1.05);
@@ -201,6 +209,7 @@
             cursor: pointer;
             transition: opacity 0.2s ease;
             padding: 0 0.5rem;
+            color: #111;
 
             &:hover {
                 opacity: 0.8;
@@ -261,8 +270,8 @@
             }
 
             .item-icon-wrapper {
-                height: var(--navigation-logo-size);
-                width: var(--navigation-logo-size);
+                height: 2.5rem;
+                width: 2.5rem;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -306,6 +315,3 @@
         }
     }
 }
-
-
-
