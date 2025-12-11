@@ -5,9 +5,7 @@ const Loader = memo(
   ({
     size = 40,
     width = 4,
-    bgColor = 'rgba(255, 255, 255, 0.75)',
-    fillColor = '#000000',
-    emptyColor = '#e0e0e0',
+    variant = 'default',
     isLocalLoader = true,
     src = '',
     className = '',
@@ -20,12 +18,9 @@ const Loader = memo(
     // =============================================================================
     const containerStyle = useMemo(
       () => ({
-        backgroundColor: bgColor,
-        '--loader-fill-color': fillColor,
-        '--loader-empty-color': emptyColor,
         ...style,
       }),
-      [bgColor, fillColor, emptyColor, style]
+      [style]
     );
 
     const imageStyle = useMemo(
@@ -45,11 +40,11 @@ const Loader = memo(
     );
 
     const containerClass = useMemo(() => {
-      const classes = ['loader-wrapper'];
+      const classes = ['loader-wrapper', variant];
       if (isLocalLoader) classes.push('local-loader');
       if (className) classes.push(className);
       return classes.join(' ');
-    }, [isLocalLoader, className]);
+    }, [variant, isLocalLoader, className]);
 
     // =============================================================================
     // RENDER
@@ -103,9 +98,7 @@ const Loader = memo(
 Loader.propTypes = {
   size: PropTypes.number,
   width: PropTypes.number,
-  bgColor: PropTypes.string,
-  fillColor: PropTypes.string,
-  emptyColor: PropTypes.string,
+  variant: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'danger', 'info']),
   isLocalLoader: PropTypes.bool,
   src: PropTypes.string,
   className: PropTypes.string,
@@ -116,9 +109,7 @@ Loader.propTypes = {
 Loader.defaultProps = {
   size: 40,
   width: 4,
-  bgColor: 'rgba(255, 255, 255, 0.75)',
-  fillColor: '#000000',
-  emptyColor: '#e0e0e0',
+  variant: 'default',
   isLocalLoader: true,
   src: '',
   className: '',

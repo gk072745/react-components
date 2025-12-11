@@ -19,8 +19,7 @@
     pointer-events: all;
     user-select: none;
     cursor: default;
-    --loader-fill-color: #000;
-    --loader-empty-color: #e0e0e0;
+    background-color: rgba(255, 255, 255, 0.75);
 
     // Local loader variant (relative positioning)
     &.local-loader {
@@ -40,11 +39,10 @@
         animation: rotate 2s linear infinite;
 
         .track {
-            stroke: var(--loader-empty-color);
+            stroke: #e0e0e0;
         }
 
         .arc {
-            stroke: var(--loader-fill-color);
             stroke-dasharray: 1, 200;
             stroke-dashoffset: 0;
             animation: dash 1.5s ease-in-out infinite;
@@ -56,6 +54,64 @@
         display: block;
         max-width: 100%;
         height: auto;
+    }
+
+    // =============================================================================
+    // VARIANT STYLES
+    // =============================================================================
+
+    // Default Variant
+    &.default {
+        .indeterminate-loader {
+            .arc {
+                stroke: #000000;
+            }
+        }
+    }
+
+    // Primary Variant
+    &.primary {
+        .indeterminate-loader {
+            .arc {
+                stroke: #007bff;
+            }
+        }
+    }
+
+    // Success Variant
+    &.success {
+        .indeterminate-loader {
+            .arc {
+                stroke: #28a745;
+            }
+        }
+    }
+
+    // Warning Variant
+    &.warning {
+        .indeterminate-loader {
+            .arc {
+                stroke: #ffc107;
+            }
+        }
+    }
+
+    // Danger Variant
+    &.danger {
+        .indeterminate-loader {
+            .arc {
+                stroke: #dc3545;
+            }
+        }
+    }
+
+    // Info Variant
+    &.info {
+        .indeterminate-loader {
+            .arc {
+                stroke: #17a2b8;
+            }
+        }
     }
 }
 
@@ -74,10 +130,12 @@
         stroke-dasharray: 1, 200;
         stroke-dashoffset: 0;
     }
+
     50% {
         stroke-dasharray: 89, 200;
         stroke-dashoffset: -2.1875rem;
     }
+
     100% {
         stroke-dasharray: 89, 200;
         stroke-dashoffset: -7.75rem;
@@ -86,31 +144,15 @@
 
 
 // =============================================================================
-// THEME VARIANTS
+// ACCESSIBILITY SUPPORT
 // =============================================================================
-
-// Dark theme support
-@media (prefers-color-scheme: dark) {
-    .loader-wrapper {
-        --loader-fill-color: #ffffff;
-        --loader-empty-color: #404040;
-    }
-}
-
-// High contrast mode
-@media (prefers-contrast: high) {
-    .loader-wrapper {
-        --loader-fill-color: #000000;
-        --loader-empty-color: #ffffff;
-    }
-}
 
 // Reduced motion support
 @media (prefers-reduced-motion: reduce) {
     .loader-wrapper {
         .indeterminate-loader {
             animation: none;
-            
+
             .arc {
                 animation: none;
                 stroke-dasharray: 89, 200;
