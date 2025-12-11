@@ -5,7 +5,7 @@ let globalNotification = null;
 let globalConfig = {
   position: 'bottom', // Default to bottom center for snackbars
   offset: { x: 1, y: 1 }, // in rem
-  defaultTimeout: 4000 // Slightly shorter than toast default
+  defaultTimeout: 4000, // Slightly shorter than toast default
 };
 
 // Global listeners for state changes
@@ -13,7 +13,7 @@ const listeners = new Set();
 
 // Notify all listeners of state changes
 const notifyListeners = () => {
-  listeners.forEach(listener => listener());
+  listeners.forEach((listener) => listener());
 };
 
 // Generate unique ID for each notification
@@ -39,7 +39,7 @@ const defaultIcons = {
   </svg>`,
   info: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M8 1.33334C4.32 1.33334 1.33333 4.32001 1.33333 8.00001C1.33333 11.68 4.32 14.6667 8 14.6667C11.68 14.6667 14.6667 11.68 14.6667 8.00001C14.6667 4.32001 11.68 1.33334 8 1.33334ZM8.66667 11.3333H7.33333V7.33334H8.66667V11.3333ZM8.66667 6.00001H7.33333V4.66668H8.66667V6.00001Z" fill="#3b82f6"/>
-  </svg>`
+  </svg>`,
 };
 
 // Convert rem to pixels
@@ -73,7 +73,7 @@ export const useSnackbar = () => {
       isPersistent = false,
       showCloseButton = true,
       icon = null,
-      position = globalConfig.position // Allow overriding position
+      position = globalConfig.position, // Allow overriding position
     } = options;
 
     // Validate required fields
@@ -100,7 +100,7 @@ export const useSnackbar = () => {
       notificationClass: [type],
       createdAt: Date.now(),
       timeoutId: null,
-      position // Store the position
+      position, // Store the position
     };
 
     // Replace current notification
@@ -134,45 +134,54 @@ export const useSnackbar = () => {
   }, [removeNotification]);
 
   // Convenience methods for different types with position override support
-  const success = useCallback((primaryMessage, options = {}) => {
-    return showSnackbar({
-      type: 'success',
-      primaryMessage,
-      ...options
-    });
-  }, [showSnackbar]);
+  const success = useCallback(
+    (primaryMessage, options = {}) => {
+      return showSnackbar({
+        type: 'success',
+        primaryMessage,
+        ...options,
+      });
+    },
+    [showSnackbar]
+  );
 
-  const error = useCallback((primaryMessage, options = {}) => {
-    return showSnackbar({
-      type: 'error',
-      primaryMessage,
-      isPersistent: true, // Errors should be persistent by default
-      ...options
-    });
-  }, [showSnackbar]);
+  const error = useCallback(
+    (primaryMessage, options = {}) => {
+      return showSnackbar({
+        type: 'error',
+        primaryMessage,
+        isPersistent: true, // Errors should be persistent by default
+        ...options,
+      });
+    },
+    [showSnackbar]
+  );
 
-  const warning = useCallback((primaryMessage, options = {}) => {
-    return showSnackbar({
-      type: 'warning',
-      primaryMessage,
-      ...options
-    });
-  }, [showSnackbar]);
+  const warning = useCallback(
+    (primaryMessage, options = {}) => {
+      return showSnackbar({
+        type: 'warning',
+        primaryMessage,
+        ...options,
+      });
+    },
+    [showSnackbar]
+  );
 
-  const info = useCallback((primaryMessage, options = {}) => {
-    return showSnackbar({
-      type: 'info',
-      primaryMessage,
-      ...options
-    });
-  }, [showSnackbar]);
+  const info = useCallback(
+    (primaryMessage, options = {}) => {
+      return showSnackbar({
+        type: 'info',
+        primaryMessage,
+        ...options,
+      });
+    },
+    [showSnackbar]
+  );
 
   // Configuration methods
   const setPosition = useCallback((position) => {
-    const validPositions = [
-      'top-left', 'top', 'top-right',
-      'bottom-left', 'bottom', 'bottom-right'
-    ];
+    const validPositions = ['top-left', 'top', 'top-right', 'bottom-left', 'bottom', 'bottom-right'];
 
     if (validPositions.includes(position)) {
       globalConfig.position = position;
@@ -225,6 +234,6 @@ export const useSnackbar = () => {
     setDefaultTimeout,
 
     // Utility
-    convertRemToPixels
+    convertRemToPixels,
   };
 };

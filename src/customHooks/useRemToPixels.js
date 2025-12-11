@@ -30,20 +30,29 @@ export function useRemToPixels() {
     }
   }, []);
 
-  const convertRemToPixels = useCallback((rem) => {
-    if (typeof rem !== 'number' || Number.isNaN(rem)) return 0;
-    return rem * rootFontSize;
-  }, [rootFontSize]);
+  const convertRemToPixels = useCallback(
+    (rem) => {
+      if (typeof rem !== 'number' || Number.isNaN(rem)) return 0;
+      return rem * rootFontSize;
+    },
+    [rootFontSize]
+  );
 
-  const convertMultipleRemToPixels = useCallback((values) => {
-    if (!Array.isArray(values)) return [];
-    return values.map((v) => convertRemToPixels(v));
-  }, [convertRemToPixels]);
+  const convertMultipleRemToPixels = useCallback(
+    (values) => {
+      if (!Array.isArray(values)) return [];
+      return values.map((v) => convertRemToPixels(v));
+    },
+    [convertRemToPixels]
+  );
 
-  const convertOffsetToPixels = useCallback((offset) => {
-    if (!Array.isArray(offset) || offset.length !== 2) return [0, 0];
-    return [convertRemToPixels(offset[0]), convertRemToPixels(offset[1])];
-  }, [convertRemToPixels]);
+  const convertOffsetToPixels = useCallback(
+    (offset) => {
+      if (!Array.isArray(offset) || offset.length !== 2) return [0, 0];
+      return [convertRemToPixels(offset[0]), convertRemToPixels(offset[1])];
+    },
+    [convertRemToPixels]
+  );
 
   const setupMonitoring = useCallback(() => {
     updateRootFontSize();
@@ -78,5 +87,3 @@ export function useRemToPixels() {
     cleanupMonitoring,
   };
 }
-
-

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 export function useCommonUtilities() {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ export function useCommonUtilities() {
     try {
       await navigator.clipboard.writeText(textToCopy);
     } catch (err) {
-      console.error("Failed to copy text: ", err);
+      console.error('Failed to copy text: ', err);
     }
   }
 
