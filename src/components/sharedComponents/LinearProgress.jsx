@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 const LinearProgress = memo(
   ({
     absolute = false,
-    bgColor = '#e0e0e0',
-    color = '#000',
+    variant = 'default',
     height = 4,
     indeterminate = false,
     modelValue = 0,
@@ -28,28 +27,26 @@ const LinearProgress = memo(
     const containerStyle = useMemo(
       () => ({
         height: `${height}px`,
-        backgroundColor: bgColor,
         ...style,
       }),
-      [height, bgColor, style]
+      [height, style]
     );
 
     const progressBarStyle = useMemo(
       () => ({
         width: indeterminate ? '40%' : `${percentage}%`,
-        backgroundColor: color,
       }),
-      [indeterminate, percentage, color]
+      [indeterminate, percentage]
     );
 
     const containerClass = useMemo(() => {
-      const classes = ['linear-progress-container'];
+      const classes = ['linear-progress-container', variant];
       if (absolute) classes.push('absolute');
       if (rounded) classes.push('rounded');
       if (indeterminate) classes.push('indeterminate');
       if (className) classes.push(className);
       return classes.join(' ');
-    }, [absolute, rounded, indeterminate, className]);
+    }, [variant, absolute, rounded, indeterminate, className]);
 
     const progressBarClass = useMemo(() => {
       const classes = ['linear-progress-bar'];
@@ -73,8 +70,7 @@ const LinearProgress = memo(
 // =============================================================================
 LinearProgress.propTypes = {
   absolute: PropTypes.bool,
-  bgColor: PropTypes.string,
-  color: PropTypes.string,
+  variant: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'danger', 'info']),
   height: PropTypes.number,
   indeterminate: PropTypes.bool,
   modelValue: PropTypes.number,
@@ -86,8 +82,7 @@ LinearProgress.propTypes = {
 
 LinearProgress.defaultProps = {
   absolute: false,
-  bgColor: '#e0e0e0',
-  color: '#000',
+  variant: 'default',
   height: 4,
   indeterminate: false,
   modelValue: 0,

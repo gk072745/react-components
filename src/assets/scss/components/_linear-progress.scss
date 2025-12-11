@@ -7,6 +7,7 @@
     width: 100%;
     position: relative;
     overflow: hidden;
+    background-color: #e9ecef;
 
     *,
     *::before,
@@ -41,6 +42,64 @@
     &.indeterminate {
         .linear-progress-bar {
             transition: none;
+        }
+    }
+
+    // =============================================================================
+    // VARIANT STYLES
+    // =============================================================================
+
+    // Default Variant
+    &.default {
+        background-color: #e9ecef;
+
+        .linear-progress-bar {
+            background-color: #007bff;
+        }
+    }
+
+    // Primary Variant
+    &.primary {
+        background-color: #e9ecef;
+
+        .linear-progress-bar {
+            background-color: #007bff;
+        }
+    }
+
+    // Success Variant
+    &.success {
+        background-color: #e9ecef;
+
+        .linear-progress-bar {
+            background-color: #28a745;
+        }
+    }
+
+    // Warning Variant
+    &.warning {
+        background-color: #e9ecef;
+
+        .linear-progress-bar {
+            background-color: #ffc107;
+        }
+    }
+
+    // Danger Variant
+    &.danger {
+        background-color: #e9ecef;
+
+        .linear-progress-bar {
+            background-color: #dc3545;
+        }
+    }
+
+    // Info Variant
+    &.info {
+        background-color: #e9ecef;
+
+        .linear-progress-bar {
+            background-color: #17a2b8;
         }
     }
 }
@@ -80,25 +139,5 @@
     100% {
         left: 100%;
         width: 80%;
-    }
-}
-
-// =============================================================================
-// RESPONSIVE DESIGN
-// =============================================================================
-
-@media (max-width: 768px) {
-    .linear-progress-container {
-        .linear-progress-bar {
-            transition: width 0.2s ease;
-        }
-    }
-}
-
-@media (max-width: 480px) {
-    .linear-progress-container {
-        .linear-progress-bar {
-            transition: width 0.15s ease;
-        }
     }
 }
