@@ -1,0 +1,63 @@
+// =============================================================================
+// DROPDOWN DEMO PAGE STYLES
+// =============================================================================
+@use '../abstracts' as *;
+
+.dropdown-demo {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: #1a1a1a;
+    }
+
+    .demo-section {
+        margin-bottom: 3rem;
+        padding: 1.5rem;
+        background: #ffffff;
+        border-radius: 0.5rem;
+        border: 0.0625rem solid #e5e7eb;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .demo-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1rem;
+
+            >* {
+                width: 100%;
+            }
+        }
+
+        .demo-group-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+
+            >* {
+                flex: 1;
+                min-width: 200px;
+            }
+        }
+
+        p {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+    }
+}

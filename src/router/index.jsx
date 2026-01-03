@@ -25,6 +25,7 @@ import SnackbarDemo from '@/pages/SnackbarDemo.jsx';
 import PaginationDemo from '@/pages/PaginationDemo.jsx';
 import TableDemo from '@/pages/TableDemo.jsx';
 import MenuDemo from '@/pages/MenuDemo.jsx';
+import DropdownDemo from '@/pages/DropdownDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -142,6 +143,10 @@ const router = createBrowserRouter([
       {
         path: '/menu',
         element: <MenuDemo />,
+      },
+      {
+        path: '/dropdown',
+        element: <DropdownDemo />,
       },
     ],
   },
