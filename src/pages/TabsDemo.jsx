@@ -197,6 +197,34 @@ const TabsDemo = () => {
       </div>
 
       <div className="demo-section">
+        <h2>Custom Tab Classes</h2>
+        <div className="demo-container">
+          <div className="tabs-examples">
+            <div className="tabs-example">
+              <h3>With Custom Classes</h3>
+              <BasicTabs
+                tabItems={basicTabItems}
+                selected={basicTabs}
+                tabClasses={['dark-gold-tab']}
+                onItemClicked={(item) => handleTabClick(item, setBasicTabs)}
+              />
+              <p className="demo-info">Using tabClasses prop: ['dark-gold-tab']</p>
+            </div>
+            <div className="tabs-example">
+              <h3>Multiple Custom Classes</h3>
+              <BasicTabs
+                tabItems={basicTabItems}
+                selected={basicTabs}
+                tabClasses={['custom-class-1', 'custom-class-2']}
+                onItemClicked={(item) => handleTabClick(item, setBasicTabs)}
+              />
+              <p className="demo-info">Using tabClasses prop: ['custom-class-1', 'custom-class-2']</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="demo-section">
         <h2>Custom Slots Example</h2>
         <div className="demo-container">
           <div className="tabs-example">

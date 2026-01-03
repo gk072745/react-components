@@ -181,5 +181,55 @@
         }
       }
     }
+
+    // =============================================================================
+    // CUSTOM CLASS - DARK GOLD TAB (Vue compatibility)
+    // =============================================================================
+
+    &.dark-gold-tab {
+      .tab {
+        background: #f7dd19;
+        color: #000000;
+        border-color: #f7dd19;
+
+        &:hover,
+        &.selected {
+          background: #000000;
+          color: #f7dd19;
+        }
+      }
+
+      // Dark gold with single packed style
+      &.single-packed {
+        border-color: #f7dd19;
+
+        .tab {
+          &:not(:last-child) {
+            border-right-color: #f7dd19;
+          }
+        }
+      }
+
+      // Dark gold with bottom line style
+      &.bottom-line-style {
+        .tab {
+          background: transparent;
+          color: #000000;
+
+          &:hover,
+          &.selected {
+            background: transparent;
+            color: #f7dd19;
+            border-color: transparent;
+          }
+        }
+
+        .bottom-line-container {
+          .bottom-line {
+            background: #f7dd19;
+          }
+        }
+      }
+    }
   }
 }

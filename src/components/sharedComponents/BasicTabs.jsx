@@ -7,6 +7,7 @@ const BasicTabs = ({
   multiple = false,
   isLabeli18String = true,
   singlePacked = false,
+  tabClasses = [],
   variant = 'default',
   bottomLineStyle = false,
   onItemClicked,
@@ -27,23 +28,6 @@ const BasicTabs = ({
     return pixels / 16; // Assuming 16px = 1rem
   }, []);
 
-  // Handle tab item click
-  const handleTabItemClick = useCallback(
-    item => {
-      if (onItemClicked) {
-        onItemClicked(item);
-      }
-
-      if (bottomLineStyle) {
-        // Use setTimeout to ensure DOM is updated
-        setTimeout(() => {
-          updateBottomLinePosition();
-        }, 0);
-      }
-    },
-    [onItemClicked, bottomLineStyle]
-  );
-
   // Update bottom line position
   const updateBottomLinePosition = useCallback(() => {
     if (!bottomLineStyle || !tabsContainerRef.current || !bottomLineRef.current) return;
@@ -59,6 +43,23 @@ const BasicTabs = ({
       bottomLineRef.current.style.width = `${convertPixelsToRem(width)}rem`;
     }
   }, [bottomLineStyle, convertPixelsToRem]);
+
+  // Handle tab item click
+  const handleTabItemClick = useCallback(
+    item => {
+      if (onItemClicked) {
+        onItemClicked(item);
+      }
+
+      if (bottomLineStyle) {
+        // Use setTimeout to ensure DOM is updated
+        setTimeout(() => {
+          updateBottomLinePosition();
+        }, 0);
+      }
+    },
+    [onItemClicked, bottomLineStyle, updateBottomLinePosition]
+  );
 
   // Update bottom line on mount and when selected changes
   useEffect(() => {
@@ -140,9 +141,14 @@ const BasicTabs = ({
     if (singlePacked) classes.push('single-packed');
     if (bottomLineStyle) classes.push('bottom-line-style');
     if (variant && variant !== 'default') classes.push(`variant-${variant}`);
+    
+    // Add custom classes from tabClasses prop
+    if (tabClasses && Array.isArray(tabClasses) && tabClasses.length > 0) {
+      classes.push(...tabClasses.filter(Boolean));
+    }
 
     return classes.join(' ');
-  }, [singlePacked, bottomLineStyle, variant]);
+  }, [singlePacked, bottomLineStyle, variant, tabClasses]);
 
   return (
     <div className="basic-tabs-wrapper" {...props}>
@@ -184,6 +190,7 @@ BasicTabs.propTypes = {
   multiple: PropTypes.bool,
   isLabeli18String: PropTypes.bool,
   singlePacked: PropTypes.bool,
+  tabClasses: PropTypes.arrayOf(PropTypes.string),
   variant: PropTypes.oneOf(['default', 'dark-gold']),
   bottomLineStyle: PropTypes.bool,
   onItemClicked: PropTypes.func,
