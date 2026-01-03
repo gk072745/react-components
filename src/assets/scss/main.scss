@@ -41,6 +41,7 @@
 @use 'components/basic-autocomplete';
 @use 'components/basic-combobox';
 @use 'components/basic-project-popup';
+@use 'components/basic-time-picker';
 
 // 5. Pages
 @use 'pages/home';
@@ -69,6 +70,7 @@
 @use 'pages/autocomplete-demo';
 @use 'pages/combobox-demo';
 @use 'pages/project-popup-demo';
+@use 'pages/time-picker-demo';
 
 // 6. Utilities (should be last for specificity)
 @use 'utilities/spacing';

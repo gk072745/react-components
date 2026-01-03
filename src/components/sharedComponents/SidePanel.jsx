@@ -148,6 +148,11 @@ const SidePanel = ({ isOpen, onToggle, className = '', style = {} }) => {
         icon: '💬',
       },
       {
+        path: '/time-picker',
+        label: 'Time Picker',
+        icon: '🕐',
+      },
+      {
         path: null, // No path for popup button
         label: 'Popup Example',
         icon: '💬',
