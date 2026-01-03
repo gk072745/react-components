@@ -29,6 +29,16 @@ const BasicSlider = memo(
     const [isFocused, setIsFocused] = useState(false);
 
     // =============================================================================
+    // SYNC VALUE PROP WITH INTERNAL STATE
+    // =============================================================================
+    useEffect(() => {
+      // Don't sync while dragging to avoid conflicts with user interaction
+      if (!isDragging) {
+        setCurrentValue(value);
+      }
+    }, [value, isDragging]);
+
+    // =============================================================================
     // COMPUTED VALUES
     // =============================================================================
     const roundToStep = useCallback((value, step) => {
