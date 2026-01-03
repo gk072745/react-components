@@ -5,6 +5,7 @@ import SidePanel from './components/sharedComponents/SidePanel';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useRemIndicator } from './customHooks/useRemIndicator';
 import BasicToast from './components/sharedComponents/BasicToast';
+import BasicProjectPopup from './components/sharedComponents/BasicProjectPopup';
 
 function App() {
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
@@ -22,6 +23,7 @@ function App() {
         <Outlet context={{ onToggleSidePanel: handleToggleSidePanel }} />
       </ErrorBoundary>
       <BasicToast />
+      <BasicProjectPopup />
       <div
         id="remIndicator"
         ref={remIndicatorRef}

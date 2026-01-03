@@ -28,6 +28,7 @@ import MenuDemo from '@/pages/MenuDemo.jsx';
 import DropdownDemo from '@/pages/DropdownDemo.jsx';
 import AutocompleteDemo from '@/pages/AutocompleteDemo.jsx';
 import ComboBoxDemo from '@/pages/ComboBoxDemo.jsx';
+import ProjectPopupDemo from '@/pages/ProjectPopupDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -157,6 +158,10 @@ const router = createBrowserRouter([
       {
         path: '/combobox',
         element: <ComboBoxDemo />,
+      },
+      {
+        path: '/project-popup',
+        element: <ProjectPopupDemo />,
       },
     ],
   },
