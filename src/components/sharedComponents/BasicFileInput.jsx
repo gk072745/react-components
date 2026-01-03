@@ -62,13 +62,47 @@ const BasicFileInput = memo(
     // =============================================================================
     const fileInputRef = useRef(null);
     const basicInputRef = useRef(null);
-    const [internalValue, setInternalValue] = useState(() => value);
+    
+    // Helper function to validate file (needed for initial state)
+    const isValidFileHelper = file => {
+      return file instanceof File && file.name && file.size;
+    };
+    
+    // Helper function to sanitize initial value (needed for initial state)
+    const sanitizeInitialValueHelper = val => {
+      if (!val) return null;
+      if (Array.isArray(val)) {
+        const validFiles = val.filter(isValidFileHelper);
+        return validFiles.length ? validFiles : null;
+      }
+      return isValidFileHelper(val) ? val : null;
+    };
+    
+    const [internalValue, setInternalValue] = useState(() => sanitizeInitialValueHelper(value));
     const [isDragging, setIsDragging] = useState(false);
     const [totalFileSizes, setTotalFileSizes] = useState(0);
 
     // =============================================================================
     // UTILITY FUNCTIONS
     // =============================================================================
+    const isValidFile = useCallback(file => {
+      return file instanceof File && file.name && file.size;
+    }, []);
+
+    const sanitizeInitialValue = useCallback(val => {
+      // First check if value is null/undefined
+      if (!val) return null;
+
+      // Handle array case
+      if (Array.isArray(val)) {
+        const validFiles = val.filter(isValidFile);
+        return validFiles.length ? validFiles : null;
+      }
+
+      // Handle single file case
+      return isValidFile(val) ? val : null;
+    }, [isValidFile]);
+
     const formatFileSize = useCallback(bytes => {
       if (bytes === 0) return '0 B';
       const units = ['B', 'kB', 'mB', 'gB', 'tB'];
@@ -85,8 +119,8 @@ const BasicFileInput = memo(
     // EFFECTS
     // =============================================================================
     useEffect(() => {
-      setInternalValue(value);
-    }, [value]);
+      setInternalValue(sanitizeInitialValue(value));
+    }, [value, sanitizeInitialValue]);
 
     useEffect(() => {
       setTotalFileSizes(calculateTotalSize(internalValue));
