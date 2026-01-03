@@ -87,71 +87,65 @@ const MenuDemo = () => {
     <div className="menu-demo">
       <h1>BasicMenu Component Demo</h1>
 
-      {/* Basic Positions */}
+      {/* Top Positions */}
       <section className="demo-section">
-        <h2>Basic Positions (Click Trigger)</h2>
+        <h2>Top Positions (Click Trigger)</h2>
         <div className="demo-group-row">
-          <BasicMenu trigger={<Box>Top</Box>} placement="top">
+          <BasicMenu trigger={<Box>Top</Box>} placement="top" width={180}>
             <MenuContent />
           </BasicMenu>
-          <BasicMenu trigger={<Box>Bottom</Box>} placement="bottom">
+          <BasicMenu trigger={<Box>Top Start</Box>} placement="top-start" width={180}>
             <MenuContent />
           </BasicMenu>
-          <BasicMenu trigger={<Box>Left</Box>} placement="left">
-            <MenuContent />
-          </BasicMenu>
-          <BasicMenu trigger={<Box>Right</Box>} placement="right">
+          <BasicMenu trigger={<Box>Top End</Box>} placement="top-end" width={180}>
             <MenuContent />
           </BasicMenu>
         </div>
       </section>
 
-      {/* Corner Positions */}
+      {/* Bottom Positions */}
       <section className="demo-section">
-        <h2>Corner Positions (Click Trigger)</h2>
+        <h2>Bottom Positions (Click Trigger)</h2>
         <div className="demo-group-row">
-          <BasicMenu trigger={<Box>Top Start</Box>} placement="top-start">
+          <BasicMenu trigger={<Box>Bottom</Box>} placement="bottom" width={180}>
             <MenuContent />
           </BasicMenu>
-          <BasicMenu trigger={<Box>Top End</Box>} placement="top-end">
+          <BasicMenu trigger={<Box>Bottom Start</Box>} placement="bottom-start" width={180}>
             <MenuContent />
           </BasicMenu>
-          <BasicMenu trigger={<Box>Bottom Start</Box>} placement="bottom-start">
-            <MenuContent />
-          </BasicMenu>
-          <BasicMenu trigger={<Box>Bottom End</Box>} placement="bottom-end">
+          <BasicMenu trigger={<Box>Bottom End</Box>} placement="bottom-end" width={180}>
             <MenuContent />
           </BasicMenu>
         </div>
       </section>
 
-      {/* Left Alignments */}
+      {/* Left Positions */}
       <section className="demo-section">
-        <h2>Left Alignments (Click Trigger)</h2>
+        <h2>Left Positions (Click Trigger)</h2>
         <div className="demo-group-row">
-          <BasicMenu trigger={<Box>Left Start</Box>} placement="left-start">
+          <BasicMenu trigger={<Box>Left</Box>} placement="left" width={180}>
             <MenuContent />
           </BasicMenu>
-          <BasicMenu trigger={<Box>Left Center</Box>} placement="left-center">
+          <BasicMenu trigger={<Box>Left Top</Box>} placement="left-top" width={180}>
             <MenuContent />
           </BasicMenu>
-          <BasicMenu trigger={<Box>Left End</Box>} placement="left-end">
+          <BasicMenu trigger={<Box>Left Bottom</Box>} placement="left-bottom" width={180}>
             <MenuContent />
           </BasicMenu>
         </div>
       </section>
 
-      {/* Right Alignments */}
+      {/* Right Positions */}
       <section className="demo-section">
-        <h2>Right Alignments (Click Trigger)</h2>
+        <h2>Right Positions (Click Trigger)</h2>
         <div className="demo-group-row">
-          <BasicMenu trigger={<Box>Right Start</Box>} placement="right-start">
+          <BasicMenu trigger={<Box>Right</Box>} placement="right" width={180}>
             <MenuContent />
           </BasicMenu>
-          <BasicMenu trigger={<Box>Right Center</Box>} placement="right-center">
+          <BasicMenu trigger={<Box>Right Top</Box>} placement="right-top" width={180}>
             <MenuContent />
           </BasicMenu>
-          <BasicMenu trigger={<Box>Right End</Box>} placement="right-end">
+          <BasicMenu trigger={<Box>Right Bottom</Box>} placement="right-bottom" width={180}>
             <MenuContent />
           </BasicMenu>
         </div>
@@ -161,16 +155,16 @@ const MenuDemo = () => {
       <section className="demo-section">
         <h2>Hover Trigger</h2>
         <div className="demo-group-row">
-          <BasicMenu trigger={<Box>Hover Top</Box>} placement="top" triggerType="hover">
+          <BasicMenu trigger={<Box>Hover Top</Box>} placement="top" triggerType="hover" width={180}>
             <MenuContent />
           </BasicMenu>
-          <BasicMenu trigger={<Box>Hover Bottom</Box>} placement="bottom" triggerType="hover">
+          <BasicMenu trigger={<Box>Hover Bottom</Box>} placement="bottom" triggerType="hover" width={180}>
             <MenuContent />
           </BasicMenu>
-          <BasicMenu trigger={<Box>Hover Left</Box>} placement="left" triggerType="hover">
+          <BasicMenu trigger={<Box>Hover Left</Box>} placement="left" triggerType="hover" width={180}>
             <MenuContent />
           </BasicMenu>
-          <BasicMenu trigger={<Box>Hover Right</Box>} placement="right" triggerType="hover">
+          <BasicMenu trigger={<Box>Hover Right</Box>} placement="right" triggerType="hover" width={180}>
             <MenuContent />
           </BasicMenu>
         </div>
@@ -182,28 +176,28 @@ const MenuDemo = () => {
         <div style={{ position: 'relative', minHeight: '100vh', width: '100%' }}>
           {/* Top Left Corner */}
           <div style={{ position: 'absolute', top: 0, left: 0 }}>
-            <BasicMenu trigger={<Box>Top-Left Corner</Box>} placement="bottom-start">
+            <BasicMenu trigger={<Box>Top-Left Corner</Box>} placement="bottom-start" width={180}>
               <MenuContent />
             </BasicMenu>
           </div>
 
           {/* Top Right Corner */}
           <div style={{ position: 'absolute', top: 0, right: 0 }}>
-            <BasicMenu trigger={<Box>Top-Right Corner</Box>} placement="bottom-end">
+            <BasicMenu trigger={<Box>Top-Right Corner</Box>} placement="bottom-end" width={180}>
               <MenuContent />
             </BasicMenu>
           </div>
 
           {/* Bottom Left Corner */}
           <div style={{ position: 'absolute', bottom: 0, left: 0 }}>
-            <BasicMenu trigger={<Box>Bottom-Left Corner</Box>} placement="top-start">
+            <BasicMenu trigger={<Box>Bottom-Left Corner</Box>} placement="top-start" width={180}>
               <MenuContent />
             </BasicMenu>
           </div>
 
           {/* Bottom Right Corner */}
           <div style={{ position: 'absolute', bottom: 0, right: 0 }}>
-            <BasicMenu trigger={<Box>Bottom-Right Corner</Box>} placement="top-end">
+            <BasicMenu trigger={<Box>Bottom-Right Corner</Box>} placement="top-end" width={180}>
               <MenuContent />
             </BasicMenu>
           </div>
@@ -217,7 +211,7 @@ const MenuDemo = () => {
               transform: 'translate(-50%, -50%)',
             }}
           >
-            <BasicMenu trigger={<Box>Center</Box>} placement="bottom">
+            <BasicMenu trigger={<Box>Center</Box>} placement="bottom" width={180}>
               <MenuContent />
             </BasicMenu>
           </div>
@@ -244,13 +238,13 @@ const MenuDemo = () => {
       <section className="demo-section">
         <h2>Custom Offset</h2>
         <div className="demo-group-row">
-          <BasicMenu trigger={<Box>Default Offset</Box>} placement="bottom" offset={[0, 0.125]}>
+          <BasicMenu trigger={<Box>Default Offset</Box>} placement="bottom" offset={[0, 0.125]} width={180}>
             <MenuContent />
           </BasicMenu>
-          <BasicMenu trigger={<Box>Large Offset</Box>} placement="bottom" offset={[0, 0.5]}>
+          <BasicMenu trigger={<Box>Large Offset</Box>} placement="bottom" offset={[0, 0.5]} width={180}>
             <MenuContent />
           </BasicMenu>
-          <BasicMenu trigger={<Box>No Offset</Box>} placement="bottom" offset={[0, 0]}>
+          <BasicMenu trigger={<Box>No Offset</Box>} placement="bottom" offset={[0, 0]} width={180}>
             <MenuContent />
           </BasicMenu>
         </div>
@@ -264,7 +258,7 @@ const MenuDemo = () => {
         </p>
         <div className="demo-group-row" style={{ flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-            <BasicMenu ref={menuRef1} trigger={<Box>Programmatic Control</Box>} placement="bottom">
+            <BasicMenu ref={menuRef1} trigger={<Box>Programmatic Control</Box>} placement="bottom" width={180}>
               <MenuContent />
             </BasicMenu>
             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
@@ -335,6 +329,7 @@ const MenuDemo = () => {
               ref={menuRef2}
               trigger={<Box>Auto-Open on Mount</Box>}
               placement="bottom-start"
+              width={180}
               onOpen={() => console.log('Menu opened!')}
               onClose={() => console.log('Menu closed!')}
             >
