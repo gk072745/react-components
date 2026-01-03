@@ -153,6 +153,11 @@ const SidePanel = ({ isOpen, onToggle, className = '', style = {} }) => {
         icon: '🕐',
       },
       {
+        path: '/date-picker',
+        label: 'Date Picker',
+        icon: '📅',
+      },
+      {
         path: null, // No path for popup button
         label: 'Popup Example',
         icon: '💬',

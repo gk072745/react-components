@@ -30,6 +30,7 @@ import AutocompleteDemo from '@/pages/AutocompleteDemo.jsx';
 import ComboBoxDemo from '@/pages/ComboBoxDemo.jsx';
 import ProjectPopupDemo from '@/pages/ProjectPopupDemo.jsx';
 import TimePickerDemo from '@/pages/TimePickerDemo.jsx';
+import DatePickerDemo from '@/pages/DatePickerDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -167,6 +168,10 @@ const router = createBrowserRouter([
       {
         path: '/time-picker',
         element: <TimePickerDemo />,
+      },
+      {
+        path: '/date-picker',
+        element: <DatePickerDemo />,
       },
     ],
   },
