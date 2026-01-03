@@ -6,67 +6,69 @@
 .dropdown-container {
     position: relative;
     width: 100%;
-}
 
-.dropdown-button {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 0.0625rem solid #d1d5db;
-    border-radius: 0.375rem;
-    background-color: white;
-    color: #374151;
-    font-size: 0.875rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    min-height: 2.5rem;
+    .dropdown-button {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 0.0625rem solid #d1d5db;
+        border-radius: 0.375rem;
+        background-color: white;
+        color: #374151;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-height: 2.5rem;
 
-    &:hover:not(:disabled) {
-        border-color: #9ca3af;
+        &:hover:not(.disabled) {
+            border-color: #9ca3af;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 0.1875rem rgba(59, 130, 246, 0.1);
+        }
+
+        &.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        &.is-open {
+            border-color: #3b82f6;
+        }
+
+        .chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            align-items: center;
+            flex: 1;
+            margin-right: 0.5rem;
+        }
+
+        .button-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .dropdown-icon {
+            transition: transform 0.2s ease;
+            color: #6b7280;
+            flex-shrink: 0;
+
+            &.rotated {
+                transform: rotate(180deg);
+            }
+        }
     }
 
-    &:focus {
-        outline: none;
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 0.1875rem rgba(59, 130, 246, 0.1);
-    }
-
-    &:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
-
-    &.is-open {
-        border-color: #3b82f6;
-    }
 }
 
-.chips-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-    align-items: center;
-    flex: 1;
-    margin-right: 0.5rem;
-}
-
-.button-text {
-    flex: 1;
-    text-align: left;
-}
-
-.dropdown-icon {
-    transition: transform 0.2s ease;
-    color: #6b7280;
-    flex-shrink: 0;
-
-    &.rotated {
-        transform: rotate(180deg);
-    }
-}
-
+// Portal-rendered content (not nested because it's rendered outside the container)
 .dropdown-content {
     background: white;
     border-radius: 0.5rem;
@@ -76,86 +78,85 @@
         0 0.25rem 0.375rem -0.125rem rgba(0, 0, 0, 0.05);
     overflow: hidden;
     min-width: 12.5rem;
-}
 
-.items-wrapper {
-    max-height: 18.75rem;
-    overflow-y: auto;
-}
+    .items-wrapper {
+        max-height: 18.75rem;
+        overflow-y: auto;
 
-.dropdown-item {
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    border-bottom: 0.0625rem solid #f3f4f6;
-    position: relative;
+        .dropdown-item {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border-bottom: 0.0625rem solid #f3f4f6;
+            position: relative;
 
-    &:last-child {
-        border-bottom: none;
-    }
+            &:last-child {
+                border-bottom: none;
+            }
 
-    &:hover {
-        background-color: #f3f4f6;
-    }
+            &:hover {
+                background-color: #f3f4f6;
+            }
 
-    &.selected {
-        background-color: #eff6ff;
-        color: #1e40af;
-        font-weight: 500;
+            &.selected {
+                background-color: #eff6ff;
+                color: #1e40af;
+                font-weight: 500;
 
-        &:hover {
-            background-color: #dbeafe;
+                &:hover {
+                    background-color: #dbeafe;
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 0.1875rem;
+                    background-color: #3b82f6;
+                }
+            }
+
+            .item-content {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+
+                .option-checkbox {
+                    width: 1rem;
+                    height: 1rem;
+                    border: 0.0625rem solid #ccc;
+                    border-radius: 0.25rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+
+                    svg {
+                        width: 0.75rem;
+                        height: 0.75rem;
+                        color: #3b82f6;
+                    }
+                }
+
+                .item-text {
+                    flex: 1;
+                    font-size: 0.875rem;
+                    line-height: 1.25rem;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
         }
 
-        &::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 0.1875rem;
-            background-color: #3b82f6;
+        .no-items {
+            padding: 2rem 1rem;
+            text-align: center;
+            color: #9ca3af;
+            font-style: italic;
+            font-size: 0.875rem;
         }
     }
 }
-
-.item-content {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.option-checkbox {
-    width: 1rem;
-    height: 1rem;
-    border: 0.0625rem solid #ccc;
-    border-radius: 0.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-
-    svg {
-        width: 0.75rem;
-        height: 0.75rem;
-        color: #3b82f6;
-    }
-}
-
-.item-text {
-    flex: 1;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.no-items {
-    padding: 2rem 1rem;
-    text-align: center;
-    color: #9ca3af;
-    font-style: italic;
-    font-size: 0.875rem;
-}
-

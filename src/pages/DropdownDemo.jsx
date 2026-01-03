@@ -38,6 +38,7 @@ const DropdownDemo = () => {
             modelValue={singleValue}
             onModelValueChange={setSingleValue}
             buttonText="Select a fruit"
+            width={220}
           />
           <p>Selected: {singleValue || 'None'}</p>
         </div>
@@ -55,6 +56,7 @@ const DropdownDemo = () => {
             itemText="text"
             itemValue="value"
             buttonText="Select an option"
+            width={220} 
           />
           <p>Selected: {customValue || 'None'}</p>
         </div>
@@ -73,10 +75,11 @@ const DropdownDemo = () => {
             itemValue="code"
             multiple={true}
             buttonText="Select countries"
+            width={220}
           />
           <p>Selected: {multipleValue.length > 0 ? multipleValue.join(', ') : 'None'}</p>
         </div>
-        <p>Multiple selection with chips display</p>
+        <p>Multiple selection with chips display. Click chips to remove items.</p>
       </section>
 
       {/* Selected on Top */}
@@ -92,35 +95,58 @@ const DropdownDemo = () => {
             multiple={true}
             selectedOnTop={true}
             buttonText="Select countries (sorted)"
+            width={220}
           />
           <p>Selected items appear at the top of the list</p>
         </div>
       </section>
 
-      {/* Placements */}
+      {/* Placements - Top */}
       <section className="demo-section">
-        <h2>Different Placements</h2>
+        <h2>Top Placements</h2>
         <div className="demo-group-row">
-          <BasicDropdown items={simpleItems} buttonText="Top" placement="top" />
-          <BasicDropdown items={simpleItems} buttonText="Bottom" placement="bottom" />
-          <BasicDropdown items={simpleItems} buttonText="Left" placement="left" />
-          <BasicDropdown items={simpleItems} buttonText="Right" placement="right" />
+          <BasicDropdown items={simpleItems} buttonText="Top" placement="top" width={220} />
+          <BasicDropdown items={simpleItems} buttonText="Top Start" placement="top-start" width={220} />
+          <BasicDropdown items={simpleItems} buttonText="Top End" placement="top-end" width={220} />
         </div>
-        <div className="demo-group-row" style={{ marginTop: '1rem' }}>
-          <BasicDropdown items={simpleItems} buttonText="Top Start" placement="top-start" />
-          <BasicDropdown items={simpleItems} buttonText="Top End" placement="top-end" />
-          <BasicDropdown items={simpleItems} buttonText="Bottom Start" placement="bottom-start" />
-          <BasicDropdown items={simpleItems} buttonText="Bottom End" placement="bottom-end" />
+      </section>
+
+      {/* Placements - Bottom */}
+      <section className="demo-section">
+        <h2>Bottom Placements</h2>
+        <div className="demo-group-row">
+          <BasicDropdown items={simpleItems} buttonText="Bottom" placement="bottom" width={220} />
+          <BasicDropdown items={simpleItems} buttonText="Bottom Start" placement="bottom-start" width={220} />
+          <BasicDropdown items={simpleItems} buttonText="Bottom End" placement="bottom-end" width={220} />
         </div>
-        <p>Different placement options for the dropdown menu</p>
+      </section>
+
+      {/* Placements - Left */}
+      <section className="demo-section">
+        <h2>Left Placements</h2>
+        <div className="demo-group-row">
+          <BasicDropdown items={simpleItems} buttonText="Left" placement="left" width={220} />
+          <BasicDropdown items={simpleItems} buttonText="Left Top" placement="left-top" width={220} />
+          <BasicDropdown items={simpleItems} buttonText="Left Bottom" placement="left-bottom" width={220} />
+        </div>
+      </section>
+
+      {/* Placements - Right */}
+      <section className="demo-section">
+        <h2>Right Placements</h2>
+        <div className="demo-group-row">
+          <BasicDropdown items={simpleItems} buttonText="Right" placement="right" width={220} />
+          <BasicDropdown items={simpleItems} buttonText="Right Top" placement="right-top" width={220} />
+          <BasicDropdown items={simpleItems} buttonText="Right Bottom" placement="right-bottom" width={220} />
+        </div>
       </section>
 
       {/* Trigger Types */}
       <section className="demo-section">
         <h2>Trigger Types</h2>
         <div className="demo-group-row">
-          <BasicDropdown items={simpleItems} buttonText="Click Trigger" triggerType="click" />
-          <BasicDropdown items={simpleItems} buttonText="Hover Trigger" triggerType="hover" />
+          <BasicDropdown items={simpleItems} buttonText="Click Trigger" triggerType="click" width={220} />
+          <BasicDropdown items={simpleItems} buttonText="Hover Trigger" triggerType="hover" width={220} />
         </div>
         <p>Click or hover to open the dropdown</p>
       </section>
@@ -129,47 +155,82 @@ const DropdownDemo = () => {
       <section className="demo-section">
         <h2>Width Options</h2>
         <div className="demo-group">
-          <BasicDropdown items={simpleItems} buttonText="Auto Width" buttonWidth="auto" />
-          <BasicDropdown items={simpleItems} buttonText="Fixed 200px" buttonWidth="200px" />
-          <BasicDropdown items={simpleItems} buttonText="Full Width" buttonWidth="100%" />
-          <BasicDropdown items={simpleItems} buttonText="Custom Menu Width" width={300} />
+          <BasicDropdown items={simpleItems} buttonText="Auto Button Width" buttonWidth="auto" width={220} />
+          <BasicDropdown items={simpleItems} buttonText="Fixed 200px Button" buttonWidth="200px" width={200} />
+          <BasicDropdown items={simpleItems} buttonText="Full Width Button" buttonWidth="100%" width={220} />
+          <BasicDropdown items={simpleItems} buttonText="Match Button Width" buttonWidth="250px" width={null} />
+          <BasicDropdown items={simpleItems} buttonText="Custom Menu Width" buttonWidth="auto" width={300} />
         </div>
-        <p>Different width configurations for button and menu</p>
+        <p style={{ marginTop: '0.5rem', color: '#6b7280', fontSize: '0.875rem' }}>
+          When width is null, menu width matches button width. Otherwise, use custom width.
+        </p>
       </section>
 
       {/* Disabled State */}
       <section className="demo-section">
         <h2>Disabled State</h2>
         <div className="demo-group">
-          <BasicDropdown items={simpleItems} buttonText="Disabled Dropdown" disabled={true} />
+          <BasicDropdown items={simpleItems} buttonText="Disabled Dropdown" disabled={true} width={220} />
         </div>
-        <p>Disabled dropdown cannot be opened</p>
+        <p>Disabled dropdown cannot be opened or interacted with</p>
       </section>
 
       {/* No Data */}
       <section className="demo-section">
         <h2>Empty State</h2>
         <div className="demo-group">
-          <BasicDropdown items={[]} buttonText="Empty Dropdown" noDataText="No items available" />
+          <BasicDropdown items={[]} buttonText="Empty Dropdown" noDataText="No items available" width={220} />
         </div>
         <p>Dropdown with no items shows empty state message</p>
+      </section>
+
+      {/* Custom Slots */}
+      <section className="demo-section">
+        <h2>Custom Slots</h2>
+        <div className="demo-group">
+          <BasicDropdown
+            items={objectItems}
+            modelValue={customValue}
+            onModelValueChange={setCustomValue}
+            itemText="text"
+            itemValue="value"
+            buttonText="Custom Trigger"
+            width={200}
+          >
+            {({ name, item, selected }) => {
+              if (name === 'item') {
+                return (
+                  <div style={{ padding: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <span style={{ fontWeight: selected ? 'bold' : 'normal', color: selected ? '#3b82f6' : '#374151' }}>
+                      {item.text}
+                    </span>
+                    {selected && <span style={{ fontSize: '0.75rem', color: '#10b981' }}>✓</span>}
+                  </div>
+                );
+              }
+              return null;
+            }}
+          </BasicDropdown>
+          <p>Custom item rendering using slot API</p>
+        </div>
       </section>
 
       {/* Programmatic Control */}
       <section className="demo-section">
         <h2>Programmatic Control</h2>
         <div className="demo-group">
-          <BasicDropdown ref={dropdownRef} items={simpleItems} buttonText="Controlled Dropdown" />
-          <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
+          <BasicDropdown ref={dropdownRef} items={simpleItems} buttonText="Controlled Dropdown" width={220} />
+          <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
             <button
               onClick={() => dropdownRef.current?.openMenu()}
               style={{
                 padding: '0.5rem 1rem',
-                backgroundColor: '#007bff',
+                backgroundColor: '#3b82f6',
                 color: 'white',
                 border: 'none',
-                borderRadius: '0.25rem',
+                borderRadius: '0.375rem',
                 cursor: 'pointer',
+                fontSize: '0.875rem',
               }}
             >
               Open Menu
@@ -178,11 +239,12 @@ const DropdownDemo = () => {
               onClick={() => dropdownRef.current?.closeMenu()}
               style={{
                 padding: '0.5rem 1rem',
-                backgroundColor: '#dc3545',
+                backgroundColor: '#ef4444',
                 color: 'white',
                 border: 'none',
-                borderRadius: '0.25rem',
+                borderRadius: '0.375rem',
                 cursor: 'pointer',
+                fontSize: '0.875rem',
               }}
             >
               Close Menu
@@ -191,11 +253,12 @@ const DropdownDemo = () => {
               onClick={() => dropdownRef.current?.toggleMenu()}
               style={{
                 padding: '0.5rem 1rem',
-                backgroundColor: '#28a745',
+                backgroundColor: '#10b981',
                 color: 'white',
                 border: 'none',
-                borderRadius: '0.25rem',
+                borderRadius: '0.375rem',
                 cursor: 'pointer',
+                fontSize: '0.875rem',
               }}
             >
               Toggle Menu
@@ -212,14 +275,14 @@ const DropdownDemo = () => {
           <BasicDropdown
             items={objectItems}
             modelValue={customValue}
-            onModelValueChange={value => {
+            onModelValueChange={(value) => {
               setCustomValue(value);
               console.log('Value changed:', value);
             }}
-            onItemSelect={item => {
+            onItemSelect={(item) => {
               console.log('Item selected:', item);
             }}
-            onItemUnselect={item => {
+            onItemUnselect={(item) => {
               console.log('Item unselected:', item);
             }}
             onMenuOpen={() => {
@@ -231,6 +294,7 @@ const DropdownDemo = () => {
             itemText="text"
             itemValue="value"
             buttonText="With Event Handlers"
+            width={220}
           />
           <p>Check console for event logs</p>
         </div>
@@ -241,13 +305,20 @@ const DropdownDemo = () => {
       <section className="demo-section">
         <h2>Custom Styling</h2>
         <div className="demo-group">
-          <BasicDropdown
-            items={simpleItems}
-            buttonText="Custom Class"
-            className="custom-dropdown"
-          />
+          <BasicDropdown items={simpleItems} buttonText="Custom Class" className="custom-dropdown" width={220} />
         </div>
         <p>Apply custom styling using className prop</p>
+      </section>
+
+      {/* Offset Examples */}
+      <section className="demo-section">
+        <h2>Custom Offset</h2>
+        <div className="demo-group-row">
+          <BasicDropdown items={simpleItems} buttonText="Default Offset" placement="bottom" offset={[0, 0.125]} width={220} />
+          <BasicDropdown items={simpleItems} buttonText="Large Offset" placement="bottom" offset={[0, 0.5]} width={220} />
+          <BasicDropdown items={simpleItems} buttonText="No Offset" placement="bottom" offset={[0, 0]} width={220} />
+        </div>
+        <p>Adjust spacing between trigger and menu</p>
       </section>
     </div>
   );

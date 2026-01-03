@@ -1,37 +1,37 @@
-import React, { memo, useCallback, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import React, { forwardRef, memo, useCallback, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import BasicMenu from './BasicMenu';
 import BasicChip from './BasicChip';
 
-const BasicDropdown = memo(function BasicDropdown({
-  items = [],
-  modelValue = null,
-  itemText = 'text',
-  itemValue = 'value',
-  multiple = false,
-  disabled = false,
-  buttonText = 'Select',
-  noDataText = 'No items available',
-  selectedOnTop = false,
-  triggerType = 'click',
-  placement = 'bottom-start',
-  offset = [0, 0.125],
-  closeOnOutsideClick = true,
-  closeOnEsc = true,
-  buttonWidth = 'auto',
-  width = null,
-  className = '',
-  onModelValueChange,
-  onItemSelect,
-  onItemUnselect,
-  onMenuOpen,
-  onMenuClose,
-  trigger,
-  triggerContent,
-  item: itemSlot,
-  noData,
-  ref,
-}) {
+const BasicDropdown = memo(
+  forwardRef(function BasicDropdown(
+    {
+      items = [],
+      modelValue = null,
+      itemText = 'text',
+      itemValue = 'value',
+      multiple = false,
+      disabled = false,
+      buttonText = 'Select',
+      noDataText = 'No items available',
+      selectedOnTop = false,
+      triggerType = 'click',
+      placement = 'bottom-start',
+      offset = [0, 0.125],
+      closeOnOutsideClick = true,
+      closeOnEsc = true,
+      buttonWidth = 'auto',
+      width = null,
+      className = '',
+      onModelValueChange,
+      onItemSelect,
+      onItemUnselect,
+      onMenuOpen,
+      onMenuClose,
+      children,
+    },
+    ref,
+  ) {
     // =============================================================================
     // REFS
     // =============================================================================
@@ -44,38 +44,23 @@ const BasicDropdown = memo(function BasicDropdown({
     // HELPER FUNCTIONS
     // =============================================================================
     const getItemText = useCallback(
-      item => {
+      (item) => {
         if (typeof item === 'string' || typeof item === 'number') {
           return item.toString();
         }
         return item[itemText] || '';
       },
-      [itemText]
+      [itemText],
     );
 
     const getItemValue = useCallback(
-      item => {
+      (item) => {
         if (typeof item === 'string' || typeof item === 'number') {
           return item;
         }
         return item[itemValue] !== undefined ? item[itemValue] : item;
       },
-      [itemValue]
-    );
-
-    // =============================================================================
-    // SELECTION HELPERS
-    // =============================================================================
-    const isItemSelected = useCallback(
-      item => {
-        const itemValue = getItemValue(item);
-        if (multiple) {
-          return Array.isArray(modelValue) && modelValue.includes(itemValue);
-        } else {
-          return modelValue === itemValue;
-        }
-      },
-      [modelValue, multiple, getItemValue]
+      [itemValue],
     );
 
     // =============================================================================
@@ -84,13 +69,28 @@ const BasicDropdown = memo(function BasicDropdown({
     const selectedItems = useMemo(() => {
       if (!multiple) {
         if (!modelValue) return [];
-        const item = items.find(item => getItemValue(item) === modelValue);
+        const item = items.find((item) => getItemValue(item) === modelValue);
         return item ? [item] : [];
       }
       return Array.isArray(modelValue)
-        ? items.filter(item => modelValue.includes(getItemValue(item)))
+        ? items.filter((item) => modelValue.includes(getItemValue(item)))
         : [];
     }, [items, modelValue, multiple, getItemValue]);
+
+    // =============================================================================
+    // SELECTION HELPERS
+    // =============================================================================
+    const isItemSelected = useCallback(
+      (item) => {
+        const itemValue = getItemValue(item);
+        if (multiple) {
+          return Array.isArray(modelValue) && modelValue.includes(itemValue);
+        } else {
+          return modelValue === itemValue;
+        }
+      },
+      [modelValue, multiple, getItemValue],
+    );
 
     const displayItems = useMemo(() => {
       if (!selectedOnTop) {
@@ -100,7 +100,7 @@ const BasicDropdown = memo(function BasicDropdown({
       const selected = [];
       const unselected = [];
 
-      items.forEach(item => {
+      items.forEach((item) => {
         if (isItemSelected(item)) {
           selected.push(item);
         } else {
@@ -140,25 +140,29 @@ const BasicDropdown = memo(function BasicDropdown({
     // =============================================================================
     // MENU HANDLERS
     // =============================================================================
-    const openMenu = useCallback(() => {
-      if (disabled) return;
-      if (isMenuOpen) return;
+    const openMenu = useCallback(
+      (canUseComingEvent = false, event = null) => {
+        if (disabled) return;
+        if (isMenuOpen) return;
 
-      setIsMenuOpen(true);
-      if (menuRef.current && !menuRef.current.isOpen) {
-        menuRef.current.openMenu();
-      }
-      onMenuOpen?.();
+        setIsMenuOpen(true);
+        if (menuRef.current && !menuRef.current.isOpen) {
+          menuRef.current.openMenu();
+        }
+        onMenuOpen?.();
 
-      // Set dropdown width to match button width if no width prop is provided
-      if (width === null && buttonRef.current) {
-        setTimeout(() => {
-          if (buttonRef.current) {
-            setMenuWidth(`${buttonRef.current.getBoundingClientRect().width}px`);
-          }
-        }, 0);
-      }
-    }, [disabled, isMenuOpen, width, onMenuOpen]);
+        // Set dropdown width to match button width if no width prop is provided
+        if (width === null) {
+          requestAnimationFrame(() => {
+            const buttonEl = canUseComingEvent === true ? event?.currentTarget : buttonRef.current;
+            if (buttonEl) {
+              setMenuWidth(`${buttonEl.getBoundingClientRect().width}px`);
+            }
+          });
+        }
+      },
+      [disabled, isMenuOpen, width, onMenuOpen],
+    );
 
     const closeMenu = useCallback(() => {
       if (disabled) return;
@@ -172,13 +176,12 @@ const BasicDropdown = memo(function BasicDropdown({
     }, [disabled, isMenuOpen, onMenuClose]);
 
     const toggleMenu = useCallback(() => {
-      if (disabled) return;
       if (isMenuOpen) {
         closeMenu();
       } else {
         openMenu();
       }
-    }, [disabled, isMenuOpen, closeMenu, openMenu]);
+    }, [isMenuOpen, openMenu, closeMenu]);
 
     const handleMenuOpen = useCallback(() => {
       if (disabled) return;
@@ -196,20 +199,20 @@ const BasicDropdown = memo(function BasicDropdown({
     // ITEM HANDLERS
     // =============================================================================
     const removeItem = useCallback(
-      item => {
+      (item) => {
         if (multiple) {
           const itemValue = getItemValue(item);
-          const currentValues = Array.isArray(modelValue) ? modelValue : [];
-          const newValues = currentValues.filter(value => value !== itemValue);
+          const currentValues = Array.isArray(modelValue) ? [...modelValue] : [];
+          const newValues = currentValues.filter((value) => value !== itemValue);
           onModelValueChange?.(newValues);
           onItemUnselect?.(item);
         }
       },
-      [multiple, modelValue, getItemValue, onModelValueChange, onItemUnselect]
+      [multiple, modelValue, getItemValue, onModelValueChange, onItemUnselect],
     );
 
     const handleItemClick = useCallback(
-      item => {
+      (item) => {
         const itemValue = getItemValue(item);
 
         if (multiple) {
@@ -246,7 +249,7 @@ const BasicDropdown = memo(function BasicDropdown({
           }, 50);
         }
       },
-      [multiple, modelValue, getItemValue, onModelValueChange, onItemSelect, onItemUnselect]
+      [multiple, modelValue, getItemValue, onModelValueChange, onItemSelect, onItemUnselect],
     );
 
     // =============================================================================
@@ -256,117 +259,142 @@ const BasicDropdown = memo(function BasicDropdown({
       openMenu,
       closeMenu,
       toggleMenu,
-      isOpen: isMenuOpen,
     }));
 
     // =============================================================================
     // RENDER FUNCTIONS
     // =============================================================================
+    const renderTriggerContent = useCallback(() => {
+      // Support slot-based API for triggerContent
+      if (typeof children === 'function') {
+        const triggerContentSlot = children({
+          name: 'triggerContent',
+          isOpen: isMenuOpen,
+          selectedItems,
+          toggleMenu,
+          openMenu,
+          closeMenu,
+          displayButtonText,
+          multiple,
+          disabled,
+        });
+        if (triggerContentSlot) return triggerContentSlot;
+      }
+
+      // Multiple selection with chips
+      if (multiple && selectedItems.length > 0) {
+        return (
+          <>
+            <div className="chips-container">
+              {selectedItems.map((item) => (
+                <BasicChip
+                  key={getItemValue(item)}
+                  chip={getItemText(item)}
+                  closable={!disabled}
+                  onDeleteChip={() => removeItem(item)}
+                />
+              ))}
+            </div>
+            <svg
+              className={`dropdown-icon ${isMenuOpen ? 'rotated' : ''}`}
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </>
+        );
+      }
+
+      // Regular text display
+      return (
+        <>
+          <span className="button-text">{displayButtonText}</span>
+          <svg
+            className={`dropdown-icon ${isMenuOpen ? 'rotated' : ''}`}
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </>
+      );
+    }, [children, multiple, selectedItems, isMenuOpen, disabled, displayButtonText, getItemValue, getItemText, removeItem, toggleMenu, openMenu, closeMenu]);
+
+    const handleTriggerKeyDown = useCallback(
+      (e) => {
+        if (disabled) return;
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleMenu();
+        }
+      },
+      [disabled, toggleMenu],
+    );
+
     const renderTrigger = useCallback(() => {
-      if (trigger) {
-        return typeof trigger === 'function'
-          ? trigger({
-              isOpen: isMenuOpen,
-              selectedItems,
-              toggleMenu,
-              openMenu,
-              closeMenu,
-              displayButtonText,
-            })
-          : trigger;
+      // Support slot-based API (children function)
+      if (typeof children === 'function') {
+        const triggerSlot = children({
+          name: 'trigger',
+          isOpen: isMenuOpen,
+          selectedItems,
+          toggleMenu,
+          openMenu,
+          closeMenu,
+          displayButtonText,
+        });
+        if (triggerSlot) return triggerSlot;
       }
 
       return (
-        <button
+        <div
           ref={buttonRef}
-          className={`dropdown-button ${isMenuOpen ? 'is-open' : ''}`}
-          disabled={disabled}
+          className={`dropdown-button ${isMenuOpen ? 'is-open' : ''} ${disabled ? 'disabled' : ''}`}
           style={{ width: buttonWidth }}
-          type="button"
-          onClick={e => {
+          role="button"
+          tabIndex={disabled ? -1 : 0}
+          aria-disabled={disabled}
+          onClick={(e) => {
+            if (disabled) return;
             e.stopPropagation();
             toggleMenu();
           }}
+          onKeyDown={handleTriggerKeyDown}
         >
-          {triggerContent ? (
-            typeof triggerContent === 'function' ? (
-              triggerContent({
-                isOpen: isMenuOpen,
-                selectedItems,
-                toggleMenu,
-                openMenu,
-                closeMenu,
-                displayButtonText,
-                multiple,
-                disabled,
-              })
-            ) : (
-              triggerContent
-            )
-          ) : (
-            <>
-              {multiple && selectedItems.length > 0 ? (
-                <div className="chips-container">
-                  {selectedItems.map(item => (
-                    <BasicChip
-                      key={getItemValue(item)}
-                      chip={getItemText(item)}
-                      closable={!disabled}
-                      onDeleteChip={() => removeItem(item)}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <span className="button-text">{displayButtonText}</span>
-              )}
-
-              <svg
-                className={`dropdown-icon ${isMenuOpen ? 'rotated' : ''}`}
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </>
-          )}
-        </button>
+          {renderTriggerContent()}
+        </div>
       );
-    }, [
-      trigger,
-      isMenuOpen,
-      selectedItems,
-      toggleMenu,
-      openMenu,
-      closeMenu,
-      displayButtonText,
-      disabled,
-      buttonWidth,
-      triggerContent,
-      multiple,
-      getItemValue,
-      getItemText,
-      removeItem,
-    ]);
+    }, [children, isMenuOpen, selectedItems, toggleMenu, openMenu, closeMenu, displayButtonText, disabled, buttonWidth, renderTriggerContent, handleTriggerKeyDown]);
 
     const renderItem = useCallback(
-      item => {
+      (item) => {
         const isSelected = isItemSelected(item);
         const itemValue = getItemValue(item);
 
-        if (itemSlot) {
-          return typeof itemSlot === 'function' ? (
-            <div key={itemValue} className={`dropdown-item ${isSelected ? 'selected' : ''}`} onClick={() => handleItemClick(item)}>
-              {itemSlot({ item, selected: isSelected, toggle: () => handleItemClick(item) })}
-            </div>
-          ) : (
-            itemSlot
-          );
+        // Support slot-based API for item
+        if (typeof children === 'function') {
+          const itemSlot = children({ name: 'item', item, selected: isSelected, toggle: () => handleItemClick(item) });
+          if (itemSlot) {
+            return (
+              <div key={itemValue} className={`dropdown-item ${isSelected ? 'selected' : ''}`} onClick={() => handleItemClick(item)}>
+                {itemSlot}
+              </div>
+            );
+          }
         }
 
         return (
@@ -376,6 +404,7 @@ const BasicDropdown = memo(function BasicDropdown({
             onClick={() => handleItemClick(item)}
           >
             <div className="item-content">
+              {/* Checkbox for multiple selection */}
               {multiple && (
                 <div className="option-checkbox">
                   {isSelected && (
@@ -396,22 +425,30 @@ const BasicDropdown = memo(function BasicDropdown({
           </div>
         );
       },
-      [itemSlot, isItemSelected, getItemValue, handleItemClick, multiple, getItemText]
+      [children, isItemSelected, getItemValue, handleItemClick, multiple, getItemText],
     );
 
     const renderContent = useCallback(() => {
+      // Support slot-based API for content
+      if (typeof children === 'function') {
+        const contentSlot = children({ name: 'content' });
+        if (contentSlot) return contentSlot;
+      }
+
       return (
         <div className="dropdown-content">
           <div className="items-wrapper">
             {displayItems.length > 0 ? (
-              displayItems.map(item => renderItem(item))
+              displayItems.map((item) => renderItem(item))
             ) : (
-              <div className="no-items">{noData ? (typeof noData === 'function' ? noData() : noData) : noDataText}</div>
+              <div className="no-items">
+                {typeof children === 'function' ? children({ name: 'no-data' }) : noDataText}
+              </div>
             )}
           </div>
         </div>
       );
-    }, [displayItems, renderItem, noData, noDataText]);
+    }, [children, displayItems, renderItem, noDataText]);
 
     // =============================================================================
     // RENDER
@@ -422,21 +459,29 @@ const BasicDropdown = memo(function BasicDropdown({
       <div className={containerClass}>
         <BasicMenu
           ref={menuRef}
-          trigger={renderTrigger()}
           triggerType={triggerType}
           placement={placement}
           offset={offset}
           closeOnOutsideClick={closeOnOutsideClick}
           closeOnEsc={closeOnEsc}
+          disabled={disabled}
           width={dropdownWidth}
           onOpen={handleMenuOpen}
           onClose={handleMenuClose}
         >
-          {renderContent()}
+          {({ name }) => {
+            if (name === 'trigger') {
+              return renderTrigger();
+            }
+            if (name === 'content') {
+              return renderContent();
+            }
+            return null;
+          }}
         </BasicMenu>
       </div>
     );
-  }
+  }),
 );
 
 // =============================================================================
@@ -462,13 +507,11 @@ BasicDropdown.propTypes = {
     'top-end',
     'bottom-start',
     'bottom-end',
-    'left-start',
-    'left-center',
-    'left-end',
-    'right-start',
-    'right-center',
-    'right-end',
-  ]),
+    'left-top',
+    'left-bottom',
+    'right-top',
+    'right-bottom',
+  ]), // Matches BasicMenu PLACEMENT_CLASSES
   offset: PropTypes.arrayOf(PropTypes.number),
   closeOnOutsideClick: PropTypes.bool,
   closeOnEsc: PropTypes.bool,
@@ -480,14 +523,9 @@ BasicDropdown.propTypes = {
   onItemUnselect: PropTypes.func,
   onMenuOpen: PropTypes.func,
   onMenuClose: PropTypes.func,
-  trigger: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-  triggerContent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-  item: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-  noData: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-  ref: PropTypes.object,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
 };
 
 BasicDropdown.displayName = 'BasicDropdown';
 
 export default BasicDropdown;
-
