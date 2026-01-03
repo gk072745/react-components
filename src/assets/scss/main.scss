@@ -38,6 +38,7 @@
 @use 'components/basic-table';
 @use 'components/basic-menu';
 @use 'components/basic-dropdown';
+@use 'components/basic-autocomplete';
 
 // 5. Pages
 @use 'pages/home';
@@ -63,6 +64,7 @@
 @use 'pages/table-demo';
 @use 'pages/menu-demo';
 @use 'pages/dropdown-demo';
+@use 'pages/autocomplete-demo';
 
 // 6. Utilities (should be last for specificity)
 @use 'utilities/spacing';

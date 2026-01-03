@@ -133,6 +133,11 @@ const SidePanel = ({ isOpen, onToggle, className = '', style = {} }) => {
         icon: '🔽',
       },
       {
+        path: '/autocomplete',
+        label: 'Autocomplete',
+        icon: '🔍',
+      },
+      {
         path: null, // No path for popup button
         label: 'Popup Example',
         icon: '💬',

@@ -26,6 +26,7 @@ import PaginationDemo from '@/pages/PaginationDemo.jsx';
 import TableDemo from '@/pages/TableDemo.jsx';
 import MenuDemo from '@/pages/MenuDemo.jsx';
 import DropdownDemo from '@/pages/DropdownDemo.jsx';
+import AutocompleteDemo from '@/pages/AutocompleteDemo.jsx';
 
 // Auth loader function
 const authLoader = () => {
@@ -147,6 +148,10 @@ const router = createBrowserRouter([
       {
         path: '/dropdown',
         element: <DropdownDemo />,
+      },
+      {
+        path: '/autocomplete',
+        element: <AutocompleteDemo />,
       },
     ],
   },
