@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import BasicTable from '../components/sharedComponents/BasicTable';
+import BasicPagination from '../components/sharedComponents/BasicPagination';
 import '@/assets/scss/pages/_table-demo.scss';
 
 const TableDemo = () => {
@@ -58,6 +59,10 @@ const TableDemo = () => {
   ]);
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectedRows2, setSelectedRows2] = useState([]);
+  
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
 
   // =============================================================================
   // HEADERS
@@ -181,6 +186,20 @@ const TableDemo = () => {
     console.log('Rows selected (table 2):', selected);
     setSelectedRows2(selected);
   };
+
+  const handlePageChange = (page) => {
+    console.log('Page changed to:', page);
+    setCurrentPage(page);
+  };
+
+  // Paginated data
+  const paginatedTableData = useMemo(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return paginatedData.slice(startIndex, endIndex);
+  }, [currentPage, itemsPerPage]);
+
+  const totalPages = Math.ceil(paginatedData.length / itemsPerPage);
 
   // =============================================================================
   // RENDER PROPS
@@ -382,9 +401,51 @@ const TableDemo = () => {
         </p>
       </section>
 
+      {/* Table with Pagination */}
+      <section className="demo-section">
+        <h2>9. Table with Pagination</h2>
+        <div className="demo-card">
+          <BasicTable
+            headers={selectableHeaders}
+            tableData={paginatedTableData}
+            enableHover={true}
+            enableInfiniteScroll={false}
+            allowSelect={true}
+            selected={selectedRows}
+            onSelect={handleSelect}
+            onCellClicked={handleCellClick}
+          />
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center', 
+            marginTop: '1rem',
+            padding: '1rem',
+            borderTop: '1px solid #e5e7eb'
+          }}>
+            <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>
+              Showing {((currentPage - 1) * itemsPerPage) + 1} to {Math.min(currentPage * itemsPerPage, paginatedData.length)} of {paginatedData.length} entries
+            </div>
+            <BasicPagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              totalVisible={5}
+              showFirstLast={true}
+              showPrevNext={true}
+              onPageChange={handlePageChange}
+              color="primary"
+            />
+          </div>
+        </div>
+        <p>
+          Table with pagination component. Navigate through pages using pagination controls. 
+          Currently on page {currentPage} of {totalPages}. Showing {itemsPerPage} items per page.
+        </p>
+      </section>
+
       {/* Table with All Features */}
       <section className="demo-section">
-        <h2>9. Table with All Features Combined</h2>
+        <h2>10. Table with All Features Combined</h2>
         <div className="demo-card" style={{ height: '400px' }}>
           <BasicTable
             headers={filterableHeaders}
@@ -417,6 +478,9 @@ const TableDemo = () => {
             </li>
             <li>
               ✅ <strong>Infinite Scroll:</strong> Automatically load more data when scrolling to end using ScrollObserver.
+            </li>
+            <li>
+              ✅ <strong>Pagination:</strong> Integrate with BasicPagination component to navigate through large datasets with page controls.
             </li>
             <li>
               ✅ <strong>Hover Effects:</strong> Row hover highlighting for better UX.
